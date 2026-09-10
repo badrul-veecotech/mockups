@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auto-City : Official Brandkit & Design System</title>
+  
+  <!-- Single Source of Truth Brand Tokens & Typography (Switzer Display & Body - Zero Monospace) -->
+  <link rel="stylesheet" href="css/brand-tokens.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/quote.css">
+  
+  <style>
+    /* Swatch Grid */
+    .swatch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.25rem;
+    }
+    .swatch-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      cursor: pointer;
+      transition: var(--transition-base);
+    }
+    .swatch-card:hover {
+      border-color: var(--border-active);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-card);
+    }
+    .swatch-preview {
+      height: 100px;
+      position: relative;
+    }
+    .swatch-body {
+      padding: 1.15rem;
+    }
+    .swatch-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      margin-bottom: 0.35rem;
+    }
+    .swatch-code {
+      font-size: 0.825rem;
+      color: var(--color-blue-700);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+    }
+    .swatch-sub {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      margin-top: 0.25rem;
+    }
+
+    /* Ratio Distribution Visualizer */
+    .ratio-bar-container {
+      display: flex;
+      height: 48px;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      border: 1px solid var(--border-subtle);
+      margin-bottom: 1.5rem;
+    }
+    .ratio-segment {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.02em;
+      transition: flex-grow 0.3s ease;
+    }
+    .ratio-white {
+      flex: 70;
+      background: #ffffff;
+      color: #0a1f44;
+      border-right: 1px solid #e2e8f0;
+    }
+    .ratio-blue {
+      flex: 20;
+      background: #1d4ed8;
+      color: #ffffff;
+    }
+    .ratio-red {
+      flex: 10;
+      background: #e10021;
+      color: #ffffff;
+    }
+
+    /* Type Scale Table */
+    .type-specimen-stack {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 2.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.25rem;
+    }
+    .type-entry {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 1.75rem;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .type-entry:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .type-meta {
+      font-size: 0.825rem;
+      font-weight: 600;
+      color: var(--text-dim);
+      width: 220px;
+      flex-shrink: 0;
+    }
+    .type-preview {
+      flex-grow: 1;
+      color: var(--text-primary);
+    }
+
+    /* Logo Showcase Stages */
+    .logo-stage-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .logo-stage-card {
+      border-radius: var(--radius-md);
+      padding: 3rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      border: 1px solid var(--border-subtle);
+      position: relative;
+      min-height: 200px;
+    }
+    .logo-stage-card img {
+      max-width: 240px;
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .logo-stage-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      opacity: 0.85;
+    }
+
+    /* Clear Space Zone */
+    .clear-space-canvas {
+      background: var(--bg-surface);
+      border: 2px dashed var(--border-medium);
+      border-radius: var(--radius-md);
+      padding: 4rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .clear-space-box {
+      border: 1.5px dashed var(--color-blue-600);
+      background: var(--color-blue-50);
+      padding: 2.5rem 3.5rem;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    html[data-theme="dark"] .clear-space-box {
+      background: rgba(29, 78, 216, 0.12);
+      border-color: rgba(148, 185, 255, 0.5);
+    }
+    .clear-space-box img {
+      max-width: 280px;
+      width: 100%;
+      height: auto;
+    }
+
+    /* UI Form Elements */
+    .input-field {
+      width: 100%;
+      background: var(--bg-canvas);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-sm);
+      color: var(--text-primary);
+      padding: 0.7rem 1rem;
+      font-family: var(--font-body);
+      font-size: 0.925rem;
+      transition: var(--transition-fast);
+      outline: none;
+    }
+    .input-field:focus {
+      border-color: var(--color-blue-600);
+      box-shadow: 0 0 0 3px var(--color-brand-blue-glow);
+    }
+    .input-field::placeholder {
+      color: var(--text-dim);
+    }
+    .input-label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 0.4rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand-badge-link" aria-label="Auto-City Portal Home">
+        <img src="Graphic/auto-city-logo.svg" alt="Auto-City" class="brand-logo-img">
+        <span class="brand-subtag">BRANDKIT</span>
+      </a>
+      
+      <div class="nav-right-group">
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-item-link">Showcase</a></li>
+          <li><a href="research.html" class="nav-item-link">Research & Data</a></li>
+          <li><a href="brand-guidelines.html" class="nav-item-link active">Brand Guidelines</a></li>
+        </ul>
+
+        <!-- Theme Switcher -->
+        <button type="button" class="theme-toggle-btn" id="themeToggle" aria-label="Toggle light or dark theme">
+          <svg class="theme-icon-sun" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          <svg class="theme-icon-moon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+          <span id="themeLabel">Dark Mode</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Header -->
+  <header class="hero">
+    <div class="container hero-content">
+      <div style="margin-bottom: 1rem;">
+        <span class="status-tag status-tag-active">
+          <span class="status-dot"></span>
+          Official Brand Identity System · Clean Vector Release
+        </span>
+      </div>
+      <h1 class="hero-title">Auto-City Brandkit & Design Guidelines</h1>
+      <p class="hero-desc">
+        Simplified vector insignia (209 curve segments), 70% White / 20% Darkened Cobalt Blue / 10% Red Accent architecture, Creato Display titles (SSoT, capped at Bold 700), Switzer body typography, and zero monospace fonts.
+      </p>
+      <div class="hero-actions">
+        <a href="#ratio" class="btn btn-primary">70/20/10 Ratio</a>
+        <a href="#logo" class="btn btn-secondary">Simplified Logo (7.4 KB)</a>
+        <a href="#colors" class="btn btn-outline">Dark Cobalt Scale</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Brandkit Sections -->
+  <main class="section">
+    <div class="container">
+
+      <!-- 1. Brand Ratio Distribution (70 / 20 / 10) -->
+      <section id="ratio" style="margin-bottom: 5rem;">
+        <div class="section-head">
+          <h2 class="section-title">Visual Color Balance : 70% / 20% / 10%</h2>
+          <p class="section-subtext">Calibrated with a darker, more authoritative Cobalt Blue foundation to establish prestige automotive presence without neon glare.</p>
+        </div>
+
+        <div class="ratio-bar-container">
+          <div class="ratio-segment ratio-white">70% White Canvas & Clarity</div>
+          <div class="ratio-segment ratio-blue">20% Darkened Cobalt Blue (#1D4ED8)</div>
+          <div class="ratio-segment ratio-red">10% Red (#E10021)</div>
+        </div>
+
+        <div class="bento-grid">
+          <div class="card bento-col-4 card-padded">
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+              <span style="width: 14px; height: 14px; border-radius: 3px; background: #ffffff; border: 1px solid #cbd5e1;"></span>
+              <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--text-primary);">70% Clean White Base</h3>
+            </div>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.65;">
+              Establishes negative space, editorial breathing room, and high-readability backgrounds. Prevents visual clutter and presents tenants with gallery-grade elevation.
+            </p>
+          </div>
+
+          <div class="card bento-col-4 card-padded">
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+              <span style="width: 14px; height: 14px; border-radius: 3px; background: #1d4ed8;"></span>
+              <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--text-primary);">20% Darkened Cobalt</h3>
+            </div>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.65;">
+              Calibrated darker (<span class="token-code">#1D4ED8</span> / <span class="token-code">#173E86</span>) for executive stability, engineering depth, and high contrast against white surfaces.
+            </p>
+          </div>
+
+          <div class="card bento-col-4 card-padded">
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+              <span style="width: 14px; height: 14px; border-radius: 3px; background: #e10021;"></span>
+              <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--text-primary);">10% Racing Red Accent</h3>
+            </div>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.65;">
+              High-voltage energy derived from the authentic logo color (<span class="token-code">#E10021</span>). Reserved strictly for key action buttons, high-priority status alerts, and conversion moments.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Official Traced Vector Logo (Optimized & Cleaned) -->
+      <section id="logo" style="margin-bottom: 5rem;">
+        <div class="section-head">
+          <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <h2 class="section-title">Official Vector Logo Insignia (Cleaned & Simplified)</h2>
+              <p class="section-subtext">Optimized from >1,400 noisy points down to 209 clean, silky-smooth bezier curve segments (7.4 KB). The trademark (R) mark has been completely omitted.</p>
+            </div>
+            <div style="display: flex; gap: 0.75rem;">
+              <a href="Graphic/auto-city-logo.svg" download class="btn btn-sm btn-primary">Download Red SVG (7.4 KB)</a>
+              <a href="Graphic/auto-city-logo-white.svg" download class="btn btn-sm btn-secondary">Download White SVG</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="logo-stage-grid">
+          <!-- Light Canvas Preview -->
+          <div class="logo-stage-card" style="background: #ffffff;">
+            <span class="logo-stage-label" style="color: #64748b;">Primary On White Canvas (70% Base)</span>
+            <img src="Graphic/auto-city-logo.svg" alt="Auto-City Red Logo on White">
+            <span class="token-code">209 points · 7.4 KB · fill-rule="evenodd"</span>
+          </div>
+
+          <!-- Dark Cobalt Blue Preview -->
+          <div class="logo-stage-card" style="background: #1d4ed8;">
+            <span class="logo-stage-label" style="color: #c2d8ff;">Contrast Inverted On Dark Cobalt (#1D4ED8)</span>
+            <img src="Graphic/auto-city-logo-white.svg" alt="Auto-City White Logo on Blue">
+            <span class="token-code" style="background: rgba(255,255,255,0.15); color: #fff; border-color: rgba(255,255,255,0.3);">Graphic/auto-city-logo-white.svg</span>
+          </div>
+
+          <!-- Obsidian Dark Preview -->
+          <div class="logo-stage-card" style="background: #090d16;">
+            <span class="logo-stage-label" style="color: #94a3b8;">Red Accent On Obsidian Dark (10% Pop)</span>
+            <img src="Graphic/auto-city-logo.svg" alt="Auto-City Red Logo on Obsidian">
+            <span class="token-code" style="background: #131c31; color: #ff4d67; border-color: #1e293b;">#E10021 on Obsidian Canvas</span>
+          </div>
+        </div>
+
+        <!-- Clear Space Zone -->
+        <div class="clear-space-canvas">
+          <div class="clear-space-box">
+            <img src="Graphic/auto-city-logo.svg" alt="Auto-City Logo Clearance Demonstration">
+          </div>
+          <div style="margin-top: 1.5rem; text-align: center;">
+            <span class="token-code" style="font-size: 0.85rem;">Clearance Boundary: Min 32px (1.0x Capital "A" Height on all 4 quadrants)</span>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.4rem;">No text, borders, tenant emblems, or graphical elements may encroach within this protected zone.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Complete Color Scale System -->
+      <section id="colors" style="margin-bottom: 5rem;">
+        <div class="section-head">
+          <h2 class="section-title">Color Palette Tokens</h2>
+          <p class="section-subtext">Click any card to copy the hex code to your clipboard.</p>
+        </div>
+
+        <!-- 3A. Primary 10% Red Accent -->
+        <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary); display: flex; align-items: center; gap: 0.5rem;">
+          <span style="width: 12px; height: 12px; border-radius: 50%; background: #e10021;"></span>
+          10% Racing Red Accent Scale
+        </h3>
+        <div class="swatch-grid" style="margin-bottom: 3rem;">
+          <div class="swatch-card" data-copy="#E10021">
+            <div class="swatch-preview" style="background-color: #e10021;"></div>
+            <div class="swatch-body">
+              <div class="swatch-title">Racing Red (Primary Accent)</div>
+              <div class="swatch-code"><span>#E10021</span> <span class="copy-status">Copy</span></div>
+              <div class="swatch-sub">var(--color-accent-red)</div>
+            </div>
+          </div>
+          <div class="swatch-card" data-copy="#C5001D">
+            <div class="swatch-preview" style="background-color: #c5001d;"></div>
+            <div class="swatch-body">
+              <div class="swatch-title">Red Hover State</div>
+              <div class="swatch-code"><span>#C5001D</span> <span class="copy-status">Copy</span></div>
+              <div class="swatch-sub">var(--color-accent-red-hover)</div>
+            </div>
+          </div>
+          <div class="swatch-card" data-copy="#A80018">
+            <div class="swatch-preview" style="background-color: #a80018;"></div>
+            <div class="swatch-body">
+              <div class="swatch-title">Red Active Press</div>
+              <div class="swatch-code"><span>#A80018</span> <span class="copy-status">Copy</span></div>
+              <div class="swatch-sub">var(--color-accent-red-active)</div>
+            </div>
+          </div>
+          <div class="swatch-card" data-copy="rgba(225, 0, 33, 0.15)">
+            <div class="swatch-preview" style="background-color: rgba(225, 0, 33, 0.15); border: 1px dashed rgba(225, 0, 33, 0.4);"></div>
+            <div class="swatch-body">
+              <div class="swatch-title">Red Subtle Badge Tint</div>
+              <div class="swatch-code"><span>rgba(225,0,33,0.15)</span> <span class="copy-status">Copy</span></div>
+              <div class="swatch-sub">var(--color-accent-red-subtle)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3B. 20% Darkened Cobalt Blue Scale -->
+        <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary); display: flex; align-items: center; gap: 0.5rem;">
+          <span style="width: 12px; height: 12px; border-radius: 50%; background: #1d4ed8;"></span>
+          20% Darkened Cobalt Blue Scale (Rich & Authoritative)
+        </h3>
+        <div class="swatch-grid" style="margin-bottom: 3rem;">
+          <div class="swatch-card" data-copy="#F0F6FF">
+            <div class="swatch-preview" style="background-color: #f0f6ff; border: 1px solid #e2e8f0;"></div>
+            <div class="swatch-body">
+              <div class="swatch-title">Cobalt 50 (Tint Wash)</div>
+              <div class="swatch-code"><span>#F0F6FF</span> <span class="copy-status">Copy</span></div>
+              <div class="swatch-sub">var(--color-blue-50)</div>
+            </div>
+          </div>
+          <div class="swatch-card" data-copy="#C2D8FF">
+            <div class="swatch-preview" style="background-color: #c2d8ff;"></div>
+            <div class="swatch-body">
+              <div class="swatch-title">Cobalt 200 (Subtle Border)</div>
+              <div class="swatch-code"><span>#C2D8FF</span> <span class="copy-status">Copy</span></div>
+              <div class="swatch-sub">var(--color-blue-200)</div>
+            </div>
+          </div>
+          <div class="swatch-card" data-copy="#558EFF">
+            <div class="swatch-preview" style="background-color: #558eff;"></div>
+            <div class="swatch-body">
+              <div class="swatch-title">Cobalt 400 (Highlight)</div>
+              <div class="swatch-code"><span>#558EFF</span> <span class="copy-status">Copy</span></div>
+              <div class="swatch-sub">var(--color-blue-400)</div>
+            </div>
+          </div>
+          <div class="swatch-card" data-copy="#1D4ED8" style="border: 2px solid #1d4ed8;">
+            <div class="swatch-preview" style="background-color: #1d4ed8;"></div>
+            <div class="swatch-body">
+              <div class="swatch-title">Cobalt 600 (Darkened Anchor)</div>
+              <div class="swatch-code"><span>#1D4ED8</span> <span class="copy-status">Copy</span></div>
+              <div class="swatch-sub">var(--color-brand-blue)</div>
+            </div>
+          </div>
+          <div class="swatch-card" data-copy="#173E86">
+            <div class="swatch-preview" style="background-color: #173e86;"></div>
+            <div class="swatch-body">
+              <div class="swatch-title">Cobalt 700 (Prestige Deep)</div>
+              <div class="swatch-code"><span>#173E86</span> <span class="copy-status">Copy</span></div>
+              <div class="swatch-sub">var(--color-blue-700)</div>
+            </div>
+          </div>
+          <div class="swatch-card" data-copy="#13336C">
+            <div class="swatch-preview" style="background-color: #13336c;"></div>
+            <div class="swatch-body">
+              <div class="swatch-title">Cobalt 800 (Dark Automotive)</div>
+              <div class="swatch-code"><span>#13336C</span> <span class="copy-status">Copy</span></div>
+              <div class="swatch-sub">var(--color-blue-800)</div>
+            </div>
+          </div>
+          <div class="swatch-card" data-copy="#0A1F44">
+            <div class="swatch-preview" style="background-color: #0a1f44;"></div>
+            <div class="swatch-body">
+              <div class="swatch-title">Cobalt 900 (Deep Navy)</div>
+              <div class="swatch-code"><span>#0A1F44</span> <span class="copy-status">Copy</span></div>
+              <div class="swatch-sub">var(--color-blue-900)</div>
+            </div>
+          </div>
+          <div class="swatch-card" data-copy="#061226">
+            <div class="swatch-preview" style="background-color: #061226;"></div>
+            <div class="swatch-body">
+              <div class="swatch-title">Cobalt 950 (Midnight Ink)</div>
+              <div class="swatch-code"><span>#061226</span> <span class="copy-status">Copy</span></div>
+              <div class="swatch-sub">var(--color-blue-950)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3C. Obsidian Scale -->
+        <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary); display: flex; align-items: center; gap: 0.5rem;">
+          <span style="width: 12px; height: 12px; border-radius: 50%; background: #090d16;"></span>
+          Obsidian Contrast Scale
+        </h3>
+        <div class="swatch-grid">
+          <div class="swatch-card" data-copy="#090D16">
+            <div class="swatch-preview" style="background-color: #090d16;"></div>
+            <div class="swatch-body">
+              <div class="swatch-title">Obsidian 950 (Deep Canvas)</div>
+              <div class="swatch-code"><span>#090D16</span> <span class="copy-status">Copy</span></div>
+              <div class="swatch-sub">var(--color-obsidian-950)</div>
+            </div>
+          </div>
+          <div class="swatch-card" data-copy="#0D1322">
+            <div class="swatch-preview" style="background-color: #0d1322;"></div>
+            <div class="swatch-body">
+              <div class="swatch-title">Obsidian 900 (Surface)</div>
+              <div class="swatch-code"><span>#0D1322</span> <span class="copy-status">Copy</span></div>
+              <div class="swatch-sub">var(--color-obsidian-900)</div>
+            </div>
+          </div>
+          <div class="swatch-card" data-copy="#131C31">
+            <div class="swatch-preview" style="background-color: #131c31;"></div>
+            <div class="swatch-body">
+              <div class="swatch-title">Obsidian 800 (Elevated Card)</div>
+              <div class="swatch-code"><span>#131C31</span> <span class="copy-status">Copy</span></div>
+              <div class="swatch-sub">var(--color-obsidian-800)</div>
+            </div>
+          </div>
+          <div class="swatch-card" data-copy="#1E293B">
+            <div class="swatch-preview" style="background-color: #1e293b;"></div>
+            <div class="swatch-body">
+              <div class="swatch-title">Obsidian 700 (Border Depth)</div>
+              <div class="swatch-code"><span>#1E293B</span> <span class="copy-status">Copy</span></div>
+              <div class="swatch-sub">var(--color-obsidian-700)</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Typography System (Single Source of Truth) -->
+      <section style="margin-bottom: 5rem;">
+        <div class="section-head">
+          <h2 class="section-title">Typography System : Creato Display & Switzer</h2>
+          <p class="section-subtext">Display titles set in Creato Display (strictly capped at Bold 700 max); body copy set in Switzer from Fontshare. Zero monospace fonts.</p>
+        </div>
+
+        <div class="card card-padded" style="margin-bottom: 2rem; background: linear-gradient(135deg, rgba(29, 78, 216, 0.05) 0%, rgba(225, 0, 33, 0.03) 100%); border-left: 4px solid var(--color-blue-600);">
+          <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
+            <span class="status-tag status-tag-live">Single Source of Truth</span>
+            <span class="token-code">css/brand-tokens.css</span>
+          </div>
+          <p style="font-size: 0.925rem; color: var(--text-secondary); margin: 0; line-height: 1.6;">
+            All typography rules, font families, weight constraints (capped strictly at Bold / 700), and color tokens are centralized in <strong>css/brand-tokens.css</strong>. Updating the font token or weight ceiling in this file automatically propagates to the entire Auto-City ecosystem.
+          </p>
+        </div>
+
+        <div class="type-specimen-stack">
+          <div class="type-entry">
+            <div class="type-meta">Creato Display Bold · 48px / 700 (Strict Max Weight)</div>
+            <div class="type-preview" style="font-family: var(--font-display); font-size: 2.85rem; font-weight: 700; line-height: 1.15; letter-spacing: -0.025em;">
+              Automotive Lifestyle Destination
+            </div>
+          </div>
+
+          <div class="type-entry">
+            <div class="type-meta">Creato Display Medium · 32px / 500</div>
+            <div class="type-preview" style="font-family: var(--font-display); font-size: 2rem; font-weight: 500; letter-spacing: -0.015em;">
+              Flagship Showrooms & Open-Air Dining Hub
+            </div>
+          </div>
+
+          <div class="type-entry">
+            <div class="type-meta">Creato Display Regular · 20px / 400</div>
+            <div class="type-preview" style="font-family: var(--font-display); font-size: 1.25rem; font-weight: 400; letter-spacing: -0.01em;">
+              Precision Engineering, Retail Shopping & Commercial Spaces
+            </div>
+          </div>
+
+          <div class="type-entry">
+            <div class="type-meta">Switzer Regular · 16px / 400</div>
+            <div class="type-preview" style="font-family: var(--font-body); font-size: 1rem; color: var(--text-secondary); max-width: 62ch; line-height: 1.65;">
+              Auto-City integrates leading automotive marques, open-air event promenades, multi-concept food and beverage bistros, and high-tech commercial offices in Penang.
+            </div>
+          </div>
+
+          <div class="type-entry">
+            <div class="type-meta">Switzer Tabular Data · 14px / 600</div>
+            <div class="type-preview">
+              <span class="token-code">HEX #E10021</span>
+              <span class="token-code" style="margin-left: 0.5rem;">COBALT #1D4ED8</span>
+              <span class="token-code" style="margin-left: 0.5rem;">RATIO 70:20:10</span>
+              <span class="token-code" style="margin-left: 0.5rem;">WEIGHT MAX 700</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. UI Component Kit -->
+      <section id="components" style="margin-bottom: 5rem;">
+        <div class="section-head">
+          <h2 class="section-title">UI Component Library</h2>
+          <p class="section-subtext">Components built with the 70% White / 20% Dark Cobalt / 10% Red balance in mind.</p>
+        </div>
+
+        <div class="card card-padded" style="gap: 2.25rem;">
+          
+          <!-- Buttons Strip -->
+          <div>
+            <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.85rem;">
+              Action Controls : Full Border Radius (Pill Standard · 10% Red vs 20% Cobalt vs Dark Gray)
+            </div>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+              <button type="button" class="btn btn-primary">Primary Red CTA (#E10021)</button>
+              <button type="button" class="btn btn-secondary">Dark Cobalt Action (#1D4ED8)</button>
+              <button type="button" class="btn btn-dark">Dark Gray (Hovers Red)</button>
+              <button type="button" class="btn btn-outline">Outline Neutral</button>
+              <button type="button" class="btn btn-primary btn-sm">Small Button</button>
+              <button type="button" class="btn btn-outline btn-sm" disabled style="opacity: 0.45; cursor: not-allowed;">Disabled</button>
+            </div>
+          </div>
+
+          <!-- Badges Strip -->
+          <div>
+            <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.85rem;">
+              Status Indicators
+            </div>
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <span class="status-tag status-tag-active"><span class="status-dot"></span> Active Tenant</span>
+              <span class="status-tag status-tag-queue"><span class="status-dot"></span> High Priority Action</span>
+              <span class="status-tag status-tag-draft"><span class="status-dot"></span> Dark Cobalt Info Badge</span>
+            </div>
+          </div>
+
+          <!-- Form Input Controls -->
+          <div>
+            <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.85rem;">
+              Accessible Form Controls
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; max-width: 720px;">
+              <div>
+                <label for="tenantInput" class="input-label">Showroom or Tenant Name</label>
+                <input type="text" id="tenantInput" class="input-field" placeholder="e.g. Porsche Centre Penang">
+              </div>
+              <div>
+                <label for="categorySelect" class="input-label">Directory Category</label>
+                <select id="categorySelect" class="input-field" style="height: 44px;">
+                  <option>Automotive Showrooms & Service</option>
+                  <option>Food & Beverages Bistros</option>
+                  <option>Commercial Offices & Hubbiz</option>
+                  <option>Event Halls & Open Grounds</option>
+                </select>
+              </div>
+            </div>
+          <!-- Floating Pill Island Navigation Specimen -->
+          <div style="margin-top: 3rem; padding-top: 2.5rem; border-top: 1px solid var(--border-subtle);">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.85rem;">
+              <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em;">
+                Floating Pill Island Navigation (Habitline Standard · Pill CTA & Circular Action)
+              </div>
+              <span class="status-tag status-tag-active">
+                <span class="status-dot"></span> Inward-Closing Scroll Motion (1.15s Deliberate Glide)
+              </span>
+            </div>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); max-width: 65ch; margin-bottom: 1.5rem;">
+              Decoupled 3-island floating capsules: Left Brand Capsule (18px logo), Center Single-Line Menu (zero text breaks), and Right Action Capsule (full-radius circular icon button + Racing Red CTA pill). When scrolled, islands smoothly close inward toward the center into a unified floating bar via a 1.15s feathered cubic-bezier curve (<code>cubic-bezier(0.32, 0.72, 0, 1)</code>).
+            </p>
+
+            <!-- Interactive Pill Preview -->
+            <div style="background: linear-gradient(145deg, #0d1322 0%, #1e293b 100%); padding: 2.25rem 2rem; border-radius: var(--radius-lg); overflow-x: auto; box-shadow: var(--shadow-card);">
+              <div style="display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-width: 780px;">
+                <!-- Mini Brand Pill -->
+                <div style="background: #ffffff; padding: 0 1.25rem; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(19,21,21,0.06);">
+                  <img src="Graphic/auto-city-logo.svg" alt="Auto-City" style="height: 16px; width: auto;">
+                </div>
+                <!-- Mini Nav Pill (Single Line) -->
+                <div style="background: #ffffff; padding: 5px; border-radius: 12px; display: flex; align-items: center; gap: 2px; box-shadow: 0 8px 20px rgba(19,21,21,0.06); white-space: nowrap;">
+                  <span style="font-size: 0.8rem; font-weight: 600; color: #131515; background: #f0f0f0; padding: 0.45rem 1rem; border-radius: 8px;">Attractions</span>
+                  <span style="font-size: 0.8rem; font-weight: 500; color: #494d4d; padding: 0.45rem 1rem; border-radius: 8px;">Dining & Retail</span>
+                  <span style="font-size: 0.8rem; font-weight: 500; color: #494d4d; padding: 0.45rem 1rem; border-radius: 8px;">Automotive</span>
+                  <span style="font-size: 0.8rem; font-weight: 500; color: #494d4d; padding: 0.45rem 1rem; border-radius: 8px;">What's On</span>
+                  <span style="font-size: 0.8rem; font-weight: 500; color: #494d4d; padding: 0.45rem 1rem; border-radius: 8px;">Visitor Guide</span>
+                </div>
+                <!-- Mini Action Pill (Full Border Radius Stadium Capsule) -->
+                <div style="background: #ffffff; padding: 5px; border-radius: 9999px; display: flex; align-items: center; gap: 6px; box-shadow: 0 8px 20px rgba(19,21,21,0.06);">
+                  <div style="width: 34px; height: 34px; border-radius: 9999px; background: #f2f2f2; display: flex; align-items: center; justify-content: center; color: #131515;">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon></svg>
+                  </div>
+                  <span style="font-size: 0.8rem; font-weight: 600; color: #ffffff; background: var(--color-accent-red); padding: 0.45rem 1.15rem; border-radius: 9999px; box-shadow: 0 4px 12px rgba(225,0,33,0.25);">
+                    Plan Your Visit
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Editorial Statement & Inline Capsule Pills Specimen (Habitline Standard) -->
+          <div style="margin-top: 3rem; padding-top: 2.5rem; border-top: 1px solid var(--border-subtle);">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.85rem;">
+              <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em;">
+                Editorial Statement & Inline Capsule Pills (Habitline Standard)
+              </div>
+              <span class="status-tag status-tag-active">
+                <span class="status-dot"></span> Responsive Clamp & Spring Hover
+              </span>
+            </div>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1.5rem; max-width: 70ch;">
+              Fluid headline typography (Plus Jakarta Sans 600) seamlessly embedding rounded capsule pills for cycling lifestyle imagery and 3D vector iconography.
+            </p>
+
+            <div style="background: var(--bg-canvas); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 3rem 1.5rem; text-align: center;">
+              <h3 class="quote-statement-title" style="font-size: clamp(1.35rem, 2.6vw, 2.15rem); max-width: 850px; margin: 0 auto;">
+                <span class="quote-line">
+                  Experience vibrant daily 
+                  <span class="quote-inline-pill-avatar" style="width: 68px; height: 36px; vertical-align: middle;">
+                    <span class="quote-avatar-stack">
+                      <img src="assets/images/quote-avatar-1.jpg" alt="Visitor" class="quote-avatar-item active">
+                    </span>
+                  </span>
+                  moments with an
+                </span>
+                <span class="quote-line">
+                  open-air layout that keeps your afternoons,
+                </span>
+                <span class="quote-line">
+                  evenings, 
+                  <span class="quote-inline-pill-weather" style="width: 58px; height: 36px; vertical-align: middle;">
+                    <img src="assets/images/quote-cloud-sun.svg" alt="Weather" class="quote-pill-icon" style="width: 28px;">
+                  </span>
+                  and celebrations simple to explore.
+                </span>
+              </h3>
+            </div>
+          </div>
+
+          <!-- Creative Pastel Pinboard Stack (Emil Kowalski Physics) -->
+          <div style="margin-top: 3rem; padding-top: 2.5rem; border-top: 1px solid var(--border-subtle);">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.85rem; flex-wrap: wrap; gap: 0.5rem;">
+              <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em;">
+                Creative Pastel Pinboard Stack : Tactile Card-Pick Motion
+              </div>
+              <span class="status-tag status-tag-active">
+                <span class="status-dot"></span> Emil Kowalski Physics (260ms Custom Cubic-Bezier)
+              </span>
+            </div>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); max-width: 75ch; margin-bottom: 1.5rem; line-height: 1.6;">
+              Playful pinboard stack featuring 4 distinct pastel colorways (<code>#fff1d7</code>, <code>#c5d7ff</code>, <code>#ffe0f8</code>, <code>#d8f4e5</code>) and natural rotational angles (-3.5deg to +3.5deg). On hover, the selected card straightens upright (<code>rotate(0deg) translateY(-28px) scale(1.05)</code>), jumps above adjacent layers via <code>z-index: 30</code>, and diffuses a deep physical ambient shadow, evoking the tactile joy of picking a pinned card.
+            </p>
+
+            <!-- Interactive Mini Deck Preview -->
+            <div style="background: linear-gradient(180deg, #07090e 0%, #1e293b 40%, #f1f5f9 100%); padding: 3.5rem 1.5rem; border-radius: var(--radius-lg); overflow-x: auto; box-shadow: var(--shadow-card); text-align: center;">
+              <div style="display: inline-flex; align-items: center; justify-content: center; position: relative; padding: 1.5rem 0;">
+                <div style="width: 145px; height: 195px; background: #fff1d7; border: 1px solid rgba(255,255,255,0.7); border-radius: 16px; box-shadow: 0 10px 20px -5px rgba(0,0,0,0.25); z-index: 1; transform: rotate(-3.5deg) translateY(4px); padding: 12px; display: flex; flex-direction: column; justify-content: space-between; text-align: left; transition: transform 260ms cubic-bezier(0.23, 1, 0.32, 1); cursor: pointer;" onmouseover="this.style.transform='translateY(-20px) rotate(0deg) scale(1.05)'; this.style.zIndex='10';" onmouseout="this.style.transform='rotate(-3.5deg) translateY(4px)'; this.style.zIndex='1';">
+                  <span style="background: #fff; padding: 2px 8px; border-radius: 9999px; font-size: 0.62rem; font-weight: 700; color: #0f172a; align-self: flex-start;">3 - 5 JUL</span>
+                  <div style="font-family: var(--font-display); font-size: 0.88rem; font-weight: 700; color: #0f172a; line-height: 1.2;">One Better River Festival</div>
+                  <div style="font-size: 0.65rem; color: #475569;">Wala Wala x One Better</div>
+                </div>
+                <div style="width: 145px; height: 195px; background: #c5d7ff; border: 1px solid rgba(255,255,255,0.7); border-radius: 16px; box-shadow: 0 10px 20px -5px rgba(0,0,0,0.25); z-index: 2; margin-left: -24px; transform: rotate(2.5deg) translateY(-6px); padding: 12px; display: flex; flex-direction: column; justify-content: space-between; text-align: left; transition: transform 260ms cubic-bezier(0.23, 1, 0.32, 1); cursor: pointer;" onmouseover="this.style.transform='translateY(-20px) rotate(0deg) scale(1.05)'; this.style.zIndex='10';" onmouseout="this.style.transform='rotate(2.5deg) translateY(-6px)'; this.style.zIndex='2';">
+                  <span style="background: #fff; padding: 2px 8px; border-radius: 9999px; font-size: 0.62rem; font-weight: 700; color: #0f172a; align-self: flex-start;">10 - 12 JUL</span>
+                  <div style="font-family: var(--font-display); font-size: 0.88rem; font-weight: 700; color: #0f172a; line-height: 1.2;">Premium Car Exhibition</div>
+                  <div style="font-size: 0.65rem; color: #475569;">Concept Hall</div>
+                </div>
+                <div style="width: 145px; height: 195px; background: #ffe0f8; border: 1px solid rgba(255,255,255,0.7); border-radius: 16px; box-shadow: 0 10px 20px -5px rgba(0,0,0,0.25); z-index: 3; margin-left: -24px; transform: rotate(-2deg) translateY(6px); padding: 12px; display: flex; flex-direction: column; justify-content: space-between; text-align: left; transition: transform 260ms cubic-bezier(0.23, 1, 0.32, 1); cursor: pointer;" onmouseover="this.style.transform='translateY(-20px) rotate(0deg) scale(1.05)'; this.style.zIndex='10';" onmouseout="this.style.transform='rotate(-2deg) translateY(6px)'; this.style.zIndex='3';">
+                  <span style="background: #fff; padding: 2px 8px; border-radius: 9999px; font-size: 0.62rem; font-weight: 700; color: #0f172a; align-self: flex-start;">18 - 20 SEP</span>
+                  <div style="font-family: var(--font-display); font-size: 0.88rem; font-weight: 700; color: #0f172a; line-height: 1.2;">Meow &amp; Woof Fashion</div>
+                  <div style="font-size: 0.65rem; color: #475569;">Pet Carnival Spetcial</div>
+                </div>
+                <div style="width: 145px; height: 195px; background: #d8f4e5; border: 1px solid rgba(255,255,255,0.7); border-radius: 16px; box-shadow: 0 10px 20px -5px rgba(0,0,0,0.25); z-index: 4; margin-left: -24px; transform: rotate(3.2deg) translateY(-4px); padding: 12px; display: flex; flex-direction: column; justify-content: space-between; text-align: left; transition: transform 260ms cubic-bezier(0.23, 1, 0.32, 1); cursor: pointer;" onmouseover="this.style.transform='translateY(-20px) rotate(0deg) scale(1.05)'; this.style.zIndex='10';" onmouseout="this.style.transform='rotate(3.2deg) translateY(-4px)'; this.style.zIndex='4';">
+                  <span style="background: #fff; padding: 2px 8px; border-radius: 9999px; font-size: 0.62rem; font-weight: 700; color: #0f172a; align-self: flex-start;">4 DEC</span>
+                  <div style="font-family: var(--font-display); font-size: 0.88rem; font-weight: 700; color: #0f172a; line-height: 1.2;">Chinese Culture Dance</div>
+                  <div style="font-size: 0.65rem; color: #475569;">Dance Championship</div>
+                </div>
+              </div>
+              <div style="margin-top: 1rem; font-size: 0.75rem; color: #94a3b8;">
+                Hover over cards to test the Emil Kowalski physical card-pick lift &amp; layer elevation.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 6. Voice & Tone Principles -->
+      <section>
+        <div class="section-head">
+          <h2 class="section-title">Brand Voice & Content Standards</h2>
+          <p class="section-subtext">Disciplined copy rules preserving automotive excellence and vibrant visitor culture.</p>
+        </div>
+
+        <div class="bento-grid">
+          <div class="card bento-col-4 card-padded">
+            <h3 style="font-size: 1.15rem; color: var(--text-primary); margin-bottom: 0.5rem; font-family: var(--font-display);">Direct & Informative</h3>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.65;">
+              Lead with specific tenant offerings, verified opening hours, and straightforward wayfinding directions rather than generic marketing hyperbole.
+            </p>
+          </div>
+          <div class="card bento-col-4 card-padded">
+            <h3 style="font-size: 1.15rem; color: var(--text-primary); margin-bottom: 0.5rem; font-family: var(--font-display);">Automotive Precision</h3>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.65;">
+              Uphold the engineering standards of global marques with calibrated spacing, crisp contrast, and accurate technical terminology.
+            </p>
+          </div>
+          <div class="card bento-col-4 card-padded">
+            <h3 style="font-size: 1.15rem; color: var(--text-primary); margin-bottom: 0.5rem; font-family: var(--font-display);">Vibrant & Welcoming</h3>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.65;">
+              Celebrate culinary diversity, nightlife concerts, and family recreation across Penang's premier outdoor shopping district.
+            </p>
+          </div>
+        </div>
+      <!-- 6. Lucide Iconography System -->
+      <section style="margin-top: 4.5rem;">
+        <div class="section-head">
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <span class="status-tag status-tag-active" style="margin-bottom: 0.5rem;">
+                <span class="status-dot"></span> Official Icon Library
+              </span>
+              <h2 class="section-title">Lucide Iconography System</h2>
+              <p class="section-subtext">Calibrated at 1.85 stroke-weight with dedicated responsive sizing classes. Click any icon card to copy its HTML markup.</p>
+            </div>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-dim);">Stroke: 1.85</span>
+              <span style="font-size: 0.75rem; background: var(--bg-surface-elevated); padding: 0.25rem 0.6rem; border-radius: var(--radius-pill); border: 1px solid var(--border-medium); font-weight: 600; color: var(--color-brand-blue);">npm: lucide v1.x</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sizing Tokens Card -->
+        <div class="card card-padded" style="margin-bottom: 2rem;">
+          <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; margin-bottom: 1rem; letter-spacing: 0.05em;">
+            Standardized Sizing Classes
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 0.75rem; padding: 0.85rem; background: var(--bg-canvas); border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+              <i data-lucide="compass" class="icon-xs" style="color: var(--color-brand-blue);"></i>
+              <div>
+                <div style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: var(--text-primary);">.icon-xs</div>
+                <div style="font-size: 0.7rem; color: var(--text-dim);">14px · Badges / Meta</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.75rem; padding: 0.85rem; background: var(--bg-canvas); border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+              <i data-lucide="compass" class="icon-sm" style="color: var(--color-brand-blue);"></i>
+              <div>
+                <div style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: var(--text-primary);">.icon-sm</div>
+                <div style="font-size: 0.7rem; color: var(--text-dim);">16px · Pills / Buttons</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.75rem; padding: 0.85rem; background: var(--bg-canvas); border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+              <i data-lucide="compass" class="icon-md" style="color: var(--color-brand-blue);"></i>
+              <div>
+                <div style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: var(--text-primary);">.icon-md</div>
+                <div style="font-size: 0.7rem; color: var(--text-dim);">20px · Standard Nav</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.75rem; padding: 0.85rem; background: var(--bg-canvas); border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+              <i data-lucide="compass" class="icon-lg" style="color: var(--color-brand-blue);"></i>
+              <div>
+                <div style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: var(--text-primary);">.icon-lg</div>
+                <div style="font-size: 0.7rem; color: var(--text-dim);">24px · Feature Cards</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.75rem; padding: 0.85rem; background: var(--bg-canvas); border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+              <i data-lucide="compass" class="icon-xl" style="color: var(--color-brand-blue);"></i>
+              <div>
+                <div style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: var(--text-primary);">.icon-xl</div>
+                <div style="font-size: 0.7rem; color: var(--text-dim);">32px · Hero Blocks</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Curated Icon Catalog Grid -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(135px, 1fr)); gap: 0.85rem;">
+          
+          <!-- Automotive -->
+          <div class="swatch-card" style="padding: 1rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem;" data-copy='<i data-lucide="car" class="icon-md"></i>'>
+            <i data-lucide="car" class="icon-lg" style="color: var(--color-brand-blue);"></i>
+            <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-primary);">car</div>
+            <div class="copy-status" style="font-size: 0.65rem; color: var(--text-dim);">Copy HTML</div>
+          </div>
+          <div class="swatch-card" style="padding: 1rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem;" data-copy='<i data-lucide="fuel" class="icon-md"></i>'>
+            <i data-lucide="fuel" class="icon-lg" style="color: var(--color-brand-blue);"></i>
+            <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-primary);">fuel</div>
+            <div class="copy-status" style="font-size: 0.65rem; color: var(--text-dim);">Copy HTML</div>
+          </div>
+          <div class="swatch-card" style="padding: 1rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem;" data-copy='<i data-lucide="wrench" class="icon-md"></i>'>
+            <i data-lucide="wrench" class="icon-lg" style="color: var(--color-brand-blue);"></i>
+            <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-primary);">wrench</div>
+            <div class="copy-status" style="font-size: 0.65rem; color: var(--text-dim);">Copy HTML</div>
+          </div>
+          <div class="swatch-card" style="padding: 1rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem;" data-copy='<i data-lucide="gauge" class="icon-md"></i>'>
+            <i data-lucide="gauge" class="icon-lg" style="color: var(--color-brand-blue);"></i>
+            <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-primary);">gauge</div>
+            <div class="copy-status" style="font-size: 0.65rem; color: var(--text-dim);">Copy HTML</div>
+          </div>
+          <div class="swatch-card" style="padding: 1rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem;" data-copy='<i data-lucide="shield-check" class="icon-md"></i>'>
+            <i data-lucide="shield-check" class="icon-lg" style="color: var(--color-brand-blue);"></i>
+            <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-primary);">shield-check</div>
+            <div class="copy-status" style="font-size: 0.65rem; color: var(--text-dim);">Copy HTML</div>
+          </div>
+
+          <!-- Lifestyle & Dining -->
+          <div class="swatch-card" style="padding: 1rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem;" data-copy='<i data-lucide="utensils" class="icon-md"></i>'>
+            <i data-lucide="utensils" class="icon-lg" style="color: var(--color-accent-amber);"></i>
+            <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-primary);">utensils</div>
+            <div class="copy-status" style="font-size: 0.65rem; color: var(--text-dim);">Copy HTML</div>
+          </div>
+          <div class="swatch-card" style="padding: 1rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem;" data-copy='<i data-lucide="coffee" class="icon-md"></i>'>
+            <i data-lucide="coffee" class="icon-lg" style="color: var(--color-accent-amber);"></i>
+            <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-primary);">coffee</div>
+            <div class="copy-status" style="font-size: 0.65rem; color: var(--text-dim);">Copy HTML</div>
+          </div>
+          <div class="swatch-card" style="padding: 1rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem;" data-copy='<i data-lucide="sparkles" class="icon-md"></i>'>
+            <i data-lucide="sparkles" class="icon-lg" style="color: var(--color-accent-amber);"></i>
+            <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-primary);">sparkles</div>
+            <div class="copy-status" style="font-size: 0.65rem; color: var(--text-dim);">Copy HTML</div>
+          </div>
+          <div class="swatch-card" style="padding: 1rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem;" data-copy='<i data-lucide="calendar" class="icon-md"></i>'>
+            <i data-lucide="calendar" class="icon-lg" style="color: var(--color-accent-amber);"></i>
+            <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-primary);">calendar</div>
+            <div class="copy-status" style="font-size: 0.65rem; color: var(--text-dim);">Copy HTML</div>
+          </div>
+          <div class="swatch-card" style="padding: 1rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem;" data-copy='<i data-lucide="music" class="icon-md"></i>'>
+            <i data-lucide="music" class="icon-lg" style="color: var(--color-accent-amber);"></i>
+            <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-primary);">music</div>
+            <div class="copy-status" style="font-size: 0.65rem; color: var(--text-dim);">Copy HTML</div>
+          </div>
+
+          <!-- Navigation & UI -->
+          <div class="swatch-card" style="padding: 1rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem;" data-copy='<i data-lucide="compass" class="icon-md"></i>'>
+            <i data-lucide="compass" class="icon-lg" style="color: var(--text-primary);"></i>
+            <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-primary);">compass</div>
+            <div class="copy-status" style="font-size: 0.65rem; color: var(--text-dim);">Copy HTML</div>
+          </div>
+          <div class="swatch-card" style="padding: 1rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem;" data-copy='<i data-lucide="map-pin" class="icon-md"></i>'>
+            <i data-lucide="map-pin" class="icon-lg" style="color: var(--text-primary);"></i>
+            <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-primary);">map-pin</div>
+            <div class="copy-status" style="font-size: 0.65rem; color: var(--text-dim);">Copy HTML</div>
+          </div>
+          <div class="swatch-card" style="padding: 1rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem;" data-copy='<i data-lucide="phone" class="icon-md"></i>'>
+            <i data-lucide="phone" class="icon-lg" style="color: var(--text-primary);"></i>
+            <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-primary);">phone</div>
+            <div class="copy-status" style="font-size: 0.65rem; color: var(--text-dim);">Copy HTML</div>
+          </div>
+          <div class="swatch-card" style="padding: 1rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem;" data-copy='<i data-lucide="clock" class="icon-md"></i>'>
+            <i data-lucide="clock" class="icon-lg" style="color: var(--text-primary);"></i>
+            <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-primary);">clock</div>
+            <div class="copy-status" style="font-size: 0.65rem; color: var(--text-dim);">Copy HTML</div>
+          </div>
+          <div class="swatch-card" style="padding: 1rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem;" data-copy='<i data-lucide="search" class="icon-md"></i>'>
+            <i data-lucide="search" class="icon-lg" style="color: var(--text-primary);"></i>
+            <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-primary);">search</div>
+            <div class="copy-status" style="font-size: 0.65rem; color: var(--text-dim);">Copy HTML</div>
+          </div>
+          <div class="swatch-card" style="padding: 1rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem;" data-copy='<i data-lucide="arrow-up-right" class="icon-md"></i>'>
+            <i data-lucide="arrow-up-right" class="icon-lg" style="color: var(--text-primary);"></i>
+            <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-primary);">arrow-up-right</div>
+            <div class="copy-status" style="font-size: 0.65rem; color: var(--text-dim);">Copy HTML</div>
+          </div>
+          <div class="swatch-card" style="padding: 1rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem;" data-copy='<i data-lucide="layers" class="icon-md"></i>'>
+            <i data-lucide="layers" class="icon-lg" style="color: var(--text-primary);"></i>
+            <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-primary);">layers</div>
+            <div class="copy-status" style="font-size: 0.65rem; color: var(--text-dim);">Copy HTML</div>
+          </div>
+          <div class="swatch-card" style="padding: 1rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem;" data-copy='<i data-lucide="sun" class="icon-md"></i>'>
+            <i data-lucide="sun" class="icon-lg" style="color: var(--color-accent-amber);"></i>
+            <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-primary);">sun</div>
+            <div class="copy-status" style="font-size: 0.65rem; color: var(--text-dim);">Copy HTML</div>
+          </div>
+          <div class="swatch-card" style="padding: 1rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem;" data-copy='<i data-lucide="moon" class="icon-md"></i>'>
+            <i data-lucide="moon" class="icon-lg" style="color: #6366f1;"></i>
+            <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-primary);">moon</div>
+            <div class="copy-status" style="font-size: 0.65rem; color: var(--text-dim);">Copy HTML</div>
+          </div>
+          <div class="swatch-card" style="padding: 1rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem;" data-copy='<i data-lucide="ticket" class="icon-md"></i>'>
+            <i data-lucide="ticket" class="icon-lg" style="color: var(--text-primary);"></i>
+            <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-primary);">ticket</div>
+            <div class="copy-status" style="font-size: 0.65rem; color: var(--text-dim);">Copy HTML</div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 7. Activities Parallax Architecture (dsgninterior.se Reference) -->
+      <section id="parallax-architecture" style="margin-bottom: 5rem;">
+        <div class="section-head">
+          <h2 class="section-title">Activities Parallax Architecture</h2>
+          <p class="section-subtext">Physical motion physics, dual-plane opposing depth, and vertical navigation standards inspired by dsgninterior.se.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+          <div class="swatch-card" style="padding: 1.5rem;">
+            <h4 style="font-family: var(--font-display); font-size: 1.1rem; color: var(--text-primary); margin-bottom: 0.5rem;">Sequential Page-Scroll Physics</h4>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">
+              Directly tied to page scroll. As users scroll into the section, it locks into full view and steps through all 5 activity slides sequentially (1 → 5). Users must scroll all the way back up (5 → 1) before the viewport allows returning to the previous section.
+            </p>
+            <span class="token-code">wheel/touch interception + full-viewport lock</span>
+          </div>
+
+          <div class="swatch-card" style="padding: 1.5rem;">
+            <h4 style="font-family: var(--font-display); font-size: 1.1rem; color: var(--text-primary); margin-bottom: 0.5rem;">Default Header Sentence Case</h4>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">
+              Slide headings styled cleanly in default sentence case using Creato Display (Medium 500, clamp 2.5rem–5rem) with natural line flow and soft drop-shadow contrast against dark backgrounds.
+            </p>
+            <span class="token-code">text-transform: none; font-weight: 500;</span>
+          </div>
+
+          <div class="swatch-card" style="padding: 1.5rem;">
+            <h4 style="font-family: var(--font-display); font-size: 1.1rem; color: var(--text-primary); margin-bottom: 0.5rem;">Vertical Pagination Capsule</h4>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">
+              Sleek right-aligned floating track with 8px idle bullets expanding to 26px Racing Red (#E10021) active capsule indicating sequential position.
+            </p>
+            <span class="token-code">width: 8px; height: 26px; active</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. Social Video & Reels Architecture -->
+      <section id="social-reels-architecture" style="margin-bottom: 5rem;">
+        <div class="section-head">
+          <h2 class="section-title">Social Video &amp; Reels Architecture</h2>
+          <p class="section-subtext">Dark blueprint aesthetic, compact 9:16 vertical cards with airy spacing, clean minimal overlays, and steady 4s looping video previews for the "Join in the fun" showcase.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+          <div class="swatch-card" style="padding: 1.5rem;">
+            <h4 style="font-family: var(--font-display); font-size: 1.1rem; color: var(--text-primary); margin-bottom: 0.5rem;">Compact 9:16 Ratio &amp; Airy Spacing</h4>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">
+              Compact portrait geometry (width: 235px, height: 418px, border-radius: 18px) separated by a generous 2.25rem (36px) track gap, resting on an obsidian blueprint substrate (<code style="color: var(--color-blue-600); font-size: 0.8rem;">#07090e</code>) with subtle linear grid lines.
+            </p>
+            <span class="token-code">width: 235px; gap: 2.25rem; border-radius: 18px;</span>
+          </div>
+
+          <div class="swatch-card" style="padding: 1.5rem;">
+            <h4 style="font-family: var(--font-display); font-size: 1.1rem; color: var(--text-primary); margin-bottom: 0.5rem;">Content-First Minimal Overlays</h4>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">
+              Uncluttered visual layout: corner badges and extra CTA buttons are eliminated in favor of clean title typography, narrative description, genuine view count metrics, and a frosted glass play circle.
+            </p>
+            <span class="token-code">clean typography + view count + frosted play</span>
+          </div>
+
+          <div class="swatch-card" style="padding: 1.5rem;">
+            <h4 style="font-family: var(--font-display); font-size: 1.1rem; color: var(--text-primary); margin-bottom: 0.5rem;">Steady Viewport Autoplay</h4>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">
+              Optimized for performance and viewing comfort. Videos run steady, high-clarity 4-second loops without pulsing zooms or distracting scale transitions, automatically managed by an <code style="color: var(--color-blue-600); font-size: 0.8rem;">IntersectionObserver</code>.
+            </p>
+            <span class="token-code">steady loop + IntersectionObserver + muted</span>
+          </div>
+
+          <div class="swatch-card" style="padding: 1.5rem;">
+            <h4 style="font-family: var(--font-display); font-size: 1.1rem; color: var(--text-primary); margin-bottom: 0.5rem;">Looping Red Gradient &amp; 20% Mouse Pressure</h4>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">
+              Dim, slow-moving brand red ambient orbs (<code style="color: var(--color-blue-600); font-size: 0.8rem;">rgba(225, 0, 33, 0.20)</code>) cycling on a 24s/28s organic path. Mouse movement exerts a gentle 20% pressure displacement (<code style="color: var(--color-blue-600); font-size: 0.8rem;">delta * 0.20</code>) with fluid spring physics.
+            </p>
+            <span class="token-code">red gradient only + 20% mouse pressure + 24s loop</span>
+          </div>
+        </div>
+
+        <!-- Live Component Mini Preview -->
+        <div style="background: #07090e; border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-md); padding: 2rem; display: flex; align-items: center; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+          <div style="width: 190px; aspect-ratio: 9/16; border-radius: 16px; overflow: hidden; position: relative; border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 16px 32px rgba(0,0,0,0.5);">
+            <img src="assets/images/reels/reel-3-moon-fest.jpg" alt="Reel Token Preview" style="width: 100%; height: 100%; object-fit: cover;">
+            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,0.25); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; color: white;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            </div>
+            <div style="position: absolute; bottom: 12px; left: 12px; right: 12px; z-index: 3; color: white;">
+              <p style="font-size: 0.78rem; font-weight: 700; line-height: 1.25; margin: 0 0 4px;">Moon Fest By Hunza 中秋园游会</p>
+              <div style="display: flex; align-items: center; gap: 5px; font-size: 0.7rem; font-weight: 600; color: #94a3b8;">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                24.1K views
+              </div>
+            </div>
+          </div>
+
+          <div style="max-width: 450px; color: rgba(255,255,255,0.85);">
+            <div style="display: inline-block; font-size: 0.72rem; background: rgba(56,189,248,0.15); color: #38bdf8; border: 1px solid rgba(56,189,248,0.3); padding: 0.2rem 0.6rem; border-radius: 9999px; font-weight: 600; margin-bottom: 0.75rem;">
+              REFINED MINIMAL TOKEN
+            </div>
+            <h3 style="font-family: var(--font-display); font-size: 1.25rem; color: #ffffff; margin-bottom: 0.5rem;">
+              Compact Vertical Social Card
+            </h3>
+            <p style="font-size: 0.88rem; line-height: 1.6; color: #94a3b8; margin-bottom: 1rem;">
+              Streamlined in <code style="color: #38bdf8;">css/reels-social.css</code>. 235px compact width with 2.25rem airy gap, clean typography, genuine view metrics, and steady non-pulsing looping previews.
+            </p>
+            <a href="pages/home.html#joinInTheFun" class="btn btn-primary btn-sm">Preview in Homepage</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Acelia Tabbed Services with Image Reveal -->
+      <section style="margin-top: 4rem;">
+        <div class="section-head">
+          <h2 class="section-title">Acelia Tabbed Services with Curtain Image Reveal</h2>
+          <p class="section-subtext">Light-mode split layout: interactive editorial tab list paired with a dynamic curtain-wipe image stage.</p>
+        </div>
+
+        <div class="swatch-grid" style="margin-bottom: 2rem;">
+          <div class="swatch-card" style="padding: 1.5rem;">
+            <h4 style="font-family: var(--font-display); font-size: 1.1rem; color: var(--text-primary); margin-bottom: 0.5rem;">Curtain Reveal Motion</h4>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">
+              Smooth horizontal clip-path wipe (<code style="color: var(--color-blue-600); font-size: 0.8rem;">clip-path: inset(0 100% 0 0) &rarr; inset(0 0% 0 0)</code>) accompanied by subtle scale normalization (1.05 &rarr; 1.0) over 0.72s cubic-bezier(0.16, 1, 0.3, 1).
+            </p>
+            <span class="token-code">clip-path: inset(0 0% 0 0); cubic-bezier(0.16, 1, 0.3, 1)</span>
+          </div>
+
+          <div class="swatch-card" style="padding: 1.5rem;">
+            <h4 style="font-family: var(--font-display); font-size: 1.1rem; color: var(--text-primary); margin-bottom: 0.5rem;">Light Mode Contrast</h4>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">
+              Pure white canvas (<code style="color: var(--color-blue-600); font-size: 0.8rem;">#ffffff</code>) with deep navy headlines (<code style="color: var(--color-blue-600); font-size: 0.8rem;">#0a1f44</code>), slate body copy (<code style="color: var(--color-blue-600); font-size: 0.8rem;">#475569</code>), and active Cobalt accents (<code style="color: var(--color-blue-600); font-size: 0.8rem;">#1d4ed8</code>).
+            </p>
+            <span class="token-code">#ffffff base + #0a1f44 display + #1d4ed8 active</span>
+          </div>
+
+      <!-- Section: Enclosed Island Footer (Orchid Security Reference) -->
+      <section style="margin-top: 4rem; margin-bottom: 5rem;">
+        <div class="section-head">
+          <h2 class="section-title">Enclosed Island Footer (Orchid Security Benchmark)</h2>
+          <p class="section-subtext">Light-mode enclosed island architecture: 32px rounded floating card, 3x2 accreditation badge grid, multi-column navigation, and legal policy strip.</p>
+        </div>
+
+        <div class="swatch-grid" style="margin-bottom: 2rem;">
+          <div class="swatch-card" style="padding: 1.5rem;">
+            <h4 style="font-family: var(--font-display); font-size: 1.1rem; color: var(--text-primary); margin-bottom: 0.5rem;">32px Floating Island Shell</h4>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">
+              Enclosed white surface (<code style="color: var(--color-blue-600); font-size: 0.8rem;">#ffffff</code>) with 32px curvature, sitting atop subtle slate ground (<code style="color: var(--color-blue-600); font-size: 0.8rem;">#f8fafc</code>) with soft atmospheric drop shadow and 1px border.
+            </p>
+            <span class="token-code">border-radius: 32px; box-shadow: 0 24px 60px -12px</span>
+          </div>
+
+          <div class="swatch-card" style="padding: 1.5rem;">
+            <h4 style="font-family: var(--font-display); font-size: 1.1rem; color: var(--text-primary); margin-bottom: 0.5rem;">3x2 Authentic Brand Badge Grid (Frameless)</h4>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">
+              Sourced directly from Wikipedia/Wikimedia &amp; official government portals (zero generated artifice): Tourism Malaysia, Penang State Government, Penang Global Tourism (mypenang.gov.my), Tripadvisor, Halal Malaysia (halal.gov.my), and MBSP Seberang Perai.
+            </p>
+            <span class="token-code">Frameless · 6 authentic brand marks · Graphic/badges/</span>
+          </div>
+
+          <div class="swatch-card" style="padding: 1.5rem;">
+            <h4 style="font-family: var(--font-display); font-size: 1.1rem; color: var(--text-primary); margin-bottom: 0.5rem;">Spring Tactile Social Row</h4>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">
+              Subtle circular full-radius icon buttons (LinkedIn, Facebook, X, YouTube, Instagram, TikTok) with 2.5px upward spring translation and brand blue illumination on hover.
+            </p>
+            <span class="token-code">transform: translateY(-2.5px); color: #1d4ed8</span>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>Auto-City Official Brandkit & Living Design System · Revamped 2026</p>
+    </div>
+  </footer>
+
+  <script src="js/lucide.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

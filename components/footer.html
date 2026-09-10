@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auto-City : Footer Component (Orchid Security Inspiration - Light Mode)</title>
+  <link rel="stylesheet" href="../css/brand-tokens.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #f8fafc;
+      font-family: var(--font-body, 'Switzer', -apple-system, sans-serif);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    .preview-header-bar {
+      padding: 2rem 2rem 1rem;
+      max-width: 1360px;
+      margin: 0 auto;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .preview-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #1d4ed8;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      padding: 0.3rem 0.75rem;
+      border-radius: 9999px;
+      margin-bottom: 0.5rem;
+    }
+    .preview-title {
+      font-family: var(--font-display, 'Creato Display', sans-serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin: 0 0 0.25rem 0;
+    }
+    .preview-desc {
+      font-size: 0.9rem;
+      color: #64748b;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Component Showcase Header (for standalone inspection) -->
+  <header class="preview-header-bar">
+    <div class="preview-tag">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      Component Preview
+    </div>
+    <h1 class="preview-title">Auto-City Enclosed Island Footer</h1>
+    <p class="preview-desc">Light mode adaptation inspired by Orchid Security with 3x2 accreditation badge grid, multi-column navigation, and legal links.</p>
+  </header>
+
+  <!-- ========================================================================
+       AUTO-CITY ENCLOSED ISLAND FOOTER (ORCHID SECURITY REFERENCE — LIGHT MODE)
+       ======================================================================== -->
+  <footer class="ac-footer-section" id="siteFooter" role="contentinfo" aria-label="Auto-City Site Footer">
+    <div class="ac-footer-shell">
+
+      <!-- ── 1. Top Content Grid ── -->
+      <div class="ac-footer-grid">
+
+        <!-- Column 1: Brand, Tagline & Social Handles -->
+        <div class="ac-footer-brand-col">
+          <a href="../pages/home.html" class="ac-footer-logo-link" aria-label="Auto-City Homepage">
+            <img src="../Graphic/auto-city-logo.svg" alt="Auto-City Logo" class="ac-footer-logo-img" width="168" height="42">
+          </a>
+
+          <p class="ac-footer-tagline">
+            Penang's premier 1-stop automotive, dining, and lifestyle tourism destination on the Juru riverfront.
+          </p>
+
+          <!-- Social Icons Row (Matching Orchid's horizontal icon row) -->
+          <div class="ac-footer-socials" aria-label="Follow Auto-City Social Channels">
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/company/autocitypenang" target="_blank" rel="noopener noreferrer" class="ac-social-btn" aria-label="LinkedIn" title="Auto-City on LinkedIn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+
+            <!-- Facebook -->
+            <a href="https://www.facebook.com/autocitypenang" target="_blank" rel="noopener noreferrer" class="ac-social-btn" aria-label="Facebook" title="Auto-City on Facebook">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+              </svg>
+            </a>
+
+            <!-- X / Twitter -->
+            <a href="https://x.com/autocitypenang" target="_blank" rel="noopener noreferrer" class="ac-social-btn" aria-label="X (Twitter)" title="Auto-City on X">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+            </a>
+
+            <!-- YouTube -->
+            <a href="https://www.youtube.com/@autocitypenang" target="_blank" rel="noopener noreferrer" class="ac-social-btn" aria-label="YouTube" title="Auto-City on YouTube">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"></polygon>
+              </svg>
+            </a>
+
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/autocity_penang" target="_blank" rel="noopener noreferrer" class="ac-social-btn" aria-label="Instagram" title="Auto-City on Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+
+            <!-- TikTok -->
+            <a href="https://www.tiktok.com/@autocitypenang" target="_blank" rel="noopener noreferrer" class="ac-social-btn" aria-label="TikTok" title="Auto-City on TikTok">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.59-1.01V15c0 1.91-.6 3.84-1.85 5.28-1.43 1.67-3.6 2.62-5.78 2.5-2.48-.12-4.78-1.55-5.96-3.73-1.19-2.18-1.09-4.94.27-7.03 1.34-2.07 3.75-3.32 6.22-3.15.11 0 .22.01.33.02v4.06c-.57-.12-1.18-.08-1.72.13-1.12.42-1.92 1.48-2.04 2.68-.14 1.32.55 2.63 1.72 3.25.96.52 2.15.48 3.09-.1.88-.54 1.41-1.52 1.41-2.55V.02h-1.55z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Column 2: Attractions (Matches Orchid's Product Column) -->
+        <div class="ac-footer-nav-col">
+          <h4 class="ac-footer-heading">Attractions</h4>
+          <ul class="ac-footer-links">
+            <li><a href="../pages/home.html#panel-lavenda" class="ac-footer-link">Lavenda Fun Park</a></li>
+            <li><a href="../pages/home.html#panel-nadi" class="ac-footer-link">Nadi Glamping Suites</a></li>
+            <li><a href="../pages/home.html#activitiesParallaxSection" class="ac-footer-link">Alpaca &amp; Friends Mini Zoo</a></li>
+            <li><a href="../pages/home.html#activitiesParallaxSection" class="ac-footer-link">Penang River Cruise</a></li>
+            <li><a href="../pages/home.html#events" class="ac-footer-link">Illuminated Fun Fair</a></li>
+            <li><a href="../pages/home.html#activitiesParallaxSection" class="ac-footer-link">Pickleball Arena</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Precincts & Spaces (Matches Orchid's Use Cases Column) -->
+        <div class="ac-footer-nav-col">
+          <h4 class="ac-footer-heading">Precincts &amp; Spaces</h4>
+          <ul class="ac-footer-links">
+            <li><a href="../pages/home.html#automotive" class="ac-footer-link">Automotive 3S/4S Hub</a></li>
+            <li><a href="../pages/home.html#panel-events" class="ac-footer-link">Concept Hall (800 Pax)</a></li>
+            <li><a href="../pages/home.html#panel-hubbiz" class="ac-footer-link">Hubbiz Office Suites</a></li>
+            <li><a href="../pages/home.html#dining" class="ac-footer-link">Dining &amp; Retail Enclave</a></li>
+            <li><a href="../pages/home.html#appDownload" class="ac-footer-link">Auto-City Mobile App</a></li>
+            <li><a href="#commercial" class="ac-footer-link">Advertising &amp; Leasing</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Official Endorsements & Accreditations (Matches Orchid's 3x2 Grid) -->
+        <div class="ac-footer-badges-col">
+          <div class="ac-badges-grid" role="region" aria-label="Official Accreditations & Endorsements">
+
+            <!-- Badge 1: Tourism Malaysia (Malaysia Truly Asia) — Wikimedia Commons -->
+            <div class="ac-badge-item" title="Tourism Malaysia — Malaysia Truly Asia (Official Partner)">
+              <img src="../Graphic/badges/malaysia-truly-asia.svg" alt="Tourism Malaysia — Malaysia Truly Asia" class="ac-brand-badge-img" width="115" height="38" loading="lazy">
+            </div>
+
+            <!-- Badge 2: Penang State Government Endorsement — Wikimedia Commons -->
+            <div class="ac-badge-item" title="Penang State Government — Endorsed Tourist Destination">
+              <img src="../Graphic/badges/coat-of-arms-penang.svg" alt="Penang State Government Endorsed Destination" class="ac-brand-badge-img" width="44" height="46" loading="lazy">
+            </div>
+
+            <!-- Badge 3: Penang Global Tourism (PGT) — Official State Bureau (mypenang.gov.my) -->
+            <div class="ac-badge-item" title="Penang Global Tourism (PGT) — Official State Tourism Bureau">
+              <img src="../Graphic/badges/pgt-logo-black.png" alt="Penang Global Tourism (PGT)" class="ac-brand-badge-img" width="88" height="40" loading="lazy">
+            </div>
+
+            <!-- Badge 4: Tripadvisor — Wikimedia Commons -->
+            <div class="ac-badge-item" title="Tripadvisor — Recommended Destination">
+              <img src="../Graphic/badges/tripadvisor-stacked.svg" alt="Tripadvisor Recommended" class="ac-brand-badge-img" width="80" height="42" loading="lazy">
+            </div>
+
+            <!-- Badge 5: Halal Malaysia (JAKIM) — Official Government Portal (halal.gov.my) -->
+            <div class="ac-badge-item" title="Halal Malaysia Official Certification (JAKIM MS 1500)">
+              <img src="../Graphic/badges/halal-malaysia-official.png" alt="Halal Malaysia Certified" class="ac-brand-badge-img" width="44" height="44" loading="lazy">
+            </div>
+
+            <!-- Badge 6: Majlis Bandaraya Seberang Perai (MBSP) — Wikimedia Commons -->
+            <div class="ac-badge-item" title="Majlis Bandaraya Seberang Perai (MBSP) — Municipal Council Endorsement">
+              <img src="../Graphic/badges/mbsp-seberang-perai.png" alt="Majlis Bandaraya Seberang Perai" class="ac-brand-badge-img" width="44" height="44" loading="lazy">
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ── 2. Subtle Hairline Divider ── -->
+      <div class="ac-footer-divider" aria-hidden="true"></div>
+
+      <!-- ── 3. Bottom Legal Bar ── -->
+      <div class="ac-footer-bottom">
+        <div class="ac-footer-copyright">
+          &copy; 2026 All Rights Reserved, Auto-City.
+        </div>
+
+        <nav class="ac-footer-legal" aria-label="Legal and Privacy Links">
+          <a href="#terms" class="ac-legal-link">Terms of Service</a>
+          <span class="ac-legal-sep" aria-hidden="true">&bull;</span>
+          <a href="#privacy" class="ac-legal-link">Privacy Policy</a>
+          <span class="ac-legal-sep" aria-hidden="true">&bull;</span>
+          <a href="#cookies" class="ac-legal-link">Cookie Policy</a>
+          <span class="ac-legal-sep" aria-hidden="true">&bull;</span>
+          <a href="#sitemap" class="ac-legal-link">Sitemap</a>
+        </nav>
+      </div>
+
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,422 @@
+/* ==========================================================================
+   Upcoming Events Section : Auto-City Penang
+   - Fun creative pinboard stack with playful angled cards
+   - Pastel colorways: #fff1d7, #c5d7ff, #ffe0f8, #d8f4e5
+   - Clean card architecture (contained image, category pill, bold title, short copy)
+   - Emil Kowalski physical card-pick hover (straightens to 0deg, lifts up, deep shadow)
+   - Crisp white title & subtitle over dark-to-light FunFairBG transition
+   ========================================================================== */
+
+/* --- 1. Section Container & Transition Background --- */
+.upcoming-events-section {
+  position: relative;
+  /* Blend dark mode #07090e smoothly into daytime FunFairBG */
+  background-color: #07090e;
+  background-image: 
+    /* Top atmospheric transition gradient: pure dark fading into the sky */
+    linear-gradient(180deg, 
+      #07090e 0%, 
+      rgba(7, 9, 14, 0.96) 90px, 
+      rgba(7, 9, 14, 0.65) 200px, 
+      rgba(7, 9, 14, 0.15) 320px, 
+      transparent 440px
+    ),
+    /* Subtle upper sky tint with gentle soft wash at the bottom */
+    linear-gradient(180deg, 
+      rgba(10, 25, 55, 0.35) 0%, 
+      rgba(10, 25, 55, 0.10) 320px, 
+      rgba(255, 255, 255, 0.15) 65%, 
+      rgba(248, 250, 252, 0.55) 100%
+    ),
+    url('../assets/images/FunFairBG.png');
+  background-size: 100% auto, 100% 100%, cover;
+  /* Configured to center 40% per user tuning */
+  background-position: center top, center center, center 40%;
+  background-repeat: no-repeat;
+  color: #0f172a;
+  padding: 8rem 0 8rem;
+  margin: 0;
+  overflow: hidden;
+  font-family: var(--font-body, 'Switzer', sans-serif);
+  transition: background 0.4s ease;
+}
+
+.upcoming-events-container {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* --- 2. Section Header (White Title & Body Copy) --- */
+.events-header {
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto 3.75rem;
+  position: relative;
+  z-index: 5;
+}
+
+.events-title {
+  font-family: var(--font-display, 'Creato Display', sans-serif);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  margin: 0 0 1rem;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
+}
+
+.events-subtitle {
+  font-size: clamp(1rem, 1.3vw, 1.18rem);
+  color: rgba(255, 255, 255, 0.92);
+  line-height: 1.6;
+  font-weight: 450;
+  margin: 0 auto;
+  max-width: 620px;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* --- 3. Creative Pinboard Deck Row --- */
+.events-deck-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 1.5rem 3.5rem;
+}
+
+.events-deck-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  perspective: 1200px;
+}
+
+/* Individual Card Architecture (Simplified & Contained) */
+.event-card {
+  position: relative;
+  width: 300px;
+  border-radius: 22px;
+  padding: 1.15rem 1.15rem 1.35rem;
+  box-shadow: 
+    0 14px 32px -8px rgba(10, 25, 60, 0.18),
+    0 4px 10px -2px rgba(10, 25, 60, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  user-select: none;
+  transform-origin: center center;
+  /* Emil Kowalski motion timing */
+  transition: 
+    transform 260ms cubic-bezier(0.23, 1, 0.32, 1),
+    box-shadow 260ms cubic-bezier(0.23, 1, 0.32, 1),
+    filter 200ms ease;
+  will-change: transform, box-shadow;
+}
+
+/* 4 Distinct Pastel Colorways & Pinboard Rotations */
+/* Card 1: #fff1d7 (Creamy Peach) */
+.event-card-color-1 {
+  background-color: #fff1d7;
+  transform: rotate(-3.5deg) translateY(6px);
+  z-index: 1;
+}
+
+/* Card 2: #c5d7ff (Soft Sky Periwinkle) */
+.event-card-color-2 {
+  background-color: #c5d7ff;
+  margin-left: -36px;
+  transform: rotate(2.2deg) translateY(-8px);
+  z-index: 2;
+}
+
+/* Card 3: #ffe0f8 (Soft Blossom Pink) */
+.event-card-color-3 {
+  background-color: #ffe0f8;
+  margin-left: -36px;
+  transform: rotate(-2.5deg) translateY(10px);
+  z-index: 3;
+}
+
+/* Card 4: #d8f4e5 (Fresh Mint Green) */
+.event-card-color-4 {
+  background-color: #d8f4e5;
+  margin-left: -36px;
+  transform: rotate(3.5deg) translateY(-4px);
+  z-index: 4;
+}
+
+/* --- 4. Emil Kowalski Tactile Pinboard Pick Physics --- */
+@media (hover: hover) and (pointer: fine) {
+  .event-card:hover {
+    /* Straightens upright and lifts forward smoothly */
+    transform: translateY(-28px) rotate(0deg) scale(1.05) !important;
+    z-index: 30 !important;
+    box-shadow: 
+      0 32px 64px -14px rgba(10, 25, 60, 0.28),
+      0 16px 28px -6px rgba(10, 25, 60, 0.16);
+    filter: brightness(1.02);
+  }
+
+  .event-card:hover .event-card-img {
+    transform: scale(1.03);
+  }
+}
+
+/* Tactile press feedback */
+.event-card:active {
+  transform: translateY(-20px) rotate(0deg) scale(1.02) !important;
+  transition-duration: 120ms;
+}
+
+/* --- 5. Inner Card Elements (Simplified Matching Attached Reference) --- */
+.event-card-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #0f172a;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.event-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 320ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Floating Date Tag inside media */
+.event-media-tag {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(15, 23, 42, 0.75);
+  color: #ffffff;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  text-transform: uppercase;
+}
+
+/* Bottom Content Container */
+.event-card-body {
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+/* Category Pill (White capsule like reference) */
+.event-category-pill {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  background: #ffffff;
+  color: #0f172a;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  padding: 0.28rem 0.85rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  margin-bottom: 0.65rem;
+}
+
+/* Event Title */
+.event-card-title {
+  font-family: var(--font-display, 'Creato Display', sans-serif);
+  font-size: 1.22rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  margin: 0 0 0.5rem;
+}
+
+/* Short Description Body */
+.event-card-desc {
+  font-size: 0.84rem;
+  color: #475569;
+  line-height: 1.48;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* --- 6. "See All Events" CTA Button --- */
+.events-footer-cta {
+  text-align: center;
+  margin-top: 3.5rem;
+  position: relative;
+  z-index: 5;
+}
+
+.events-all-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background: rgba(10, 31, 68, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #ffffff !important;
+  font-family: var(--font-body, 'Switzer', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  padding: 0.95rem 2.5rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 12px 30px -6px rgba(10, 31, 68, 0.45);
+  transition: 
+    background 180ms ease, 
+    transform 160ms cubic-bezier(0.23, 1, 0.32, 1),
+    box-shadow 180ms ease;
+}
+
+.events-all-btn:hover {
+  background: var(--color-accent-red, #e10021);
+  border-color: var(--color-accent-red, #e10021);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px -4px rgba(225, 0, 33, 0.5);
+  color: #ffffff !important;
+}
+
+.events-all-btn:active {
+  transform: scale(0.97) translateY(0);
+}
+
+.events-all-btn svg {
+  transition: transform 200ms ease;
+}
+
+.events-all-btn:hover svg {
+  transform: translateX(4px);
+}
+
+/* --- 7. Responsive Breakpoints --- */
+@media (max-width: 1240px) {
+  .event-card {
+    width: 275px;
+  }
+  .event-card-color-2,
+  .event-card-color-3,
+  .event-card-color-4 {
+    margin-left: -28px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .upcoming-events-section {
+    padding: 7rem 0 6rem;
+  }
+  .event-card {
+    width: 250px;
+    padding: 1rem 1rem 1.2rem;
+  }
+  .event-card-title {
+    font-size: 1.1rem;
+  }
+  .event-card-color-2,
+  .event-card-color-3,
+  .event-card-color-4 {
+    margin-left: -24px;
+  }
+}
+
+/* Mobile & Small Tablets (< 768px): Swipeable Track with Pinboard Vibe */
+@media (max-width: 767px) {
+  .upcoming-events-section {
+    padding: 6rem 0 6.5rem;
+    background-position: center top, center center, center 40%;
+  }
+
+  .events-deck-wrapper {
+    padding: 1.5rem 0 2rem;
+    overflow-x: auto;
+    overflow-y: visible;
+    justify-content: flex-start;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 1.5rem;
+  }
+
+  .events-deck-wrapper::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .events-deck-wrapper::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 9999px;
+  }
+
+  .events-deck-row {
+    padding: 1.5rem 1.5rem 2.5rem;
+    margin: 0 auto;
+  }
+
+  .event-card {
+    width: 260px;
+    flex-shrink: 0;
+    scroll-snap-align: center;
+  }
+
+  .event-card-color-1 {
+    transform: rotate(-1.5deg) translateY(3px);
+  }
+
+  .event-card-color-2 {
+    margin-left: -14px;
+    transform: rotate(1.5deg) translateY(-3px);
+  }
+
+  .event-card-color-3 {
+    margin-left: -14px;
+    transform: rotate(-1.5deg) translateY(3px);
+  }
+
+  .event-card-color-4 {
+    margin-left: -14px;
+    transform: rotate(1.5deg) translateY(-2px);
+  }
+
+  .events-footer-cta {
+    margin-top: 1.5rem;
+  }
+
+  .events-all-btn {
+    width: 100%;
+    max-width: 320px;
+  }
+}
+
+/* Reduced Motion Safety */
+@media (prefers-reduced-motion: reduce) {
+  .event-card,
+  .event-card-img,
+  .events-all-btn {
+    transition: none !important;
+    transform: none !important;
+  }
+  .event-card:hover {
+    transform: none !important;
+  }
+}

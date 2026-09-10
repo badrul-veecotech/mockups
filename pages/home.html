@@ -1,0 +1,4389 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auto-City Penang : Official Destination Portal</title>
+  
+  <!-- Preload Core Display Fonts for Instant Rendering -->
+  <link rel="preload" href="../fonts/CreatoDisplay-Medium.woff" as="font" type="font/woff" crossorigin>
+  <link rel="preload" href="../fonts/CreatoDisplay-Bold.woff" as="font" type="font/woff" crossorigin>
+
+  <!-- Single Source of Truth Brand Tokens & Typography (Display: Creato Display, Body: Switzer - Zero Monospace) -->
+  <link rel="stylesheet" href="../css/brand-tokens.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/quote.css">
+  <link rel="stylesheet" href="../css/swiper-bundle.min.css">
+  <link rel="stylesheet" href="../css/activities-parallax.css">
+  <link rel="stylesheet" href="../css/reels-social.css">
+  <link rel="stylesheet" href="../css/more-things-to-do.css">
+  <link rel="stylesheet" href="../css/upcoming-events.css">
+  <link rel="stylesheet" href="../css/footer.css">
+
+  <style>
+    /* ========================================================================
+       4. Editorial Four Precincts / 4 Core Pillars (Gallery Monograph Reference)
+       Direct Translation: Dark Gallery Canvas, Split Micro-Header, 1:1 Imagery
+       ======================================================================== */
+    /* ========================================================================
+       4. Level.ai Signature Expanding Horizontal Accordion Gallery
+       Direct Translation: https://thelevel.ai/ Reference
+       Interactive Pill Headline, Flex Expanding Panels, Bottom Quote Layout
+       ======================================================================== */
+    .destinations-preview-section {
+      background: var(--bg-canvas, #ffffff);
+      color: var(--text-primary, #0f172a);
+      padding: 5.5rem 0 6.5rem;
+      position: relative;
+      z-index: 5;
+      overflow: hidden;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .destinations-preview-section .container-fluid {
+      max-width: 1480px;
+      margin: 0 auto;
+      padding: 0 2.5rem;
+    }
+
+    /* Level.ai Headline & Pill Capsule */
+    .level-header-wrap {
+      margin-bottom: 2.75rem;
+    }
+
+    .level-section-title {
+      font-family: var(--font-display) !important;
+      font-size: clamp(2.25rem, 4vw, 3.25rem);
+      font-weight: 500 !important;
+      color: var(--text-primary, #0a1f44);
+      letter-spacing: -0.025em;
+      line-height: 1.18;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.65rem 0.85rem;
+      margin: 0;
+    }
+
+    .level-title-lead {
+      font-weight: 500 !important;
+      color: var(--text-primary, #0a1f44);
+      letter-spacing: -0.015em;
+    }
+
+    .level-pill-badge {
+      display: inline-flex;
+      align-items: center;
+      background: #f1f3f5;
+      color: #0f172a;
+      font-size: 0.85em;
+      font-weight: 600;
+      padding: 0.2rem 0.85rem;
+      border-radius: 8px;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+      cursor: default;
+    }
+
+    /* Flex Expanding Accordion Container */
+    .level-accordion-container {
+      display: flex;
+      gap: 14px;
+      height: 520px;
+      width: 100%;
+      position: relative;
+    }
+
+    /* Individual Panel */
+    .level-panel {
+      position: relative;
+      flex: 0.65;
+      height: 100%;
+      border-radius: 18px;
+      overflow: hidden;
+      cursor: pointer;
+      background: #000000;
+      transition: flex 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s ease;
+      user-select: none;
+    }
+
+    .level-panel.active {
+      flex: 3.8;
+      cursor: default;
+    }
+
+    /* Panel Image */
+    .level-panel-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.92);
+      transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+    }
+
+    .level-panel.active .level-panel-img {
+      filter: brightness(1);
+    }
+
+    .level-panel:not(.active):hover .level-panel-img {
+      transform: scale(1.06);
+      filter: brightness(1);
+    }
+
+    /* Gradient Scrim Overlay (Lightened for vibrant, luminous photography) */
+    .level-panel-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, 0.12) 60%, rgba(0, 0, 0, 0.55) 100%);
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+
+    .level-panel:not(.active) .level-panel-overlay {
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.05) 50%, rgba(0, 0, 0, 0.45) 100%);
+    }
+
+    /* Collapsed Vertical Title on Inactive Panels */
+    .level-collapsed-label {
+      position: absolute;
+      bottom: 3.25rem;
+      left: 50%;
+      transform-origin: 0 50%;
+      transform: rotate(-90deg);
+      white-space: nowrap;
+      width: max-content;
+      font-family: var(--font-display) !important;
+      font-size: 0.95rem;
+      font-weight: 700 !important;
+      color: rgba(255, 255, 255, 0.92);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      opacity: 1;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+      z-index: 2;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.85);
+    }
+
+    .level-panel.active .level-collapsed-label {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* Expanded Content in Active Panel */
+    .level-expanded-content {
+      position: absolute;
+      inset: 0;
+      padding: 2.25rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.45s ease 0.15s;
+      z-index: 2;
+    }
+
+    .level-panel.active .level-expanded-content {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Top Brand / Title */
+    .level-panel-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .level-brand-logo {
+      font-family: var(--font-display) !important;
+      font-size: 1.85rem;
+      font-weight: 700 !important;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .level-brand-tag {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* Bottom Description Box (Subtle idle opacity, reveals upon hovering near) */
+    .level-quote-box {
+      max-width: 640px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      opacity: 0.68;
+      transform: translateY(4px);
+      padding-top: 2.5rem;
+      margin-top: -2.5rem;
+      transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .level-quote-box:hover,
+    .level-quote-box:focus-within {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .level-quote-text {
+      font-family: var(--font-body);
+      font-size: clamp(0.875rem, 1.05vw, 1rem);
+      color: rgba(255, 255, 255, 0.92);
+      line-height: 1.6;
+      font-weight: 400;
+      margin: 0;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+    }
+
+    .level-panel-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 0.55rem 1.15rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      text-decoration: none;
+      width: fit-content;
+      transition: all 0.25s var(--ease-spring);
+    }
+
+    .level-panel-cta-btn:hover {
+      background: var(--color-accent-red, #e10021);
+      border-color: var(--color-accent-red, #e10021);
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(225, 0, 33, 0.45);
+    }
+
+    .level-panel-cta-btn svg {
+      width: 14px;
+      height: 14px;
+      transition: transform 0.25s var(--ease-spring);
+    }
+
+    .level-panel-cta-btn:hover svg {
+      transform: translateX(4px);
+    }
+
+    /* Level.ai Bottom Right Action Link */
+    .level-footer-action {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 1.5rem;
+    }
+
+    .level-explore-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-primary, #0f172a);
+      text-decoration: none;
+      transition: all 0.2s var(--ease-spring);
+    }
+
+    .level-explore-link svg {
+      width: 15px;
+      height: 15px;
+      transition: transform 0.2s var(--ease-spring);
+    }
+
+    .level-explore-link:hover {
+      color: var(--color-blue-600, #1d4ed8);
+    }
+
+    .level-explore-link:hover svg {
+      transform: translateX(4px);
+    }
+
+    /* Dark Mode Adaptations */
+    html[data-theme="dark"] .destinations-preview-section {
+      background: #061226;
+      color: #ffffff;
+    }
+    html[data-theme="dark"] .level-pill-badge {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+    html[data-theme="dark"] .level-section-title,
+    html[data-theme="dark"] .level-title-lead {
+      color: #ffffff;
+    }
+    html[data-theme="dark"] .level-explore-link {
+      color: #94b9ff;
+    }
+    html[data-theme="dark"] .level-explore-link:hover {
+      color: #ffffff;
+    }
+
+    /* Mobile / Tablet Viewport Handling */
+    @media (max-width: 900px) {
+      .level-accordion-container {
+        height: 480px;
+        gap: 10px;
+      }
+      .level-expanded-content {
+        padding: 1.5rem 1.75rem;
+      }
+      .level-brand-logo {
+        font-size: 1.45rem;
+      }
+      .level-panel.active {
+        flex: 5;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .destinations-preview-section .container-fluid {
+        padding: 0 1.25rem;
+      }
+      .level-accordion-container {
+        flex-direction: column;
+        height: auto;
+        gap: 12px;
+      }
+      .level-panel {
+        flex: none;
+        height: 120px;
+        width: 100%;
+        border-radius: 14px;
+        transition: height 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .level-panel.active {
+        height: 390px;
+      }
+      .level-collapsed-label {
+        transform: none;
+        transform-origin: initial;
+        left: 1.5rem;
+        bottom: 1.5rem;
+      }
+      .level-expanded-content {
+        padding: 1.25rem 1.5rem;
+      }
+      .level-quote-box {
+        opacity: 1;
+        transform: none;
+        padding-top: 0;
+        margin-top: 0;
+      }
+    }
+
+    /* Back to Showcase Floating Capsule */
+    .portal-back-capsule {
+      position: fixed;
+      bottom: 2rem;
+      left: 2rem;
+      z-index: 100;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 1.15rem;
+      background: #ffffff;
+      border-radius: 9999px;
+      box-shadow: 0px 8px 20px 0px rgba(19, 21, 21, 0.08);
+      color: #131515;
+      font-family: var(--font-body);
+      font-size: 0.825rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      transition: all 0.2s var(--ease-spring);
+    }
+
+    .portal-back-capsule:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+      color: var(--color-blue-600);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================================
+       1. Floating Pill Island Navigation (Habitline Framer Reference)
+       Reduced 12px/8px Modern Radii · Dynamic Inward-Closing Scroll Effect
+       ======================================================================== -->
+  <header class="island-header-wrapper" id="islandHeader">
+    <div class="island-header-inner">
+      
+      <!-- Island 1: Left Brand Pill (Compact Logo, Zero Subtags) -->
+      <div class="island-col island-col-left">
+        <a href="home.html" class="island-pill island-brand-pill" aria-label="Auto-City Home">
+          <img src="../Graphic/auto-city-logo.svg" alt="Auto-City" class="island-brand-logo">
+        </a>
+      </div>
+
+      <!-- Island 2: Center Navigation Menu Pill (Strict Single Line Row) -->
+      <div class="island-col island-col-center">
+        <nav class="island-pill island-nav-pill" aria-label="Primary Navigation">
+          <ul class="island-nav-list">
+            <li class="island-nav-item"><a href="#attractions" class="island-nav-link active">Attractions</a></li>
+            <li class="island-nav-item"><a href="#dining" class="island-nav-link">Dining & Retail</a></li>
+            <li class="island-nav-item"><a href="#automotive" class="island-nav-link">Automotive</a></li>
+            <li class="island-nav-item"><a href="#events" class="island-nav-link">What's On</a></li>
+            <li class="island-nav-item"><a href="#moreThingsToDo" class="island-nav-link">More To Do</a></li>
+            <li class="island-nav-item"><a href="#guide" class="island-nav-link">Visitor Guide</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Island 3: Right Action Pill (Squircle Map Icon + Primary CTA) -->
+      <div class="island-col island-col-right">
+        <div class="island-pill island-action-pill">
+          <a href="#guide" class="island-squircle-btn" title="Explore District Map" aria-label="District Map">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
+              <line x1="8" y1="2" x2="8" y2="18"></line>
+              <line x1="16" y1="6" x2="16" y2="22"></line>
+            </svg>
+          </a>
+          <a href="#tickets" class="island-cta-btn">
+            <span>Plan Your Visit</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+          <!-- Mobile/Tablet Toggle Button (40px Squircle) -->
+          <button type="button" class="island-mobile-toggle-btn" id="islandMobileToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Mobile/Tablet Backdrop Overlay (Habitline framer-d6ma15 blur effect) -->
+  <div class="island-dropdown-overlay" id="islandMobileOverlay" aria-hidden="true"></div>
+
+  <!-- Mobile/Tablet Dropdown Menu Card (Habitline Animated Dropdown) -->
+  <div class="island-dropdown-card" id="islandMobileCard" aria-hidden="true">
+    <a href="#attractions" class="island-dropdown-link active">
+      <span>Attractions & Rides</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </a>
+    <a href="#dining" class="island-dropdown-link">
+      <span>Dining & Retail</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </a>
+    <a href="#automotive" class="island-dropdown-link">
+      <span>Automotive Hub</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </a>
+    <a href="#events" class="island-dropdown-link">
+      <span>What's On & Carnivals</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </a>
+    <a href="#moreThingsToDo" class="island-dropdown-link">
+      <span>More To Do & Explore</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </a>
+    <a href="#guide" class="island-dropdown-link">
+      <span>Visitor Guide & Parking</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </a>
+    <div style="padding-top: 8px; border-top: 1px solid #f2f2f2; margin-top: 4px; display: flex; flex-direction: column; gap: 6px;">
+      <a href="#tickets" class="island-cta-btn" style="width: 100%; justify-content: center; height: 44px;">
+        <span>Plan Your Visit</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       2. Hero Section with Cinematic Night Traffic Video Background
+       ======================================================================== -->
+  <section class="hero-video-section" id="heroSection">
+    
+    <!-- Video Background Frame — A/B Crossfade Rotator -->
+    <div class="hero-video-bg-wrap" id="heroVideoBgWrap">
+      <!-- Video Slot A -->
+      <video
+        id="heroVideoA"
+        class="hero-video-element hero-video-slot"
+        muted
+        playsinline
+        preload="auto"
+        poster="../Graphic/HeaderVideo/header-video-poster.jpg">
+      </video>
+      <!-- Video Slot B -->
+      <video
+        id="heroVideoB"
+        class="hero-video-element hero-video-slot"
+        muted
+        playsinline
+        preload="auto">
+      </video>
+    </div>
+
+    <!-- Cinematic Multi-Layer Gradient Overlay -->
+    <div class="hero-video-overlay" aria-hidden="true"></div>
+
+    <!-- Hero Content Layer -->
+    <div class="hero-video-content">
+      
+      <h1 class="hero-main-title">
+        Penang’s Premier Open-Air City of Automotive, Dining & Celebration.
+      </h1>
+
+      <p class="hero-lead-text">
+        From lively open-air dining streets and weekend carnivals to premier automotive showrooms, discover 100 acres of everyday energy in the heart of Juru.
+      </p>
+
+      <!-- Explore Search Capsule -->
+      <form class="hero-explore-capsule" onsubmit="event.preventDefault(); document.getElementById('destinationsSection').scrollIntoView({ behavior: 'smooth' });">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2.5" style="flex-shrink: 0;">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input 
+          type="text" 
+          class="hero-explore-input" 
+          placeholder="Search dining, rides, showrooms, events..."
+          aria-label="Search attractions, dining, or automotive">
+        <button type="submit" class="hero-explore-btn">
+          <span>Explore</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </form>
+
+      <!-- Quick Category Pills (Lucide Icons in Pure White) -->
+      <div class="hero-categories-row">
+        <a href="#attractions" class="hero-category-chip">
+          <svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="2"></circle>
+            <path d="M12 2v4"></path>
+            <path d="m6.8 15-3.5 2"></path>
+            <path d="m20.7 7-3.5 2"></path>
+            <path d="M6.8 9 3.3 7"></path>
+            <path d="m20.7 17-3.5-2"></path>
+            <path d="m9 22 3-8 3 8"></path>
+            <path d="M8 22h8"></path>
+            <circle cx="12" cy="12" r="10"></circle>
+          </svg>
+          <span>Theme Park & Rides</span>
+        </a>
+        <a href="#dining" class="hero-category-chip">
+          <svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"></path>
+            <path d="M7 2v20"></path>
+            <path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"></path>
+          </svg>
+          <span>50+ Dining Hotspots</span>
+        </a>
+        <a href="#automotive" class="hero-category-chip">
+          <svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"></path>
+            <circle cx="7" cy="17" r="2"></circle>
+            <path d="M9 17h6"></path>
+            <circle cx="17" cy="17" r="2"></circle>
+          </svg>
+          <span>30+ Auto Brands</span>
+        </a>
+        <a href="#events" class="hero-category-chip">
+          <svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path>
+            <path d="M20 2v4"></path>
+            <path d="M22 4h-4"></path>
+            <circle cx="4" cy="20" r="2"></circle>
+          </svg>
+          <span>Weekend Carnivals</span>
+        </a>
+        <a href="#guide" class="hero-category-chip">
+          <svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <span>Interactive Map</span>
+        </a>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ========================================================================
+       3. Editorial Quote Statement Section (Under Hero Section)
+       Habitline Framework Tailored to Auto-City · Minimalist & Focused
+       ======================================================================== -->
+  <section class="quote-statement-section" id="quoteStatement" aria-label="Auto-City Brand Statement">
+    <div class="quote-statement-inner">
+
+      <!-- Main Typographic Headline with Inline Pill Capsules (Direct Text Masking) -->
+      <h2 class="quote-statement-title" id="quoteStatementTitle">
+        <span class="quote-line">
+          Where great drives 
+          <span class="quote-inline-pill-wheel" id="quoteWheelPill" title="Click to steer!" aria-label="Auto-City sports steering wheel badge">
+            <img src="../assets/images/quote-steering-wheel.svg" alt="Steering wheel" class="quote-pill-icon quote-wheel-icon">
+          </span>
+          connect with
+        </span>
+        <span class="quote-line">
+          open-air dining, culinary flavors,
+        </span>
+        <span class="quote-line">
+          and vibrant 
+          <span class="quote-inline-pill-anchor">
+            <span class="quote-confetti-stage" id="quoteConfettiStage" aria-hidden="true"></span>
+            <span class="quote-inline-pill-weather quote-inline-pill-spark" id="quoteWeatherPill" title="Click to celebrate!" aria-label="Celebration spark illustration capsule">
+              <img src="../assets/images/quote-celebration-spark.svg" alt="Celebration energy" class="quote-pill-icon">
+            </span>
+          </span>
+          night celebrations.
+        </span>
+      </h2>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       4. Subsequent Section Transition Preview (Shows layout continuity)
+       ======================================================================== -->
+  <!-- ========================================================================
+       4. Level.ai Signature Expanding Horizontal Accordion Gallery
+       Direct Translation: https://thelevel.ai/ Reference
+       Interactive Pill Headline, Flex Expanding Panels, Bottom Quote Layout
+       ======================================================================== -->
+  <section class="destinations-preview-section" id="destinationsSection" aria-label="Auto-City Four Core Pillars">
+    <div class="container-fluid">
+      
+      <!-- Level.ai Signature Headline with Interactive Pill -->
+      <div class="level-header-wrap">
+        <h2 class="level-section-title">
+          <span class="level-title-lead">Discover Auto-City’s</span>
+          <span class="level-pill-badge" id="levelActivePill">Automotive Enclave</span>
+        </h2>
+      </div>
+
+      <!-- Level.ai Expanding Horizontal Accordion -->
+      <div class="level-accordion-container" id="levelAccordion" role="region" aria-label="Precincts Showcase Accordion">
+        
+        <!-- Panel 1: Automotive (Active by default) -->
+        <article class="level-panel active" id="automotive" data-pill="Automotive Enclave" tabindex="0" role="button" aria-expanded="true">
+          <img src="../assets/images/pillars/pillar-automotive.jpg" alt="The Automotive Collection at Auto-City" class="level-panel-img" loading="lazy">
+          <div class="level-panel-overlay" aria-hidden="true"></div>
+          
+          <div class="level-collapsed-label" aria-hidden="true">Automotive</div>
+
+          <div class="level-expanded-content">
+            <div class="level-panel-top">
+              <div class="level-brand-logo">The Automotive Collection</div>
+              <span class="level-brand-tag">30+ Marques</span>
+            </div>
+            <div class="level-quote-box">
+              <p class="level-quote-text">
+                Northern Malaysia’s premier automotive enclave with 30+ global marques, flagship 4S sales, EV charging superchargers, and high-performance test tracks.
+              </p>
+              <a href="#explore-auto" class="level-panel-cta-btn">
+                <span>Discover Showrooms</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Panel 2: Culinary -->
+        <article class="level-panel" id="dining" data-pill="Culinary Promenade" tabindex="0" role="button" aria-expanded="false">
+          <img src="../assets/images/pillars/pillar-culinary.jpg" alt="The Culinary Promenade at Auto-City" class="level-panel-img" loading="lazy">
+          <div class="level-panel-overlay" aria-hidden="true"></div>
+          
+          <div class="level-collapsed-label" aria-hidden="true">Dining & Cafes</div>
+
+          <div class="level-expanded-content">
+            <div class="level-panel-top">
+              <div class="level-brand-logo">The Culinary Promenade</div>
+              <span class="level-brand-tag">60+ Bistros</span>
+            </div>
+            <div class="level-quote-box">
+              <p class="level-quote-text">
+                Over sixty independent eateries, open-air alfresco bistros, authentic Penang street cuisine, and vibrant evening cocktail lounges that come alive under the evening lights.
+              </p>
+              <a href="#explore-dining" class="level-panel-cta-btn">
+                <span>Explore Dining</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Panel 3: Arena -->
+        <article class="level-panel" id="events" data-pill="What’s On Arena" tabindex="0" role="button" aria-expanded="false">
+          <img src="../assets/images/pillars/pillar-arena.jpg" alt="The Arena at Auto-City" class="level-panel-img" loading="lazy">
+          <div class="level-panel-overlay" aria-hidden="true"></div>
+          
+          <div class="level-collapsed-label" aria-hidden="true">The Arena</div>
+
+          <div class="level-expanded-content">
+            <div class="level-panel-top">
+              <div class="level-brand-logo">The Arena</div>
+              <span class="level-brand-tag">100+ Events</span>
+            </div>
+            <div class="level-quote-box">
+              <p class="level-quote-text">
+                A multi-acre open-air plaza hosting international motor showcases, live concerts, seasonal festive extravaganzas, and weekend community night markets.
+              </p>
+              <a href="#explore-events" class="level-panel-cta-btn">
+                <span>View Calendar</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Panel 4: Promenade & Leisure -->
+        <article class="level-panel" id="attractions" data-pill="Everyday Promenade" tabindex="0" role="button" aria-expanded="false">
+          <img src="../assets/images/pillars/pillar-promenade.jpg" alt="The Promenade & Leisure at Auto-City" class="level-panel-img" loading="lazy">
+          <div class="level-panel-overlay" aria-hidden="true"></div>
+          
+          <div class="level-collapsed-label" aria-hidden="true">Promenade</div>
+
+          <div class="level-expanded-content">
+            <div class="level-panel-top">
+              <div class="level-brand-logo">The Promenade & Leisure</div>
+              <span class="level-brand-tag">50+ Venues</span>
+            </div>
+            <div class="level-quote-box">
+              <p class="level-quote-text">
+                Boutique retail, wellness centers, and family-friendly open spaces under illuminated evening ferris wheels curated to make every visit effortless and complete.
+              </p>
+              <a href="#explore-guide" class="level-panel-cta-btn">
+                <span>View Directory</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Level.ai Bottom Right Action Link (Direct match to reference screenshot) -->
+      <div class="level-footer-action">
+        <a href="#guide" class="level-explore-link">
+          <span>Explore all precincts</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       5. Activities Parallax Experience (dsgninterior.se Reference)
+       Interactive full-viewport dual-plane parallax slider highlighting:
+       Mini Zoo, River Cruise, Fun Fair, Mangrove, and Pickleball
+       ======================================================================== -->
+  <section class="activities-parallax-section" id="activitiesParallaxSection" aria-label="Auto-City Highlighted Activities Experience">
+    
+    <div class="activities-sticky-viewport">
+      <div class="swiper">
+        <div class="swiper-wrapper">
+        
+        <!-- Slide 1: Mini Zoo -->
+        <article class="banner swiper-slide" id="bannerMiniZoo">
+          <div class="work-banner" data-swiper-parallax="60%">
+            <img src="../assets/images/activities/mini-zoo.jpg" alt="Alpaca and Capybara at Auto-City Mini Zoo" loading="eager">
+          </div>
+
+          <h2 class="banner-title" data-swiper-parallax="100%">
+            <span class="split" data-swiper-parallax="-60">
+              Alpaca &amp; Friends Mini Zoo
+            </span>
+          </h2>
+        </article>
+
+        <!-- Slide 2: River Cruise -->
+        <article class="banner swiper-slide" id="bannerRiverCruise">
+          <div class="work-banner" data-swiper-parallax="60%">
+            <img src="../assets/images/activities/river-cruise.jpg" alt="Penang River Cruise on Sungai Juru at Sunset" loading="lazy">
+          </div>
+
+          <h2 class="banner-title" data-swiper-parallax="100%">
+            <span class="split" data-swiper-parallax="-60">
+              Penang River Sunset Cruise
+            </span>
+          </h2>
+        </article>
+
+        <!-- Slide 3: Fun Fair -->
+        <article class="banner swiper-slide" id="bannerFunFair">
+          <div class="work-banner" data-swiper-parallax="60%">
+            <img src="../assets/images/activities/fun-fair.jpg" alt="Illuminated Ferris Wheel and Fun Fair Carnival at Auto-City" loading="lazy">
+          </div>
+
+          <h2 class="banner-title" data-swiper-parallax="100%">
+            <span class="split" data-swiper-parallax="-60">
+              Illuminated Carnival &amp; Fair
+            </span>
+          </h2>
+        </article>
+
+        <!-- Slide 4: Mangrove -->
+        <article class="banner swiper-slide" id="bannerMangrove">
+          <div class="work-banner" data-swiper-parallax="60%">
+            <img src="../assets/images/activities/mangrove.jpg" alt="Sunlight filtering through Mangrove Boardwalk at Auto-City River Park" loading="lazy">
+          </div>
+
+          <h2 class="banner-title" data-swiper-parallax="100%">
+            <span class="split" data-swiper-parallax="-60">
+              Mangrove Eco Boardwalk
+            </span>
+          </h2>
+        </article>
+
+        <!-- Slide 5: Pickleball -->
+        <article class="banner swiper-slide" id="bannerPickleball">
+          <div class="work-banner" data-swiper-parallax="60%">
+            <img src="../assets/images/activities/pickleball.jpg" alt="Modern Pickleball Courts at Auto-City Club" loading="lazy">
+          </div>
+
+          <h2 class="banner-title" data-swiper-parallax="100%">
+            <span class="split" data-swiper-parallax="-60">
+              Pickleball Sports Club
+            </span>
+          </h2>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- Persistent Floating Bottom Bar: Fixed to section viewport, body text & CTA button fade seamlessly between slides -->
+    <div class="banner-bottom-bar" id="activitiesBottomBar" aria-live="polite">
+      
+      <!-- Slide 1 Content -->
+      <div class="banner-bottom-item active" data-slide-index="0">
+        <div class="banner-synopsis">
+          <div class="banner-synopsis-category">Interactive Sanctuary</div>
+          <p class="banner-synopsis-text">
+            Northern Malaysia’s premier petting sanctuary housing over 60 exotic species. Walk alongside gentle alpacas, friendly capybaras, and miniature ponies in a clean botanical setting.
+          </p>
+        </div>
+        <div class="banner-cta-group">
+          <a href="#explore-mini-zoo" class="banner-cta-btn">
+            <span>Explore Mini Zoo</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Slide 2 Content -->
+      <div class="banner-bottom-item" data-slide-index="1">
+        <div class="banner-synopsis">
+          <div class="banner-synopsis-category">Sungai Juru Eco-Excursion</div>
+          <p class="banner-synopsis-text">
+            Depart directly from River Park Jetty along Sungai Juru on a 15km scenic voyage. Experience mirror-like tidal reflections at golden hour, silvered leaf monkeys, and dramatic sunset horizons.
+          </p>
+        </div>
+        <div class="banner-cta-group">
+          <a href="#explore-river-cruise" class="banner-cta-btn">
+            <span>Book River Cruise</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Slide 3 Content -->
+      <div class="banner-bottom-item" data-slide-index="2">
+        <div class="banner-synopsis">
+          <div class="banner-synopsis-category">Twilight Entertainment Plaza</div>
+          <p class="banner-synopsis-text">
+            Auto-City’s signature night festival grounds featuring a towering illuminated Ferris wheel, vintage carousel, drift karts, seasonal night markets, and authentic street delicacies.
+          </p>
+        </div>
+        <div class="banner-cta-group">
+          <a href="#explore-fun-fair" class="banner-cta-btn">
+            <span>View Carnival</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Slide 4 Content -->
+      <div class="banner-bottom-item" data-slide-index="3">
+        <div class="banner-synopsis">
+          <div class="banner-synopsis-category">Wetland Nature Reserve</div>
+          <p class="banner-synopsis-text">
+            Stroll along an elevated architectural timber boardwalk meandering through restored wetland habitats, dramatic stilt root networks, and tranquil tidal riverbanks.
+          </p>
+        </div>
+        <div class="banner-cta-group">
+          <a href="#explore-mangrove" class="banner-cta-btn">
+            <span>Discover Sanctuary</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Slide 5 Content -->
+      <div class="banner-bottom-item" data-slide-index="4">
+        <div class="banner-synopsis">
+          <div class="banner-synopsis-category">Championship Athletics</div>
+          <p class="banner-synopsis-text">
+            Northern Malaysia’s premier dedicated pickleball facility. State-of-the-art cushioned multi-color courts, tournament-grade LED illumination, community open play, and clubhouse gear hire.
+          </p>
+        </div>
+        <div class="banner-cta-group">
+          <a href="#explore-pickleball" class="banner-cta-btn">
+            <span>Reserve a Court</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    </div> <!-- /.activities-sticky-viewport -->
+
+  </section>
+
+  <!-- ========================================================================
+       6. Join in the Fun : Social Media Vertical Content (Instagram Reels)
+       Dark background showcase featuring vertical 9:16 looping video previews
+       Direct translation from Auto-City Penang Instagram @autocity_penang
+       ======================================================================== -->
+  <section class="reels-social-section" id="joinInTheFun" aria-label="Join in the fun: Auto-City Instagram Reels">
+    <!-- Looping Ambient Red Gradient & Grid Layers (Dim & Slow Moving with 20% Mouse Pressure) -->
+    <div class="reels-ambient-glow" aria-hidden="true">
+      <div class="reels-glow-orb reels-orb-1"></div>
+      <div class="reels-glow-orb reels-orb-2"></div>
+      <div class="reels-mouse-spotlight"></div>
+    </div>
+    <div class="reels-grid-pattern" aria-hidden="true"></div>
+    <div class="reels-container">
+      
+      <!-- Section Header -->
+      <div class="reels-header">
+        <h2 class="reels-title">Join in the Fun</h2>
+        <p class="reels-subtitle">
+          Real moments, reels &amp; viral energy from <strong>@autocity_penang</strong>. Experience the food, festivals, night markets, and creators live in action.
+        </p>
+      </div>
+
+      <!-- Reels Carousel Wrapper -->
+      <div class="reels-carousel-wrapper">
+        
+        <!-- Navigation Buttons -->
+        <button class="reels-nav-btn prev" id="reelsPrevBtn" aria-label="Previous reels">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+
+        <button class="reels-nav-btn next" id="reelsNextBtn" aria-label="Next reels">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+
+        <!-- Scrollable Track Container -->
+        <div class="reels-track-container" id="reelsTrackContainer" tabindex="0" role="region" aria-label="Instagram Reels Carousel">
+          <div class="reels-track">
+
+            <!-- Card 1: Moon Fest by Hunza (24.1K Views) -->
+            <article class="reel-card" data-reel-id="reel-3-moon-fest">
+              <div class="reel-media-wrap">
+                <video class="reel-video" autoplay loop muted playsinline preload="metadata" poster="../assets/images/reels/reel-3-moon-fest.jpg">
+                  <source src="../assets/videos/reels/reel-3-moon-fest.mp4" type="video/mp4">
+                </video>
+                <img src="../assets/images/reels/reel-3-moon-fest.jpg" alt="Moon Fest by Hunza at Auto-City" class="reel-poster" loading="lazy">
+                <div class="reel-overlay" aria-hidden="true"></div>
+              </div>
+              <div class="reel-play-indicator" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </div>
+              <div class="reel-content-drawer">
+                <h3 class="reel-caption-title">Moon Fest By Hunza 中秋园游会</h3>
+                <p class="reel-caption-desc">Lantern festival &amp; dazzling night parade</p>
+                <div class="reel-meta-row">
+                  <span class="reel-views-count">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    <span>24.1K views</span>
+                  </span>
+                  </div>
+              </div>
+            </article>
+
+            <!-- Card 2: BM Local Guide (30.7K Views) -->
+            <article class="reel-card" data-reel-id="reel-9-bm-local-guide">
+              <div class="reel-media-wrap">
+                <video class="reel-video" autoplay loop muted playsinline preload="metadata" poster="../assets/images/reels/reel-9-bm-local-guide.jpg">
+                  <source src="../assets/videos/reels/reel-9-bm-local-guide.mp4" type="video/mp4">
+                </video>
+                <img src="../assets/images/reels/reel-9-bm-local-guide.jpg" alt="大山脚 Local 带路 爆款美食" class="reel-poster" loading="lazy">
+                <div class="reel-overlay" aria-hidden="true"></div>
+              </div>
+              <div class="reel-play-indicator" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </div>
+              <div class="reel-content-drawer">
+                <h3 class="reel-caption-title">大山脚 Local 带路 爆款美食</h3>
+                <p class="reel-caption-desc">Bukit Mertajam food guide visiting 3 hotspots</p>
+                <div class="reel-meta-row">
+                  <span class="reel-views-count">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    <span>30.7K views</span>
+                  </span>
+                  </div>
+              </div>
+            </article>
+
+            <!-- Card 3: De Zhuang Hotpot Feast (2.0K Views) -->
+            <article class="reel-card" data-reel-id="reel-7-de-zhuang-hotpot">
+              <div class="reel-media-wrap">
+                <video class="reel-video" autoplay loop muted playsinline preload="metadata" poster="../assets/images/reels/reel-7-de-zhuang-hotpot.jpg">
+                  <source src="../assets/videos/reels/reel-7-de-zhuang-hotpot.mp4" type="video/mp4">
+                </video>
+                <img src="../assets/images/reels/reel-7-de-zhuang-hotpot.jpg" alt="De Zhuang Hotpot Feast at Auto-City" class="reel-poster" loading="lazy">
+                <div class="reel-overlay" aria-hidden="true"></div>
+              </div>
+              <div class="reel-play-indicator" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </div>
+              <div class="reel-content-drawer">
+                <h3 class="reel-caption-title">De Zhuang Hotpot Feast 火锅套餐</h3>
+                <p class="reel-caption-desc">Premium bubbling broth &amp; banquet dining</p>
+                <div class="reel-meta-row">
+                  <span class="reel-views-count">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    <span>2.0K views</span>
+                  </span>
+                  </div>
+              </div>
+            </article>
+
+            <!-- Card 4: Madam Karen VS Timmy The Thief (7.5K Views) -->
+            <article class="reel-card" data-reel-id="reel-2-comedy-drama">
+              <div class="reel-media-wrap">
+                <video class="reel-video" autoplay loop muted playsinline preload="metadata" poster="../assets/images/reels/reel-2-comedy-drama.jpg">
+                  <source src="../assets/videos/reels/reel-2-comedy-drama.mp4" type="video/mp4">
+                </video>
+                <img src="../assets/images/reels/reel-2-comedy-drama.jpg" alt="Madam Karen VS Timmy The Thief comedy sketch" class="reel-poster" loading="lazy">
+                <div class="reel-overlay" aria-hidden="true"></div>
+              </div>
+              <div class="reel-play-indicator" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </div>
+              <div class="reel-content-drawer">
+                <h3 class="reel-caption-title">Madam Karen VS Timmy The Thief</h3>
+                <p class="reel-caption-desc">Viral comedy sketch filmed at Auto-City</p>
+                <div class="reel-meta-row">
+                  <span class="reel-views-count">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    <span>7.5K views</span>
+                  </span>
+                  </div>
+              </div>
+            </article>
+
+            <!-- Card 5: Kim Garden Food Court (1.3K Views) -->
+            <article class="reel-card" data-reel-id="reel-1-food-court">
+              <div class="reel-media-wrap">
+                <video class="reel-video" autoplay loop muted playsinline preload="metadata" poster="../assets/images/reels/reel-1-food-court.jpg">
+                  <source src="../assets/videos/reels/reel-1-food-court.mp4" type="video/mp4">
+                </video>
+                <img src="../assets/images/reels/reel-1-food-court.jpg" alt="Kim Garden Food Court at Auto-City" class="reel-poster" loading="lazy">
+                <div class="reel-overlay" aria-hidden="true"></div>
+              </div>
+              <div class="reel-play-indicator" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </div>
+              <div class="reel-content-drawer">
+                <h3 class="reel-caption-title">Kim Garden Food Court 盛满园</h3>
+                <p class="reel-caption-desc">Apple Delicious Station &amp; local hawker specialties</p>
+                <div class="reel-meta-row">
+                  <span class="reel-views-count">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    <span>1.3K views</span>
+                  </span>
+                  </div>
+              </div>
+            </article>
+
+            <!-- Card 6: Love Baba Nyonya (1.0K Views) -->
+            <article class="reel-card" data-reel-id="reel-8-love-baba-nyonya">
+              <div class="reel-media-wrap">
+                <video class="reel-video" autoplay loop muted playsinline preload="metadata" poster="../assets/images/reels/reel-8-love-baba-nyonya.jpg">
+                  <source src="../assets/videos/reels/reel-8-love-baba-nyonya.mp4" type="video/mp4">
+                </video>
+                <img src="../assets/images/reels/reel-8-love-baba-nyonya.jpg" alt="Love Baba Nyonya at Auto-City" class="reel-poster" loading="lazy">
+                <div class="reel-overlay" aria-hidden="true"></div>
+              </div>
+              <div class="reel-play-indicator" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </div>
+              <div class="reel-content-drawer">
+                <h3 class="reel-caption-title">Love Baba Nyonya Curry Stingray</h3>
+                <p class="reel-caption-desc">Heritage Peranakan culinary specialties</p>
+                <div class="reel-meta-row">
+                  <span class="reel-views-count">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    <span>1.0K views</span>
+                  </span>
+                  </div>
+              </div>
+            </article>
+
+            <!-- Card 7: Colour Hunting Auto-City (1.3K Views) -->
+            <article class="reel-card" data-reel-id="reel-4-colour-hunting">
+              <div class="reel-media-wrap">
+                <video class="reel-video" autoplay loop muted playsinline preload="metadata" poster="../assets/images/reels/reel-4-colour-hunting.jpg">
+                  <source src="../assets/videos/reels/reel-4-colour-hunting.mp4" type="video/mp4">
+                </video>
+                <img src="../assets/images/reels/reel-4-colour-hunting.jpg" alt="Colour Hunting Auto-City" class="reel-poster" loading="lazy">
+                <div class="reel-overlay" aria-hidden="true"></div>
+              </div>
+              <div class="reel-play-indicator" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </div>
+              <div class="reel-content-drawer">
+                <h3 class="reel-caption-title">Colour Hunting Auto-City</h3>
+                <p class="reel-caption-desc">Ecotourism lifestyle spots &amp; photo walks</p>
+                <div class="reel-meta-row">
+                  <span class="reel-views-count">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    <span>1.3K views</span>
+                  </span>
+                  </div>
+              </div>
+            </article>
+
+            <!-- Card 8: Mala Tang (1.5K Views) -->
+            <article class="reel-card" data-reel-id="reel-6-mala-hotpot">
+              <div class="reel-media-wrap">
+                <video class="reel-video" autoplay loop muted playsinline preload="metadata" poster="../assets/images/reels/reel-6-mala-hotpot.jpg">
+                  <source src="../assets/videos/reels/reel-6-mala-hotpot.mp4" type="video/mp4">
+                </video>
+                <img src="../assets/images/reels/reel-6-mala-hotpot.jpg" alt="蒜香嫩鸡片麻辣烫 Mala Tang" class="reel-poster" loading="lazy">
+                <div class="reel-overlay" aria-hidden="true"></div>
+              </div>
+              <div class="reel-play-indicator" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </div>
+              <div class="reel-content-drawer">
+                <h3 class="reel-caption-title">蒜香嫩鸡片麻辣烫 Mala Tang</h3>
+                <p class="reel-caption-desc">Authentic Sichuan spicy hotpot delicacy</p>
+                <div class="reel-meta-row">
+                  <span class="reel-views-count">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    <span>1.5K views</span>
+                  </span>
+                  </div>
+              </div>
+            </article>
+
+            <!-- Card 9: Merdeka Celebration (2.2K Views) -->
+            <article class="reel-card" data-reel-id="reel-5-merdeka-celebration">
+              <div class="reel-media-wrap">
+                <video class="reel-video" autoplay loop muted playsinline preload="metadata" poster="../assets/images/reels/reel-5-merdeka-celebration.jpg">
+                  <source src="../assets/videos/reels/reel-5-merdeka-celebration.mp4" type="video/mp4">
+                </video>
+                <img src="../assets/images/reels/reel-5-merdeka-celebration.jpg" alt="Selamat Hari Merdeka Celebration" class="reel-poster" loading="lazy">
+                <div class="reel-overlay" aria-hidden="true"></div>
+              </div>
+              <div class="reel-play-indicator" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </div>
+              <div class="reel-content-drawer">
+                <h3 class="reel-caption-title">Selamat Hari Merdeka Celebration</h3>
+                <p class="reel-caption-desc">Patriotic celebrations and fireworks night</p>
+                <div class="reel-meta-row">
+                  <span class="reel-views-count">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    <span>2.2K views</span>
+                  </span>
+                  </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Follow on Instagram CTA Capsule -->
+      <div class="reels-footer-action">
+        <a href="https://www.instagram.com/autocity_penang/" target="_blank" rel="noopener noreferrer" class="reels-follow-btn">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          <span>Follow @autocity_penang on Instagram</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       7. Upcoming Events : Daytime Fairground Transition & Creative Pinboard
+       Transition from dark mode to lightmode with FunFairBG.png as backdrop
+       Pastel cards (#fff1d7, #c5d7ff, #ffe0f8, #d8f4e5) stacked with playful angles
+       ======================================================================== -->
+  <section class="upcoming-events-section" id="events" aria-label="Upcoming Events at Auto-City">
+    <div class="upcoming-events-container">
+      
+      <!-- Section Header (Pure White Title & Subtitle, No Eyebrow) -->
+      <div class="events-header">
+        <h2 class="events-title">Upcoming Events</h2>
+        <p class="events-subtitle">
+          From supercar carnivals and lantern night parades to live street food music fests, discover what's happening across 100 acres.
+        </p>
+      </div>
+
+      <!-- Creative Pinboard Stacked Deck Row (4 Pastel Cards) -->
+      <div class="events-deck-wrapper" role="region" aria-label="Upcoming Events Showcase">
+        <div class="events-deck-row">
+
+          <!-- Card 1: #fff1d7 (One Better River Festival) -->
+          <article class="event-card event-card-color-1" tabindex="0">
+            <div class="event-card-media">
+              <img src="../assets/images/events/river-festival.jpg" alt="One Better River Festival at Auto-City" class="event-card-img" style="object-position: center top;" loading="lazy">
+              <span class="event-media-tag">3 &ndash; 5 JUL 2026</span>
+            </div>
+            <div class="event-card-body">
+              <span class="event-category-pill">River Festival</span>
+              <h3 class="event-card-title">One Better River Festival</h3>
+              <p class="event-card-desc">
+                Wala Wala x Penang One Better pop-up market, bridge food stalls, live acoustic music, and riverside carnival.
+              </p>
+            </div>
+          </article>
+
+          <!-- Card 2: #c5d7ff (Premium Car Exhibition) -->
+          <article class="event-card event-card-color-2" tabindex="0">
+            <div class="event-card-media">
+              <img src="../assets/images/events/premium-car-exhibition.jpg" alt="Auto-City Carnival Premium Car Exhibition" class="event-card-img" style="object-position: center center;" loading="lazy">
+              <span class="event-media-tag">10 &ndash; 12 JUL 2026</span>
+            </div>
+            <div class="event-card-body">
+              <span class="event-category-pill">Auto Carnival</span>
+              <h3 class="event-card-title">Premium Car Exhibition</h3>
+              <p class="event-card-desc">
+                Latest supercar models, premium marques display, and exclusive manufacturer promotions at Concept Hall.
+              </p>
+            </div>
+          </article>
+
+          <!-- Card 3: #ffe0f8 (Meow & Woof Fashion Show) -->
+          <article class="event-card event-card-color-3" tabindex="0">
+            <div class="event-card-media">
+              <img src="../assets/images/events/pet-carnival-fashion-show.jpg" alt="Pet Carnival Spetcial Meow & Woof Fashion Show" class="event-card-img" style="object-position: center 30%;" loading="lazy">
+              <span class="event-media-tag">18 &ndash; 20 SEP 2026</span>
+            </div>
+            <div class="event-card-body">
+              <span class="event-category-pill">Pet Carnival</span>
+              <h3 class="event-card-title">Meow &amp; Woof Fashion Show</h3>
+              <p class="event-card-desc">
+                Celebrate Malaysia with adorable cats and dogs dressed in traditional national costumes on the grand runway.
+              </p>
+            </div>
+          </article>
+
+          <!-- Card 4: #d8f4e5 (Chinese Culture Dance) -->
+          <article class="event-card event-card-color-4" tabindex="0">
+            <div class="event-card-media">
+              <img src="../assets/images/events/dance-championship.jpg" alt="Auto-City Dance Championship Chinese Culture Dance" class="event-card-img" style="object-position: center center;" loading="lazy">
+              <span class="event-media-tag">4 DEC (FRI)</span>
+            </div>
+            <div class="event-card-body">
+              <span class="event-category-pill">Dance Championship</span>
+              <h3 class="event-card-title">Chinese Culture Dance</h3>
+              <p class="event-card-desc">
+                Auto-City Dance Championship featuring primary school cultural performers and traditional fan choreography.
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- See All Events CTA Button -->
+      <div class="events-footer-cta">
+        <a href="#events" class="events-all-btn" aria-label="See all events happening at Auto-City">
+          <span>See all events</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       8. A place for family, corporate, and beyond.
+       Design Reference: Temlis Acelia - Tabbed Services with Image Reveal
+       Light Mode Canvas · Curtain Reveal Image Transitions
+       Featuring: Nadi Glamping Suites, Lavenda Fun Park, Event Space & Team Building, Hubbiz
+       ======================================================================== -->
+  <section class="more-things-section" id="moreThingsToDo" aria-label="Find your suite. Family, friends, beyond.">
+    <div class="more-things-container">
+      
+      <!-- Section Header -->
+      <header class="more-things-header">
+        <h2 class="more-things-title">Find your suite.<br>Family, friends, beyond.</h2>
+        <p class="more-things-subtitle">
+          From tranquil riverfront glamping retreats and dynamic non-powered family parks to premier convention venues and executive co-working suites—uncover the multifaceted destinations shaping Auto-City.
+        </p>
+      </header>
+
+      <!-- Two-Column Tabbed Services & Image Reveal Grid -->
+      <div class="more-things-grid">
+        
+        <!-- Left Column: Interactive Tab List -->
+        <div class="more-things-tabs" role="tablist" aria-label="AutoCity Featured Offerings">
+
+          <!-- 01. Nadi Glamping Suites -->
+          <article 
+            class="more-things-tab-item tab-nadi active" 
+            id="tab-nadi" 
+            role="tab" 
+            aria-selected="true" 
+            aria-controls="panel-nadi" 
+            tabindex="0">
+            <div class="more-things-tab-header">
+              <div class="more-things-tab-title-group">
+                <span class="more-things-tab-num">01</span>
+                <h3 class="more-things-tab-title">Nadi Glamping Suites</h3>
+              </div>
+              <div class="more-things-tab-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </div>
+            </div>
+
+            <div class="more-things-tab-body">
+              <div class="more-things-tab-inner">
+                <!-- Mobile Inline Image Preview -->
+                <div class="more-things-mobile-img">
+                  <img src="../assets/images/more-things-to-do/nadi-glamping-suites.jpg" alt="Nadi Glamping Suites at Auto-City Riverpark" loading="lazy">
+                </div>
+
+                <p class="more-things-tab-desc">
+                  Penang's premier riverfront eco-glamping sanctuary nestled within Auto-City Riverpark. Unwind in air-conditioned timber cabins or romantic safari tents equipped with luxury King Koil beds, private en-suites, and starlit evening campfires along the tranquil riverbank.
+                </p>
+                <a href="#nadi-booking" class="more-things-action-btn">
+                  <span>Explore Glamping Suites</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 02. Lavenda Fun Park -->
+          <article 
+            class="more-things-tab-item tab-lavenda" 
+            id="tab-lavenda" 
+            role="tab" 
+            aria-selected="false" 
+            aria-controls="panel-lavenda" 
+            tabindex="-1">
+            <div class="more-things-tab-header">
+              <div class="more-things-tab-title-group">
+                <span class="more-things-tab-num">02</span>
+                <h3 class="more-things-tab-title">Lavenda Fun Park</h3>
+              </div>
+              <div class="more-things-tab-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </div>
+            </div>
+
+            <div class="more-things-tab-body">
+              <div class="more-things-tab-inner">
+                <!-- Mobile Inline Image Preview -->
+                <div class="more-things-mobile-img">
+                  <img src="../assets/images/more-things-to-do/lavenda-fun-park.jpg" alt="Lavenda Fun Park at Auto-City Phase 2" loading="lazy">
+                </div>
+
+                <p class="more-things-tab-desc">
+                  Penang's first non-powered outdoor adventure park spanning expansive green landscapes at Auto-City Phase 2. Experience zero-electricity kinetic thrills with massive multi-lane rainbow hill slides, sculptural lavender climbing towers, sky rope bridges, and joyful active family play.
+                </p>
+                <a href="#lavenda-park" class="more-things-action-btn">
+                  <span>Discover Lavenda Park</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 03. Event space rental and team building -->
+          <article 
+            class="more-things-tab-item tab-events" 
+            id="tab-events" 
+            role="tab" 
+            aria-selected="false" 
+            aria-controls="panel-events" 
+            tabindex="-1">
+            <div class="more-things-tab-header">
+              <div class="more-things-tab-title-group">
+                <span class="more-things-tab-num">03</span>
+                <h3 class="more-things-tab-title">Event space rental &amp; team building</h3>
+              </div>
+              <div class="more-things-tab-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </div>
+            </div>
+
+            <div class="more-things-tab-body">
+              <div class="more-things-tab-inner">
+                <!-- Mobile Inline Image Preview -->
+                <div class="more-things-mobile-img">
+                  <img src="../assets/images/more-things-to-do/event-space-team-building.jpg" alt="Event space rental and team building at Auto-City" loading="lazy">
+                </div>
+
+                <p class="more-things-tab-desc">
+                  Over 10,000 sq. ft. of versatile multi-purpose indoor and semi-outdoor event halls (Concept Hall &amp; Sky TV Stage) accommodating up to 800 guests. Complete your corporate retreat with adrenaline-fueled group bonding, from Wild Kart off-road racing to RaceRoom simulators and tournament pickleball.
+                </p>
+                <a href="#event-inquiry" class="more-things-action-btn">
+                  <span>Inquire Event Venues</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 04. Hubbiz - Commercial Office Space -->
+          <article 
+            class="more-things-tab-item tab-hubbiz" 
+            id="tab-hubbiz" 
+            role="tab" 
+            aria-selected="false" 
+            aria-controls="panel-hubbiz" 
+            tabindex="-1">
+            <div class="more-things-tab-header">
+              <div class="more-things-tab-title-group">
+                <span class="more-things-tab-num">04</span>
+                <h3 class="more-things-tab-title">Hubbiz - Commercial Office Space</h3>
+              </div>
+              <div class="more-things-tab-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </div>
+            </div>
+
+            <div class="more-things-tab-body">
+              <div class="more-things-tab-inner">
+                <!-- Mobile Inline Image Preview -->
+                <div class="more-things-mobile-img">
+                  <img src="../assets/images/more-things-to-do/hubbiz-commercial-office.jpg" alt="Hubbiz Commercial Office Space at Auto-City" loading="lazy">
+                </div>
+
+                <p class="more-things-tab-desc">
+                  Contemporary turnkey commercial office suites, collaborative co-working lounges, and high-tech corporate meeting boardrooms at Auto-City. Features 24/7 direct secured access, high-speed fiber connectivity, flexible month-to-month contracts, and ample free parking right in the city's commercial core.
+                </p>
+                <a href="#hubbiz-suites" class="more-things-action-btn">
+                  <span>Explore Hubbiz Suites</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Right Column: Large Stage Viewport with Signature Curtain Reveal -->
+        <div class="more-things-stage-wrap" aria-hidden="true">
+          <div class="more-things-stage">
+
+            <!-- Panel 1: Nadi Glamping Suites -->
+            <div class="more-things-panel active curtain-reveal" id="panel-nadi">
+              <img src="../assets/images/more-things-to-do/nadi-glamping-suites.jpg" alt="Nadi Glamping Suites" class="more-things-panel-img">
+            </div>
+
+            <!-- Panel 2: Lavenda Fun Park -->
+            <div class="more-things-panel" id="panel-lavenda">
+              <img src="../assets/images/more-things-to-do/lavenda-fun-park.jpg" alt="Lavenda Fun Park" class="more-things-panel-img">
+            </div>
+
+            <!-- Panel 3: Event space rental & team building -->
+            <div class="more-things-panel" id="panel-events">
+              <img src="../assets/images/more-things-to-do/event-space-team-building.jpg" alt="Event space rental and team building" class="more-things-panel-img">
+            </div>
+
+            <!-- Panel 4: Hubbiz - Commercial Office Space -->
+            <div class="more-things-panel" id="panel-hubbiz">
+              <img src="../assets/images/more-things-to-do/hubbiz-commercial-office.jpg" alt="Hubbiz Commercial Office Space" class="more-things-panel-img">
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Back to Showcase Capsule -->
+  <a href="../index.html" class="portal-back-capsule" title="Return to master showcase portal">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <line x1="19" y1="12" x2="5" y2="12"></line>
+      <polyline points="12 19 5 12 12 19"></polyline>
+    </svg>
+    <span>Showcase Portal</span>
+  </a>
+
+  <!-- ========================================================================
+       Interactivity Script (Habitline Exact Inward-Closing Scroll Engine)
+       ======================================================================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Dynamic Inward-Closing Scroll Effect (Habitline Signature Motion)
+      const header = document.getElementById('islandHeader');
+      let ticking = false;
+
+      const handleScroll = () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+            // Smooth hysteresis buffer: close inward once past 45px, reopen above 15px
+            if (scrollY > 45) {
+              header.classList.add('scrolled');
+            } else if (scrollY < 15) {
+              header.classList.remove('scrolled');
+            }
+            ticking = false;
+          });
+          ticking = true;
+        }
+      };
+
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      handleScroll(); // Initial check
+
+      // 2. Active nav link indicator on click
+      const navLinks = document.querySelectorAll('.island-nav-link, .island-dropdown-link');
+      navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          navLinks.forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+        });
+      });
+
+      // 3. Mobile/Tablet Dropdown Toggle (Habitline Interaction)
+      const mobileToggle = document.getElementById('islandMobileToggle');
+      const mobileCard = document.getElementById('islandMobileCard');
+      const mobileOverlay = document.getElementById('islandMobileOverlay');
+      
+      const setDrawerState = (open) => {
+        const isOpen = open !== undefined ? open : !mobileCard.classList.contains('open');
+        mobileCard.classList.toggle('open', isOpen);
+        mobileOverlay.classList.toggle('open', isOpen);
+        mobileToggle.classList.toggle('active', isOpen);
+        mobileToggle.setAttribute('aria-expanded', isOpen);
+        mobileCard.setAttribute('aria-hidden', !isOpen);
+      };
+
+      if (mobileToggle && mobileCard && mobileOverlay) {
+        mobileToggle.addEventListener('click', () => setDrawerState());
+        mobileOverlay.addEventListener('click', () => setDrawerState(false));
+
+        mobileCard.querySelectorAll('a').forEach(a => {
+          a.addEventListener('click', () => setDrawerState(false));
+        });
+
+        window.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && mobileCard.classList.contains('open')) {
+            setDrawerState(false);
+          }
+        });
+      }
+
+      // 4. Level.ai Signature Accordion Controller
+      const accordion = document.getElementById('levelAccordion');
+      const pillBadge = document.getElementById('levelActivePill');
+      if (accordion && pillBadge) {
+        const panels = accordion.querySelectorAll('.level-panel');
+        
+        const setActivePanel = (panel) => {
+          if (panel.classList.contains('active')) return;
+          
+          panels.forEach(p => {
+            p.classList.remove('active');
+            p.setAttribute('aria-expanded', 'false');
+          });
+          panel.classList.add('active');
+          panel.setAttribute('aria-expanded', 'true');
+          
+          const pillText = panel.getAttribute('data-pill');
+          if (pillText) {
+            pillBadge.style.opacity = '0.3';
+            pillBadge.style.transform = 'scale(0.96)';
+            setTimeout(() => {
+              pillBadge.textContent = pillText;
+              pillBadge.style.opacity = '1';
+              pillBadge.style.transform = 'scale(1)';
+            }, 120);
+          }
+        };
+
+        panels.forEach(panel => {
+          // Responsive: smooth hover on desktop, click/tap on touch
+          panel.addEventListener('mouseenter', () => {
+            if (window.innerWidth > 640) {
+              setActivePanel(panel);
+            }
+          });
+          panel.addEventListener('click', () => setActivePanel(panel));
+          panel.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              setActivePanel(panel);
+            }
+          });
+        });
+      }
+    });
+  </script>
+
+  <!-- ============================================================
+       AUTO-CITY APP DOWNLOAD CTA — FRIENDLY 3D PARALLAX SHOWCASE
+       Layout: 3-Column — Left Friendly Copy / Center 3D Interactive Phone / Right QR Card
+       Aesthetic: Clean light sky, soft clouds, compact Apple-inspired UI, mouse parallax
+       ============================================================ -->
+  <section class="hl-app-section" id="appDownload">
+
+    <!-- Atmospheric light sky & cloud backdrop -->
+    <div class="hl-app-backdrop" aria-hidden="true">
+      <div class="hl-app-cloud-glow hl-app-cloud-glow--left"></div>
+      <div class="hl-app-cloud-glow hl-app-cloud-glow--right"></div>
+      <div class="hl-app-mist-floor"></div>
+
+      <!-- Constellation of 4 animated ambient sparkles (appear every 3s and disappear) -->
+      <div class="hl-app-sparkle hl-app-sparkle--1" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 0C12 6.627 17.373 12 24 12C17.373 12 12 17.373 12 24C12 17.373 6.627 12 0 12C6.627 12 12 6.627 12 0Z" fill="url(#hlSparkleGrad1)"/>
+          <circle cx="12" cy="12" r="3" fill="#ffffff"/>
+          <defs>
+            <linearGradient id="hlSparkleGrad1" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#f59e0b"/>
+              <stop offset="1" stop-color="#fbbf24"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+
+      <div class="hl-app-sparkle hl-app-sparkle--2" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 0C12 6.627 17.373 12 24 12C17.373 12 12 17.373 12 24C12 17.373 6.627 12 0 12C6.627 12 12 6.627 12 0Z" fill="url(#hlSparkleGrad2)"/>
+          <circle cx="12" cy="12" r="2.5" fill="#ffffff"/>
+          <defs>
+            <linearGradient id="hlSparkleGrad2" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#38bdf8"/>
+              <stop offset="1" stop-color="#818cf8"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+
+      <div class="hl-app-sparkle hl-app-sparkle--3" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 0C12 6.627 17.373 12 24 12C17.373 12 12 17.373 12 24C12 17.373 6.627 12 0 12C6.627 12 12 6.627 12 0Z" fill="url(#hlSparkleGrad3)"/>
+          <circle cx="12" cy="12" r="3" fill="#ffffff"/>
+          <defs>
+            <linearGradient id="hlSparkleGrad3" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#e10021"/>
+              <stop offset="1" stop-color="#fb7185"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+
+      <div class="hl-app-sparkle hl-app-sparkle--4" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 0C12 6.627 17.373 12 24 12C17.373 12 12 17.373 12 24C12 17.373 6.627 12 0 12C6.627 12 12 6.627 12 0Z" fill="url(#hlSparkleGrad4)"/>
+          <circle cx="12" cy="12" r="2.5" fill="#ffffff"/>
+          <defs>
+            <linearGradient id="hlSparkleGrad4" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#f59e0b"/>
+              <stop offset="1" stop-color="#ec4899"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+    </div>
+
+    <div class="hl-app-container">
+
+      <!-- ── COLUMN 1: Friendly Value Proposition & Download Action ── -->
+      <div class="hl-app-col hl-app-col--left">
+        <h2 class="hl-app-headline">
+          Everything fun at <span class="hl-brand-name">Auto-City</span>,<br>
+          just a tap away
+        </h2>
+
+        <p class="hl-app-subtext">
+          From weekend night markets and live music to river cruises and family dining—find what’s buzzing today, save your go-to spots, and enjoy special treats on us.
+        </p>
+
+        <!-- Download Buttons (Habitline Pill Style) -->
+        <div class="hl-app-buttons">
+          <a href="#" class="hl-app-btn hl-app-btn--apple" aria-label="Download for iPhone on the App Store">
+            <svg class="hl-app-btn-icon" viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true">
+              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11"/>
+            </svg>
+            <span>Download for iPhone</span>
+          </a>
+
+          <a href="#" class="hl-app-btn hl-app-btn--android" aria-label="Get it on Android via Google Play">
+            <svg class="hl-app-btn-icon" viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true">
+              <path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-1.0003s.4482-1.0003.9993-1.0003c.5516 0 .9997.4486.9997 1.0003s-.4481 1.0003-.9997 1.0003m-11.046 0c-.5511 0-.9993-.4486-.9993-1.0003s.4482-1.0003.9993-1.0003c.5516 0 .9997.4486.9997 1.0003s-.4481 1.0003-.9997 1.0003m11.4045-6.02l1.996-3.4572c.1556-.2693.0632-.6135-.2061-.7691-.2693-.1556-.6135-.0632-.7691.2061l-2.0226 3.5032c-1.4728-.6728-3.1408-1.0583-4.9451-1.0583-1.8043 0-3.4723.3855-4.9451 1.0583l-2.0226-3.5032c-.1556-.2693-.4998-.3617-.7691-.2061-.2693.1556-.3617.4998-.2061.7691l1.996 3.4572c-3.1788 1.7371-5.352 4.9696-5.6967 8.7845h22.6846c-.3447-3.8149-2.5179-7.0474-5.6967-8.7845"/>
+            </svg>
+            <span>Get it on Android</span>
+          </a>
+        </div>
+
+        <!-- Rating trust strip -->
+        <div class="hl-app-ratings">
+          <div class="hl-app-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <span class="hl-app-rating-text">4.9 &bull; Loved by 50,000+ happy visitors</span>
+        </div>
+      </div>
+
+      <!-- ── COLUMN 2: 3D Hardware Phone Model with Native Auto-City UI & Parallax ── -->
+      <div class="hl-app-col hl-app-col--center">
+        <div class="hl-phone-stage" id="phoneStage" aria-label="Interactive 3D model of Auto-City mobile app">
+          <div class="hl-phone-3d-wrap" id="phone3DWrap">
+            
+            <!-- Ground Contact Shadow that moves opposite to tilt -->
+            <div class="hl-phone-3d-shadow" id="phone3DShadow"></div>
+
+            <!-- 3D Hardware Phone Device Body -->
+            <div class="hl-phone-device" id="phoneDevice">
+              
+              <!-- Side Hardware Buttons -->
+              <div class="hl-hw-btn hl-hw-btn--silent"></div>
+              <div class="hl-hw-btn hl-hw-btn--vol-up"></div>
+              <div class="hl-hw-btn hl-hw-btn--vol-down"></div>
+              <div class="hl-hw-btn hl-hw-btn--power"></div>
+
+              <!-- Outer Titanium Chassis & Chamfer Edge -->
+              <div class="hl-phone-titanium-bezel">
+                
+                <!-- Inner Screen Frame -->
+                <div class="hl-phone-screen-frame">
+
+                  <!-- Dynamic Island at top -->
+                  <div class="hl-phone-dynamic-island">
+                    <span class="hl-di-lens"></span>
+                    <span class="hl-di-indicator"></span>
+                  </div>
+
+                  <!-- Dynamic Specular Glare Reflection -->
+                  <div class="hl-phone-glass-glare" id="phone3DGlare"></div>
+
+                  <!-- ── LIVE AUTO-CITY APP UI (100% PURE VECTOR / HTML / CSS) ── -->
+                  <div class="hl-app-ui">
+                    
+                    <!-- iOS Status Bar -->
+                    <div class="hl-ui-status-bar">
+                      <span class="hl-ui-time">9:41</span>
+                      <div class="hl-ui-status-icons">
+                        <svg class="hl-ui-icon-cellular" viewBox="0 0 17 12" fill="currentColor"><rect x="1" y="8" width="2.5" height="4" rx="0.5"/><rect x="5" y="6" width="2.5" height="6" rx="0.5"/><rect x="9" y="3.5" width="2.5" height="8.5" rx="0.5"/><rect x="13" y="1" width="2.5" height="11" rx="0.5"/></svg>
+                        <svg class="hl-ui-icon-wifi" viewBox="0 0 16 12" fill="currentColor"><path d="M8 9.5a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm-3.5-2.5a5 5 0 017 0l1.2-1.2a6.7 6.7 0 00-9.4 0l1.2 1.2zm-2.4-2.4a8.4 8.4 0 0111.8 0l1.2-1.2a10.1 10.1 0 00-14.2 0l1.2 1.2z"/></svg>
+                        <div class="hl-ui-battery">
+                          <div class="hl-ui-battery-level"></div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- App Header -->
+                    <div class="hl-ui-header">
+                      <div class="hl-ui-user-info">
+                        <div class="hl-ui-greeting-row">
+                          <span class="hl-ui-greeting">Hey Alex,</span>
+                          <span class="hl-ui-wave">👋</span>
+                        </div>
+                        <div class="hl-ui-location">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="hl-ui-loc-icon"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                          <span>Auto-City Penang</span>
+                        </div>
+                      </div>
+                      <div class="hl-ui-avatar">
+                        <img src="../assets/images/quote-avatar-1.jpg" alt="Alex Profile">
+                        <span class="hl-ui-avatar-badge"></span>
+                      </div>
+                    </div>
+
+                    <!-- Weather & Date Pill -->
+                    <div class="hl-ui-weather-pill">
+                      <div class="hl-ui-weather-left">
+                        <span class="hl-ui-weather-icon">⛅</span>
+                        <div class="hl-ui-weather-text">
+                          <div class="hl-ui-weather-temp">29&deg;C Partly Cloudy</div>
+                          <div class="hl-ui-weather-date">Tuesday, 26 Oct</div>
+                        </div>
+                      </div>
+                      <span class="hl-ui-weather-tag">Good Day</span>
+                    </div>
+
+                    <!-- 4-Grid Compact Apple Bento Actions -->
+                    <div class="hl-ui-bento-grid">
+                      <div class="hl-ui-bento-item hl-ui-bento--dining">
+                        <div class="hl-ui-bento-icon">🍴</div>
+                        <span class="hl-ui-bento-label">Dining</span>
+                      </div>
+                      <div class="hl-ui-bento-item hl-ui-bento--funfair">
+                        <div class="hl-ui-bento-icon">🎡</div>
+                        <span class="hl-ui-bento-label">Fun Fair</span>
+                      </div>
+                      <div class="hl-ui-bento-item hl-ui-bento--events">
+                        <div class="hl-ui-bento-icon">📅</div>
+                        <span class="hl-ui-bento-label">Events</span>
+                      </div>
+                      <div class="hl-ui-bento-item hl-ui-bento--perks">
+                        <div class="hl-ui-bento-icon">🎟️</div>
+                        <span class="hl-ui-bento-label">Perks</span>
+                      </div>
+                    </div>
+
+                    <!-- Apple Wallet Style "Auto-City VIP Pass" -->
+                    <div class="hl-ui-pass-card">
+                      <div class="hl-ui-pass-top">
+                        <div class="hl-ui-pass-brand">
+                          <span class="hl-ui-pass-logo">A</span>
+                          <div>
+                            <div class="hl-ui-pass-title">Auto-City VIP Pass</div>
+                            <div class="hl-ui-pass-num">AC-8892 &bull; Active</div>
+                          </div>
+                        </div>
+                        <span class="hl-ui-pass-tier">ELITE</span>
+                      </div>
+                      <div class="hl-ui-pass-bottom">
+                        <div class="hl-ui-pass-points-val">23,500 <span class="hl-ui-pts-label">pts</span></div>
+                        <div class="hl-ui-pass-barcode">
+                          <span>|||| ||| ||||| ||| |||| ||</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Happening Tonight Event Feature Card -->
+                    <div class="hl-ui-event-card">
+                      <img src="../assets/images/events/event-4-carnival-nights.jpg" alt="Night Carnival" class="hl-ui-event-bg">
+                      <div class="hl-ui-event-overlay"></div>
+                      <div class="hl-ui-event-content">
+                        <div class="hl-ui-event-pill">
+                          <span class="hl-ui-live-dot"></span>
+                          LIVE NOW
+                        </div>
+                        <div class="hl-ui-event-title">Night Carnival &amp; Food Fair</div>
+                        <div class="hl-ui-event-meta">6:00 PM &ndash; 12:00 AM &bull; Central Ave</div>
+                      </div>
+                    </div>
+
+                    <!-- Apple Frosted Glass Tab Dock -->
+                    <div class="hl-ui-dock">
+                      <div class="hl-ui-dock-item hl-ui-dock-item--active">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                        <span class="hl-ui-dock-dot"></span>
+                      </div>
+                      <div class="hl-ui-dock-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+                      </div>
+                      <div class="hl-ui-dock-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+                      </div>
+                      <div class="hl-ui-dock-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
+                      </div>
+                    </div>
+
+                    <!-- Home indicator bar -->
+                    <div class="hl-ui-home-bar"></div>
+
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+
+            <!-- 3D Floating Pill Badge Hovering in Z-Space -->
+            <div class="hl-phone-float-badge">
+              <span class="hl-float-dot"></span>
+              <span>Live at Auto-City &bull; 29&deg;C</span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- ── COLUMN 3: Scan QR Code ── -->
+      <div class="hl-app-col hl-app-col--right">
+        <h3 class="hl-qr-headline">
+          Take the fun with you
+        </h3>
+
+        <div class="hl-qr-card">
+          <div class="hl-qr-frame">
+            <svg class="hl-qr-svg" aria-label="Auto-City App QR Code" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" xmlns:xlink="http://www.w3.org/1999/xlink" style="max-width: 100%;height: auto;" width="999" height="999" viewBox="0 0 999 999">
+
+<rect width="999" height="999" fill="#ffffff" x="0" y="0"></rect>
+
+<g fill="#000000">
+
+<g transform="translate(270,54) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(297,54) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(324,54) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(378,54) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(540,54) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(621,54) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(675,54) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(702,54) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(270,81) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(297,81) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(324,81) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(351,81) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(378,81) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(432,81) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(459,81) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(567,81) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(621,81) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(648,81) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(702,81) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(270,108) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(297,108) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(324,108) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(351,108) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(405,108) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(459,108) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(594,108) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(621,108) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(675,108) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(702,108) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(432,135) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(486,135) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(567,135) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(594,135) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(648,135) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(675,135) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(351,162) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(432,162) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(540,162) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(702,162) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(270,189) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(297,189) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(378,189) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(432,189) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(459,189) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(486,189) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(513,189) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(540,189) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(594,189) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(621,189) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(648,189) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(270,216) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(324,216) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(378,216) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(432,216) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(486,216) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(540,216) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(594,216) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(648,216) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(702,216) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(270,243) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(297,243) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(324,243) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(351,243) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(378,243) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(486,243) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(513,243) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(567,243) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(594,243) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(621,243) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(648,243) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(702,243) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(108,270) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(135,270) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(162,270) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(216,270) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(270,270) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(351,270) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(378,270) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(459,270) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(486,270) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(540,270) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(594,270) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(702,270) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(729,270) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(756,270) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(783,270) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(864,270) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(891,270) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(918,270) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(54,297) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(108,297) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(189,297) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(324,297) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(378,297) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(405,297) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(459,297) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(486,297) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(513,297) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(675,297) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(729,297) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(756,297) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(891,297) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(918,297) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(216,324) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(243,324) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(378,324) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(405,324) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(432,324) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(459,324) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(513,324) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(648,324) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(729,324) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(756,324) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(783,324) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(837,324) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(864,324) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(891,324) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(54,351) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(162,351) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(189,351) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(243,351) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(351,351) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(432,351) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(513,351) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(540,351) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(567,351) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(675,351) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(756,351) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(837,351) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(864,351) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(891,351) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(918,351) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(54,378) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(135,378) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(162,378) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(216,378) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(297,378) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(351,378) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(378,378) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(432,378) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(459,378) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(486,378) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(567,378) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(594,378) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(621,378) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(648,378) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(675,378) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(729,378) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(783,378) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(837,378) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(891,378) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(54,405) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(135,405) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(162,405) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(324,405) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(351,405) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(405,405) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(432,405) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(675,405) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(756,405) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(810,405) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(918,405) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(162,432) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(216,432) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(243,432) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(297,432) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(324,432) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(351,432) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(459,432) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(567,432) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(594,432) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(648,432) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(729,432) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(756,432) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(783,432) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(810,432) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(837,432) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(864,432) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(891,432) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(54,459) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(81,459) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(108,459) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(135,459) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(162,459) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(189,459) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(243,459) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(324,459) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(351,459) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(459,459) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(486,459) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(567,459) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(594,459) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(621,459) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(648,459) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(756,459) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(810,459) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(864,459) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(81,486) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(108,486) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(216,486) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(243,486) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(270,486) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(297,486) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(351,486) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(432,486) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(459,486) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(513,486) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(567,486) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(729,486) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(783,486) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(810,486) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(891,486) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(918,486) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(54,513) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(81,513) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(135,513) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(243,513) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(351,513) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(378,513) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(513,513) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(567,513) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(594,513) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(675,513) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(702,513) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(756,513) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(783,513) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(891,513) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(918,513) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(108,540) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(162,540) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(189,540) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(216,540) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(243,540) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(270,540) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(297,540) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(324,540) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(405,540) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(567,540) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(594,540) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(648,540) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(864,540) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(891,540) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(81,567) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(108,567) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(162,567) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(243,567) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(324,567) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(351,567) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(378,567) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(405,567) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(540,567) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(621,567) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(648,567) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(675,567) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(702,567) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(729,567) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(783,567) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(810,567) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(837,567) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(864,567) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(891,567) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(162,594) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(216,594) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(270,594) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(297,594) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(351,594) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(405,594) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(486,594) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(567,594) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(648,594) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(702,594) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(783,594) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(810,594) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(837,594) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(891,594) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(918,594) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(54,621) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(81,621) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(108,621) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(135,621) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(162,621) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(243,621) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(270,621) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(324,621) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(405,621) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(459,621) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(513,621) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(540,621) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(594,621) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(729,621) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(783,621) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(837,621) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(864,621) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(918,621) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(54,648) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(108,648) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(216,648) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(297,648) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(405,648) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(432,648) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(540,648) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(567,648) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(648,648) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(675,648) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(702,648) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(810,648) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(837,648) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(891,648) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(54,675) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(108,675) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(135,675) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(324,675) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(351,675) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(459,675) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(513,675) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(540,675) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(567,675) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(594,675) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(621,675) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(675,675) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(837,675) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(864,675) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(891,675) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(918,675) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(54,702) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(135,702) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(216,702) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(243,702) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(351,702) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(378,702) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(432,702) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(459,702) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(513,702) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(594,702) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(648,702) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(675,702) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(702,702) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(729,702) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(756,702) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(783,702) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(810,702) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(837,702) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(270,729) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(432,729) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(486,729) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(567,729) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(594,729) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(621,729) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(702,729) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(810,729) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(837,729) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(864,729) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(891,729) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(918,729) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(324,756) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(378,756) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(432,756) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(459,756) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(513,756) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(540,756) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(594,756) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(621,756) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(675,756) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(702,756) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(756,756) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(810,756) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(864,756) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(891,756) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(378,783) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(459,783) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(486,783) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(513,783) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(540,783) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(621,783) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(648,783) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(675,783) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(702,783) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(810,783) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(837,783) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(864,783) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(891,783) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(918,783) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(270,810) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(324,810) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(351,810) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(378,810) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(405,810) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(432,810) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(459,810) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(486,810) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(621,810) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(702,810) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(729,810) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(756,810) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(783,810) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(810,810) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(837,810) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(891,810) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(918,810) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(270,837) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(297,837) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(351,837) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(405,837) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(432,837) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(459,837) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(486,837) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(540,837) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(567,837) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(594,837) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(648,837) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(675,837) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(729,837) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(810,837) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(837,837) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(891,837) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(270,864) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(297,864) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(324,864) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(378,864) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(486,864) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(594,864) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(702,864) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(729,864) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(756,864) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(837,864) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(324,891) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(351,891) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(405,891) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(432,891) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(540,891) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(567,891) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(594,891) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(621,891) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(648,891) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(675,891) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(783,891) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(864,891) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(297,918) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(324,918) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(378,918) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(405,918) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(432,918) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(459,918) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(540,918) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(648,918) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(675,918) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(702,918) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(729,918) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(864,918) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(891,918) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+</g><g><g transform="translate(54,54)" fill="#000000"><g transform="scale(13.5)"><path d="M0,0v14h14V0H0z M12,12H2V2h10V12z"></path></g></g>
+
+<g transform="translate(756,54)" fill="#000000"><g transform="scale(13.5)"><path d="M0,0v14h14V0H0z M12,12H2V2h10V12z"></path></g></g>
+
+<g transform="translate(54,756)" fill="#000000"><g transform="scale(13.5)"><path d="M0,0v14h14V0H0z M12,12H2V2h10V12z"></path></g></g>
+
+<g transform="translate(108,108)" fill="#000000"><g transform="scale(13.5)"><rect width="6" height="6"></rect></g></g>
+
+<g transform="translate(810,108)" fill="#000000"><g transform="scale(13.5)"><rect width="6" height="6"></rect></g></g>
+
+<g transform="translate(108,810)" fill="#000000"><g transform="scale(13.5)"><rect width="6" height="6"></rect></g></g></g>
+
+</svg>
+          </div>
+
+          <div class="hl-qr-meta">
+            <span class="hl-qr-url">autocity.com.my/app</span>
+            <span class="hl-qr-pill">Free &bull; iOS &amp; Android</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── HABITLINE LIGHT MODE CTA STYLES ──────────────────────── -->
+  <style>
+  .hl-app-section {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 40%, #eef3f8 75%, #ffffff 100%);
+    padding: clamp(5rem, 8vw, 7.5rem) 0 clamp(4rem, 6vw, 6rem);
+    isolation: isolate;
+  }
+
+  /* Atmospheric clouds & sky backdrop */
+  .hl-app-backdrop {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .hl-app-cloud-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.65;
+  }
+
+  .hl-app-cloud-glow--left {
+    width: 650px;
+    height: 450px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0) 70%);
+    top: 5%;
+    left: -150px;
+  }
+
+  .hl-app-cloud-glow--right {
+    width: 700px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 70%);
+    top: 15%;
+    right: -180px;
+  }
+
+  .hl-app-mist-floor {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 140px;
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.6) 45%, transparent 100%);
+    z-index: 1;
+  }
+  /* ── AMBIENT SPARKLES (Appears every 3s & disappears) ── */
+  .hl-app-sparkle {
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0;
+    will-change: transform, opacity;
+    animation: hlSparkleTwinkle 3s cubic-bezier(0.23, 1, 0.32, 1) infinite;
+  }
+
+  .hl-app-sparkle svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .hl-app-sparkle--1 {
+    top: 14%;
+    left: 18%;
+    width: 26px;
+    height: 26px;
+    animation-delay: 0s;
+    filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.65));
+  }
+
+  .hl-app-sparkle--2 {
+    top: 22%;
+    right: 14%;
+    width: 22px;
+    height: 22px;
+    animation-delay: 0.25s;
+    filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.65));
+  }
+
+  .hl-app-sparkle--3 {
+    top: 66%;
+    right: 27%;
+    width: 24px;
+    height: 24px;
+    animation-delay: 0.15s;
+    filter: drop-shadow(0 0 10px rgba(225, 0, 33, 0.55));
+  }
+
+  .hl-app-sparkle--4 {
+    top: 74%;
+    left: 26%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 0.35s;
+    filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.6));
+  }
+
+  @keyframes hlSparkleTwinkle {
+    0% {
+      opacity: 0;
+      transform: scale(0.2) rotate(0deg);
+    }
+    20% {
+      opacity: 1;
+      transform: scale(1.15) rotate(45deg);
+    }
+    40% {
+      opacity: 0.9;
+      transform: scale(0.95) rotate(70deg);
+    }
+    55% {
+      opacity: 0;
+      transform: scale(0.2) rotate(90deg);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(0.2) rotate(90deg);
+    }
+  }
+
+
+  /* 3-Column Habitline Grid */
+  .hl-app-container {
+    position: relative;
+    z-index: 2;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 clamp(1.5rem, 4.5vw, 4rem);
+    display: grid;
+    grid-template-columns: 1.15fr auto 1fr;
+    align-items: center;
+    gap: clamp(2.5rem, 5vw, 6rem);
+  }
+
+  /* ── COLUMN 1: LEFT ── */
+  .hl-app-col--left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hl-brand-name {
+    white-space: nowrap !important;
+    display: inline-block;
+  }
+
+  .hl-app-headline {
+    font-family: var(--font-display, 'Creato Display', sans-serif) !important;
+    font-size: clamp(2.4rem, 4vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.14;
+    letter-spacing: -0.03em;
+    color: #0f172a;
+    margin: 0 0 1.35rem 0;
+  }
+
+  .hl-app-subtext {
+    font-family: var(--font-body, 'Switzer', sans-serif);
+    font-size: clamp(0.975rem, 1.2vw, 1.1rem);
+    font-weight: 400;
+    line-height: 1.7;
+    color: #475569;
+    max-width: 42ch;
+    margin: 0 0 2.25rem 0;
+  }
+
+  /* Buttons */
+  .hl-app-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    margin-bottom: 1.75rem;
+    width: 100%;
+    max-width: 290px;
+  }
+
+  .hl-app-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.95rem 1.75rem;
+    border-radius: 9999px;
+    font-family: var(--font-body, 'Switzer', sans-serif);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 220ms cubic-bezier(0.16, 1, 0.3, 1),
+                background 180ms ease,
+                border-color 180ms ease;
+    will-change: transform;
+  }
+
+  .hl-app-btn--apple {
+    background: #0f172a;
+    color: #ffffff;
+    box-shadow: 0 8px 24px -4px rgba(15, 23, 42, 0.28), 0 2px 6px rgba(15, 23, 42, 0.12);
+  }
+
+  .hl-app-btn--apple:hover {
+    background: var(--color-accent-red, #e10021);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px -4px rgba(225, 0, 33, 0.4), 0 4px 10px rgba(225, 0, 33, 0.2);
+    color: #ffffff;
+  }
+
+  .hl-app-btn--apple:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  .hl-app-btn--android {
+    background: #ffffff;
+    color: #0f172a;
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+  }
+
+  .hl-app-btn--android:hover {
+    background: #f8fafc;
+    border-color: rgba(15, 23, 42, 0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.09);
+  }
+
+  .hl-app-btn--android:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  .hl-app-btn-icon {
+    flex-shrink: 0;
+  }
+
+  .hl-app-ratings {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .hl-app-stars {
+    color: #f59e0b;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+  }
+
+  .hl-app-rating-text {
+    font-family: var(--font-body, 'Switzer', sans-serif);
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #64748b;
+  }
+
+  /* ── COLUMN 2: 3D PHONE WITH PARALLAX MOUSE EFFECT ── */
+  .hl-app-col--center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .hl-phone-stage {
+    perspective: 1200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    padding: 1.5rem 0;
+  }
+
+  .hl-phone-3d-wrap {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    width: clamp(280px, 21vw, 305px);
+    max-width: 100%;
+    will-change: transform;
+    cursor: grab;
+  }
+
+  /* ── 3D Phone Hardware Chassis — True Flagship Mobile Aspect Ratio (19.5 : 9) ── */
+  .hl-phone-device {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9 / 19.5;
+    transform-style: preserve-3d;
+    transform: translateZ(0);
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Physical Side Buttons */
+  .hl-hw-btn {
+    position: absolute;
+    background: #334155;
+    border-radius: 4px;
+    z-index: 0;
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.3), 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  .hl-hw-btn--silent {
+    left: -4px;
+    top: 90px;
+    width: 4px;
+    height: 24px;
+  }
+  .hl-hw-btn--vol-up {
+    left: -4px;
+    top: 130px;
+    width: 4px;
+    height: 48px;
+  }
+  .hl-hw-btn--vol-down {
+    left: -4px;
+    top: 190px;
+    width: 4px;
+    height: 48px;
+  }
+  .hl-hw-btn--power {
+    right: -4px;
+    top: 140px;
+    width: 4px;
+    height: 70px;
+  }
+
+  /* Outer Titanium Bezel */
+  .hl-phone-titanium-bezel {
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(145deg, #475569 0%, #1e293b 35%, #0f172a 70%, #334155 100%);
+    padding: 7px;
+    border-radius: 52px;
+    box-shadow:
+      0 0 0 1.5px rgba(255, 255, 255, 0.28),
+      0 0 0 3px rgba(15, 23, 42, 0.85),
+      0 25px 65px -10px rgba(15, 23, 42, 0.28),
+      0 50px 100px -20px rgba(15, 23, 42, 0.22);
+    transform-style: preserve-3d;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+  }
+
+  /* Inner Screen Frame */
+  .hl-phone-screen-frame {
+    position: relative;
+    background: #0a0e14;
+    padding: 2.5px;
+    border-radius: 45px;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+  }
+
+  /* Dynamic Island */
+  .hl-phone-dynamic-island {
+    position: absolute;
+    top: 11px;
+    left: 50%;
+    transform: translateX(-50%) translateZ(26px);
+    width: 92px;
+    height: 24px;
+    background: #000000;
+    border-radius: 9999px;
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 9px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    pointer-events: none;
+  }
+
+  .hl-di-lens {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #1e293b 0%, #050508 80%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .hl-di-indicator {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #e10021;
+    box-shadow: 0 0 6px rgba(225, 0, 33, 0.8);
+    animation: hlPulseDot 2s ease-in-out infinite;
+  }
+
+  /* Glass Glare Overlay */
+  .hl-phone-glass-glare {
+    position: absolute;
+    inset: 0;
+    border-radius: 43px;
+    background: radial-gradient(circle at var(--glare-x, 50%) var(--glare-y, 30%), rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0.08) 45%, transparent 70%);
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    opacity: 0.45;
+    z-index: 25;
+    transition: opacity 0.3s ease;
+    transform: translateZ(20px);
+  }
+
+  /* ── Auto-City Live App UI — Authentic Slender Mobile App Proportions ── */
+  .hl-app-ui {
+    background: #ffffff;
+    border-radius: 43px;
+    padding: 14px 15px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    flex: 1;
+    position: relative;
+    z-index: 10;
+    user-select: none;
+    transform: translateZ(6px);
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  /* Status Bar */
+  .hl-ui-status-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 6px 1px;
+    color: #0f172a;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+  }
+
+  .hl-ui-time {
+    letter-spacing: -0.02em;
+  }
+
+  .hl-ui-status-icons {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .hl-ui-icon-cellular,
+  .hl-ui-icon-wifi {
+    width: 13px;
+    height: 10px;
+  }
+
+  .hl-ui-battery {
+    width: 19px;
+    height: 10px;
+    border: 1.5px solid currentColor;
+    border-radius: 3px;
+    padding: 1px;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  .hl-ui-battery::after {
+    content: '';
+    position: absolute;
+    right: -3px;
+    top: 2px;
+    width: 1.5px;
+    height: 3.5px;
+    background: currentColor;
+    border-radius: 0 1px 1px 0;
+  }
+
+  .hl-ui-battery-level {
+    width: 75%;
+    height: 100%;
+    background: currentColor;
+    border-radius: 1px;
+  }
+
+  /* App Header */
+  .hl-ui-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2px;
+  }
+
+  .hl-ui-greeting-row {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .hl-ui-greeting {
+    font-family: var(--font-display, 'Creato Display', sans-serif);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #0f172a;
+    letter-spacing: -0.02em;
+  }
+
+  .hl-ui-wave {
+    font-size: 1.05rem;
+  }
+
+  .hl-ui-location {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    font-family: var(--font-body, 'Switzer', sans-serif);
+    font-size: 0.68rem;
+    font-weight: 500;
+    color: #64748b;
+    margin-top: 1px;
+  }
+
+  .hl-ui-loc-icon {
+    width: 11px;
+    height: 11px;
+    color: #e10021;
+    flex-shrink: 0;
+  }
+
+  .hl-ui-avatar {
+    position: relative;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    overflow: visible;
+  }
+
+  .hl-ui-avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1.5px solid #ffffff;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.12);
+  }
+
+  .hl-ui-avatar-badge {
+    position: absolute;
+    bottom: -1px;
+    right: -1px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #10b981;
+    border: 2px solid #ffffff;
+  }
+
+  /* Weather & Date Pill */
+  .hl-ui-weather-pill {
+    background: #f8fafc;
+    border: 1px solid rgba(226, 232, 240, 0.85);
+    border-radius: 16px;
+    padding: 7px 11px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .hl-ui-weather-left {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .hl-ui-weather-icon {
+    font-size: 1.15rem;
+    line-height: 1;
+  }
+
+  .hl-ui-weather-temp {
+    font-family: var(--font-body, 'Switzer', sans-serif);
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #0f172a;
+    line-height: 1.2;
+  }
+
+  .hl-ui-weather-date {
+    font-family: var(--font-body, 'Switzer', sans-serif);
+    font-size: 0.62rem;
+    font-weight: 400;
+    color: #64748b;
+  }
+
+  .hl-ui-weather-tag {
+    font-family: var(--font-body, 'Switzer', sans-serif);
+    font-size: 0.62rem;
+    font-weight: 600;
+    color: #1d4ed8;
+    background: #eff6ff;
+    padding: 2px 6px;
+    border-radius: 9999px;
+  }
+
+  /* 4-Grid Compact Apple Bento Actions */
+  .hl-ui-bento-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 7px;
+  }
+
+  .hl-ui-bento-item {
+    border-radius: 15px;
+    padding: 8px 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    cursor: pointer;
+    transition: transform 0.18s ease;
+  }
+
+  .hl-ui-bento-item:hover {
+    transform: translateY(-2px);
+  }
+
+  .hl-ui-bento--dining  { background: #fff7ed; border: 1px solid rgba(251, 146, 60, 0.18); }
+  .hl-ui-bento--funfair { background: #fef2f2; border: 1px solid rgba(239, 68, 68, 0.18); }
+  .hl-ui-bento--events  { background: #eff6ff; border: 1px solid rgba(59, 130, 246, 0.18); }
+  .hl-ui-bento--perks   { background: #f0fdf4; border: 1px solid rgba(34, 197, 94, 0.18); }
+
+  .hl-ui-bento-icon {
+    font-size: 1.1rem;
+    line-height: 1;
+  }
+
+  .hl-ui-bento-label {
+    font-family: var(--font-body, 'Switzer', sans-serif);
+    font-size: 0.63rem;
+    font-weight: 600;
+    color: #1e293b;
+  }
+
+  /* Apple Wallet Style "Auto-City VIP Pass" */
+  .hl-ui-pass-card {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 65%, #293548 100%);
+    border-radius: 16px;
+    padding: 11px 13px;
+    color: #ffffff;
+    box-shadow: 0 10px 22px -4px rgba(15, 23, 42, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    transform: translateZ(10px);
+    transition: transform 0.25s ease;
+  }
+
+  .hl-ui-pass-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+  }
+
+  .hl-ui-pass-brand {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .hl-ui-pass-logo {
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    background: #e10021;
+    color: #ffffff;
+    font-family: var(--font-display, 'Creato Display', sans-serif);
+    font-weight: 800;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(225, 0, 33, 0.4);
+  }
+
+  .hl-ui-pass-title {
+    font-family: var(--font-display, 'Creato Display', sans-serif);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  .hl-ui-pass-num {
+    font-family: var(--font-body, 'Switzer', sans-serif);
+    font-size: 0.6rem;
+    color: #94a3b8;
+  }
+
+  .hl-ui-pass-tier {
+    font-family: var(--font-body, 'Switzer', sans-serif);
+    font-size: 0.55rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #fcd34d;
+    background: rgba(252, 211, 77, 0.15);
+    border: 1px solid rgba(252, 211, 77, 0.35);
+    padding: 2px 5px;
+    border-radius: 9999px;
+  }
+
+  .hl-ui-pass-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .hl-ui-pass-points-val {
+    font-family: var(--font-display, 'Creato Display', sans-serif);
+    font-size: 1.1rem;
+    font-weight: 800;
+    line-height: 1;
+    color: #ffffff;
+  }
+
+  .hl-ui-pts-label {
+    font-size: 0.62rem;
+    font-weight: 500;
+    color: #94a3b8;
+  }
+
+  .hl-ui-pass-barcode {
+    font-family: monospace;
+    font-size: 0.58rem;
+    color: rgba(255, 255, 255, 0.45);
+    letter-spacing: -0.05em;
+  }
+
+  /* Happening Tonight Feature Event Card */
+  .hl-ui-event-card {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    height: 92px;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+  }
+
+  .hl-ui-event-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hl-ui-event-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.75) 100%);
+  }
+
+  .hl-ui-event-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 9px 11px;
+    color: #ffffff;
+  }
+
+  .hl-ui-event-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(225, 0, 33, 0.85);
+    color: #ffffff;
+    font-family: var(--font-body, 'Switzer', sans-serif);
+    font-size: 0.52rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 2px 5px;
+    border-radius: 9999px;
+    margin-bottom: 2px;
+  }
+
+  .hl-ui-live-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #ffffff;
+    animation: hlPulseDot 1.5s ease-in-out infinite;
+  }
+
+  .hl-ui-event-title {
+    font-family: var(--font-display, 'Creato Display', sans-serif);
+    font-size: 0.78rem;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .hl-ui-event-meta {
+    font-family: var(--font-body, 'Switzer', sans-serif);
+    font-size: 0.58rem;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  /* Apple Frosted Glass Tab Dock */
+  .hl-ui-dock {
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    border-radius: 22px;
+    padding: 5px 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+  }
+
+  .hl-ui-dock-item {
+    position: relative;
+    width: 30px;
+    height: 26px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #94a3b8;
+    cursor: pointer;
+  }
+
+  .hl-ui-dock-item svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .hl-ui-dock-item--active {
+    color: #0f172a;
+  }
+
+  .hl-ui-dock-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #e10021;
+    margin-top: 1px;
+  }
+
+  /* Home Indicator */
+  .hl-ui-home-bar {
+    width: 36%;
+    height: 3px;
+    background: #0f172a;
+    border-radius: 9999px;
+    margin: 2px auto 0;
+    opacity: 0.6;
+  }
+
+  /* 3D Floating Pill Badge Hovering in Z-Space */
+  .hl-phone-float-badge {
+    position: absolute;
+    top: 18%;
+    right: -18px;
+    transform: translateZ(46px);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    padding: 0.45rem 0.95rem;
+    border-radius: 9999px;
+    font-family: var(--font-body, 'Switzer', sans-serif);
+    font-size: 0.76rem;
+    font-weight: 600;
+    color: #0f172a;
+    box-shadow: 0 12px 28px -4px rgba(15, 23, 42, 0.12), 0 2px 6px rgba(15, 23, 42, 0.04);
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  .hl-float-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.25);
+    animation: hlPulseDot 2s ease-in-out infinite;
+  }
+
+  @keyframes hlPulseDot {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(0.8); opacity: 0.6; }
+  }
+
+  /* 3D Contact Shadow underneath */
+  .hl-phone-3d-shadow {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    width: 72%;
+    height: 28px;
+    transform: translateX(-50%) translateZ(-35px);
+    background: radial-gradient(ellipse at center, rgba(15, 23, 42, 0.22) 0%, rgba(15, 23, 42, 0.06) 50%, transparent 75%);
+    filter: blur(14px);
+    border-radius: 50%;
+    pointer-events: none;
+    will-change: transform;
+  }
+
+  /* ── COLUMN 3: RIGHT QR CARD — Spaced Away to the Right ── */
+  .hl-app-col--right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-self: end;
+    padding-left: clamp(1.5rem, 4vw, 4rem);
+  }
+
+  .hl-qr-headline {
+    font-family: var(--font-display, 'Creato Display', sans-serif) !important;
+    font-size: clamp(1.4rem, 2vw, 1.85rem);
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.025em;
+    color: #0f172a;
+    margin: 0 0 1.5rem 0;
+  }
+
+  .hl-qr-card {
+    background: #ffffff;
+    border-radius: 28px;
+    padding: clamp(1.25rem, 2vw, 1.75rem);
+    box-shadow: 0 24px 50px -10px rgba(15, 23, 42, 0.08), 0 2px 8px rgba(15, 23, 42, 0.03);
+    border: 1px solid rgba(226, 232, 240, 0.85);
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.1rem;
+    transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .hl-qr-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 32px 64px -10px rgba(15, 23, 42, 0.14), 0 4px 12px rgba(15, 23, 42, 0.04);
+  }
+
+  .hl-qr-frame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .hl-qr-svg {
+    width: clamp(160px, 13.5vw, 195px);
+    height: auto;
+    aspect-ratio: 1 / 1;
+    display: block;
+    border-radius: 12px;
+  }
+
+  .hl-qr-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .hl-qr-url {
+    font-family: var(--font-body, 'Switzer', sans-serif);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #1d4ed8;
+    letter-spacing: 0.01em;
+  }
+
+  .hl-qr-pill {
+    font-family: var(--font-body, 'Switzer', sans-serif);
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: #64748b;
+  }
+
+  /* ── RESPONSIVE ADAPTATIONS ── */
+  @media (max-width: 1080px) {
+    .hl-app-container {
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+        "left right"
+        "center center";
+      gap: 3.5rem 2rem;
+    }
+    .hl-app-col--left   { grid-area: left; }
+    .hl-app-col--right  { 
+      grid-area: right; 
+      justify-self: end;
+      align-items: flex-start;
+      padding-left: 0;
+    }
+    .hl-app-col--center { 
+      grid-area: center; 
+      margin-top: 1rem; 
+    }
+    .hl-phone-3d-wrap   { 
+      width: 295px; 
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hl-app-section {
+      padding: 4.5rem 0 3.5rem;
+    }
+    .hl-app-container {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "left"
+        "center"
+        "right";
+      gap: 2.75rem;
+      text-align: center;
+    }
+    .hl-app-col--left   { align-items: center; }
+    .hl-app-col--right  { 
+      align-items: center; 
+      justify-self: center;
+      padding-left: 0;
+    }
+    .hl-app-buttons     { align-items: center; }
+    .hl-app-btn         { width: 100%; justify-content: center; }
+    .hl-app-subtext     { max-width: 100%; }
+    .hl-phone-3d-wrap   { width: clamp(260px, 78vw, 295px); }
+    .hl-phone-float-badge { right: -6px; }
+    .hl-app-sparkle--1 { top: 8%; left: 8%; width: 22px; height: 22px; }
+    .hl-app-sparkle--2 { top: 12%; right: 8%; width: 20px; height: 20px; }
+    .hl-app-sparkle--3 { top: 58%; right: 10%; width: 22px; height: 22px; }
+    .hl-app-sparkle--4 { top: 92%; left: 12%; width: 18px; height: 18px; }
+  }
+
+  /* ── ENTRANCE TRANSITION ── */
+  @media (prefers-reduced-motion: reduce) {
+    .hl-app-sparkle {
+      animation: none !important;
+      opacity: 0 !important;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hl-app-col {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .hl-app-col--left   { transition-delay: 0.05s; }
+    .hl-app-col--center { transition-delay: 0.15s; }
+    .hl-app-col--right  { transition-delay: 0.25s; }
+
+    .hl-app-section.is-visible .hl-app-col {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  </style>
+
+  <!-- CTA Section Entrance Observer & 3D Mouse Parallax Script -->
+  <script>
+  (function () {
+    var s = document.getElementById('appDownload');
+    if (!s) return;
+
+    // Entrance observer
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      io.observe(s);
+    } else {
+      s.classList.add('is-visible');
+    }
+
+    // 3D Parallax Mouse Physics
+    var card = document.getElementById('phone3DWrap');
+    var glare = document.getElementById('phone3DGlare');
+    var shadow = document.getElementById('phone3DShadow');
+    if (!card) return;
+
+    var mouseX = 0;
+    var mouseY = 0;
+    var currentRotX = 0;
+    var currentRotY = 0;
+    var currentTransX = 0;
+    var currentTransY = 0;
+    var isHovered = false;
+
+    s.addEventListener('mousemove', function (e) {
+      var rect = s.getBoundingClientRect();
+      var x = e.clientX - rect.left;
+      var y = e.clientY - rect.top;
+      // Normalized between -1 and 1
+      mouseX = ((x / rect.width) - 0.5) * 2;
+      mouseY = ((y / rect.height) - 0.5) * 2;
+      isHovered = true;
+
+      if (glare) {
+        var gx = ((mouseX + 1) / 2) * 100;
+        var gy = ((mouseY + 1) / 2) * 100;
+        glare.style.setProperty('--glare-x', gx + '%');
+        glare.style.setProperty('--glare-y', gy + '%');
+        glare.style.opacity = '0.65';
+      }
+    });
+
+    s.addEventListener('mouseleave', function () {
+      isHovered = false;
+      mouseX = 0;
+      mouseY = 0;
+      if (glare) {
+        glare.style.opacity = '0.45';
+      }
+    });
+
+    function updateParallax() {
+      // Tilt angles: -14deg on X, 16deg on Y
+      var targetRotX = isHovered ? -mouseY * 13 : Math.sin(Date.now() * 0.0016) * 3;
+      var targetRotY = isHovered ? mouseX * 15 : Math.cos(Date.now() * 0.0016) * 3.5;
+      var targetTransX = isHovered ? mouseX * 10 : 0;
+      var targetTransY = isHovered ? mouseY * 8 : Math.sin(Date.now() * 0.002) * -7;
+
+      // Damped smooth lerp
+      currentRotX += (targetRotX - currentRotX) * 0.08;
+      currentRotY += (targetRotY - currentRotY) * 0.08;
+      currentTransX += (targetTransX - currentTransX) * 0.08;
+      currentTransY += (targetTransY - currentTransY) * 0.08;
+
+      card.style.transform = 'translate3d(' + currentTransX.toFixed(2) + 'px, ' + currentTransY.toFixed(2) + 'px, 0px) rotateX(' + currentRotX.toFixed(2) + 'deg) rotateY(' + currentRotY.toFixed(2) + 'deg)';
+
+      if (shadow) {
+        var sX = -currentRotY * 1.6;
+        var sY = currentRotX * 0.8;
+        shadow.style.transform = 'translateX(calc(-50% + ' + sX.toFixed(1) + 'px)) translateY(' + sY.toFixed(1) + 'px) translateZ(-35px)';
+      }
+
+      requestAnimationFrame(updateParallax);
+    }
+
+    requestAnimationFrame(updateParallax);
+  })();
+  </script>
+
+  <!-- ========================================================================
+       AUTO-CITY ENCLOSED ISLAND FOOTER (ORCHID SECURITY REFERENCE — LIGHT MODE)
+       ======================================================================== -->
+  <footer class="ac-footer-section" id="siteFooter" role="contentinfo" aria-label="Auto-City Site Footer">
+    <div class="ac-footer-shell">
+
+      <!-- ── 1. Top Content Grid ── -->
+      <div class="ac-footer-grid">
+
+        <!-- Column 1: Brand, Tagline & Social Handles -->
+        <div class="ac-footer-brand-col">
+          <a href="home.html" class="ac-footer-logo-link" aria-label="Auto-City Homepage">
+            <img src="../Graphic/auto-city-logo.svg" alt="Auto-City Logo" class="ac-footer-logo-img" width="168" height="42">
+          </a>
+
+          <p class="ac-footer-tagline">
+            Penang's premier 1-stop automotive, dining, and lifestyle tourism destination on the Juru riverfront.
+          </p>
+
+          <!-- Social Icons Row (Matching Orchid's horizontal icon row) -->
+          <div class="ac-footer-socials" aria-label="Follow Auto-City Social Channels">
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/company/autocitypenang" target="_blank" rel="noopener noreferrer" class="ac-social-btn" aria-label="LinkedIn" title="Auto-City on LinkedIn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+
+            <!-- Facebook -->
+            <a href="https://www.facebook.com/autocitypenang" target="_blank" rel="noopener noreferrer" class="ac-social-btn" aria-label="Facebook" title="Auto-City on Facebook">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+              </svg>
+            </a>
+
+            <!-- X / Twitter -->
+            <a href="https://x.com/autocitypenang" target="_blank" rel="noopener noreferrer" class="ac-social-btn" aria-label="X (Twitter)" title="Auto-City on X">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+            </a>
+
+            <!-- YouTube -->
+            <a href="https://www.youtube.com/@autocitypenang" target="_blank" rel="noopener noreferrer" class="ac-social-btn" aria-label="YouTube" title="Auto-City on YouTube">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"></polygon>
+              </svg>
+            </a>
+
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/autocity_penang" target="_blank" rel="noopener noreferrer" class="ac-social-btn" aria-label="Instagram" title="Auto-City on Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+
+            <!-- TikTok -->
+            <a href="https://www.tiktok.com/@autocitypenang" target="_blank" rel="noopener noreferrer" class="ac-social-btn" aria-label="TikTok" title="Auto-City on TikTok">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.59-1.01V15c0 1.91-.6 3.84-1.85 5.28-1.43 1.67-3.6 2.62-5.78 2.5-2.48-.12-4.78-1.55-5.96-3.73-1.19-2.18-1.09-4.94.27-7.03 1.34-2.07 3.75-3.32 6.22-3.15.11 0 .22.01.33.02v4.06c-.57-.12-1.18-.08-1.72.13-1.12.42-1.92 1.48-2.04 2.68-.14 1.32.55 2.63 1.72 3.25.96.52 2.15.48 3.09-.1.88-.54 1.41-1.52 1.41-2.55V.02h-1.55z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Column 2: Attractions (Matches Orchid's Product Column) -->
+        <div class="ac-footer-nav-col">
+          <h4 class="ac-footer-heading">Attractions</h4>
+          <ul class="ac-footer-links">
+            <li><a href="#panel-lavenda" class="ac-footer-link">Lavenda Fun Park</a></li>
+            <li><a href="#panel-nadi" class="ac-footer-link">Nadi Glamping Suites</a></li>
+            <li><a href="#activitiesParallaxSection" class="ac-footer-link">Alpaca &amp; Friends Mini Zoo</a></li>
+            <li><a href="#activitiesParallaxSection" class="ac-footer-link">Penang River Cruise</a></li>
+            <li><a href="#events" class="ac-footer-link">Illuminated Fun Fair</a></li>
+            <li><a href="#activitiesParallaxSection" class="ac-footer-link">Pickleball Arena</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Precincts & Spaces (Matches Orchid's Use Cases Column) -->
+        <div class="ac-footer-nav-col">
+          <h4 class="ac-footer-heading">Precincts &amp; Spaces</h4>
+          <ul class="ac-footer-links">
+            <li><a href="#automotive" class="ac-footer-link">Automotive 3S/4S Hub</a></li>
+            <li><a href="#panel-events" class="ac-footer-link">Concept Hall (800 Pax)</a></li>
+            <li><a href="#panel-hubbiz" class="ac-footer-link">Hubbiz Office Suites</a></li>
+            <li><a href="#dining" class="ac-footer-link">Dining &amp; Retail Enclave</a></li>
+            <li><a href="#appDownload" class="ac-footer-link">Auto-City Mobile App</a></li>
+            <li><a href="#commercial" class="ac-footer-link">Advertising &amp; Leasing</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Official Endorsements & Accreditations (Matches Orchid's 3x2 Grid) -->
+        <div class="ac-footer-badges-col">
+          <div class="ac-badges-grid" role="region" aria-label="Official Accreditations & Endorsements">
+
+            <!-- Badge 1: Tourism Malaysia (Malaysia Truly Asia) — Wikimedia Commons -->
+            <div class="ac-badge-item" title="Tourism Malaysia — Malaysia Truly Asia (Official Partner)">
+              <img src="../Graphic/badges/malaysia-truly-asia.svg" alt="Tourism Malaysia — Malaysia Truly Asia" class="ac-brand-badge-img" width="115" height="38" loading="lazy">
+            </div>
+
+            <!-- Badge 2: Penang State Government Endorsement — Wikimedia Commons -->
+            <div class="ac-badge-item" title="Penang State Government — Endorsed Tourist Destination">
+              <img src="../Graphic/badges/coat-of-arms-penang.svg" alt="Penang State Government Endorsed Destination" class="ac-brand-badge-img" width="44" height="46" loading="lazy">
+            </div>
+
+            <!-- Badge 3: Penang Global Tourism (PGT) — Official State Bureau (mypenang.gov.my) -->
+            <div class="ac-badge-item" title="Penang Global Tourism (PGT) — Official State Tourism Bureau">
+              <img src="../Graphic/badges/pgt-logo-black.png" alt="Penang Global Tourism (PGT)" class="ac-brand-badge-img" width="88" height="40" loading="lazy">
+            </div>
+
+            <!-- Badge 4: Tripadvisor — Wikimedia Commons -->
+            <div class="ac-badge-item" title="Tripadvisor — Recommended Destination">
+              <img src="../Graphic/badges/tripadvisor-stacked.svg" alt="Tripadvisor Recommended" class="ac-brand-badge-img" width="80" height="42" loading="lazy">
+            </div>
+
+            <!-- Badge 5: Halal Malaysia (JAKIM) — Official Government Portal (halal.gov.my) -->
+            <div class="ac-badge-item" title="Halal Malaysia Official Certification (JAKIM MS 1500)">
+              <img src="../Graphic/badges/halal-malaysia-official.png" alt="Halal Malaysia Certified" class="ac-brand-badge-img" width="44" height="44" loading="lazy">
+            </div>
+
+            <!-- Badge 6: Majlis Bandaraya Seberang Perai (MBSP) — Wikimedia Commons -->
+            <div class="ac-badge-item" title="Majlis Bandaraya Seberang Perai (MBSP) — Municipal Council Endorsement">
+              <img src="../Graphic/badges/mbsp-seberang-perai.png" alt="Majlis Bandaraya Seberang Perai" class="ac-brand-badge-img" width="44" height="44" loading="lazy">
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ── 2. Subtle Hairline Divider ── -->
+      <div class="ac-footer-divider" aria-hidden="true"></div>
+
+      <!-- ── 3. Bottom Legal Bar ── -->
+      <div class="ac-footer-bottom">
+        <div class="ac-footer-copyright">
+          &copy; 2026 All Rights Reserved, Auto-City.
+        </div>
+
+        <nav class="ac-footer-legal" aria-label="Legal and Privacy Links">
+          <a href="#terms" class="ac-legal-link">Terms of Service</a>
+          <span class="ac-legal-sep" aria-hidden="true">&bull;</span>
+          <a href="#privacy" class="ac-legal-link">Privacy Policy</a>
+          <span class="ac-legal-sep" aria-hidden="true">&bull;</span>
+          <a href="#cookies" class="ac-legal-link">Cookie Policy</a>
+          <span class="ac-legal-sep" aria-hidden="true">&bull;</span>
+          <a href="#sitemap" class="ac-legal-link">Sitemap</a>
+        </nav>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Habitline Quote Script -->
+  <script src="../js/quote.js"></script>
+  <script src="../js/lucide.min.js"></script>
+  <script src="../js/swiper-bundle.min.js"></script>
+  <script src="../js/activities-parallax.js"></script>
+  <script src="../js/reels-social.js"></script>
+  <script src="../js/more-things-to-do.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/quote.js"></script>
+  <!-- Hero Video Rotator — A/B Crossfade (5 Videos, 5.5s per Video with 1s Fade-in & 1s Fade-out) -->
+  <script>
+  (function () {
+    var VIDEOS = [
+      '../Graphic/HeaderVideo/Boat_sails_through_mangrove_202609091616.mp4',
+      '../Graphic/HeaderVideo/Camera_orbits_location_timelapse_202609091615.mp4',
+      '../Graphic/HeaderVideo/Car_zooming_out_environment_202609091616.mp4',
+      '../Graphic/HeaderVideo/Orbit_90_degrees_constant_velocity._202609091616.mp4',
+      '../Graphic/HeaderVideo/Slow_zoom_into_busy_crowd_202609091616.mp4'
+    ];
+
+    var DISPLAY_DURATION = 5.5; // Total display duration per video: 5.5 seconds
+    var FADE_DURATION = 1.0;    // 1 second crossfade transition
+    var TRANSITION_TIME = DISPLAY_DURATION - FADE_DURATION; // 4.5s mark triggers 1s fade-out
+
+    var slotA = document.getElementById('heroVideoA');
+    var slotB = document.getElementById('heroVideoB');
+    if (!slotA || !slotB) return;
+
+    var currentSlot = slotA;
+    var nextSlot = slotB;
+    var currentIndex = 0;
+    var isTransitioning = false;
+    var transitionTimer = null;
+
+    // Ensure muted & inline for autoplay compliance
+    [slotA, slotB].forEach(function (v) {
+      v.muted = true;
+      v.defaultMuted = true;
+      v.playsInline = true;
+    });
+
+    function scheduleTransition() {
+      if (transitionTimer) clearTimeout(transitionTimer);
+      var played = currentSlot.currentTime || 0;
+      var delayMs = Math.max(0, (TRANSITION_TIME - played) * 1000);
+      transitionTimer = setTimeout(function () {
+        if (!isTransitioning) performCrossfade();
+      }, delayMs);
+    }
+
+    function performCrossfade() {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      if (transitionTimer) clearTimeout(transitionTimer);
+
+      var nextIndex = (currentIndex + 1) % VIDEOS.length;
+
+      // Start playing next video from start
+      nextSlot.currentTime = 0;
+      var playPromise = nextSlot.play();
+      if (playPromise && playPromise.catch) playPromise.catch(function () {});
+
+      // Crossfade: incoming video fades in over first second; outgoing video fades out over its last second (3s -> 4s)
+      nextSlot.classList.add('active');
+      currentSlot.classList.remove('active');
+
+      // After 1s crossfade completes (at 4s total display time), swap slots & preload next
+      setTimeout(function () {
+        currentSlot.pause();
+
+        var prevSlot = currentSlot;
+        currentSlot = nextSlot;
+        nextSlot = prevSlot;
+        currentIndex = nextIndex;
+
+        // Preload upcoming video into the standby slot
+        var upcomingIndex = (currentIndex + 1) % VIDEOS.length;
+        nextSlot.src = VIDEOS[upcomingIndex];
+        nextSlot.load();
+        nextSlot.classList.remove('active');
+
+        attachSlotListeners(currentSlot);
+        scheduleTransition();
+        isTransitioning = false;
+      }, FADE_DURATION * 1000);
+    }
+
+    function onTimeCheck() {
+      if (isTransitioning) return;
+      if (currentSlot.currentTime >= TRANSITION_TIME) {
+        performCrossfade();
+      }
+    }
+
+    function attachSlotListeners(el) {
+      if (el._timeCheckHandler) {
+        el.removeEventListener('timeupdate', el._timeCheckHandler);
+      }
+      if (el._endedHandler) {
+        el.removeEventListener('ended', el._endedHandler);
+      }
+      if (el._playingHandler) {
+        el.removeEventListener('playing', el._playingHandler);
+      }
+
+      el._timeCheckHandler = onTimeCheck;
+      el._endedHandler = function () {
+        if (!isTransitioning) performCrossfade();
+      };
+      el._playingHandler = function () {
+        scheduleTransition();
+      };
+
+      el.addEventListener('timeupdate', el._timeCheckHandler);
+      el.addEventListener('ended', el._endedHandler);
+      el.addEventListener('playing', el._playingHandler);
+    }
+
+    // Initialize: Set Video 0 on currentSlot & preload Video 1 on nextSlot
+    currentSlot.src = VIDEOS[0];
+    currentSlot.load();
+
+    var initialPlay = currentSlot.play();
+    if (initialPlay && initialPlay.catch) initialPlay.catch(function () {});
+
+    // Fade in during the first second
+    currentSlot.addEventListener('playing', function onPlaying() {
+      currentSlot.removeEventListener('playing', onPlaying);
+      currentSlot.classList.add('active');
+      scheduleTransition();
+    });
+    setTimeout(function () {
+      currentSlot.classList.add('active');
+      scheduleTransition();
+    }, 100);
+
+    attachSlotListeners(currentSlot);
+
+    // Preload video 1 into standby slot
+    nextSlot.src = VIDEOS[1];
+    nextSlot.load();
+    nextSlot.classList.remove('active');
+  })();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auto-City : Online Research & Strategic Dossier</title>
+  <script>
+    (function() {
+      const stored = localStorage.getItem('auto-city-theme');
+      const theme = stored || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+
+  <!-- Single Source of Truth Brand Tokens & Typography (Switzer Display & Body - Zero Monospace) -->
+  <link rel="stylesheet" href="css/brand-tokens.css">
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    /* Table Styling */
+    .table-container {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      overflow-x: auto;
+      box-shadow: var(--shadow-card);
+    }
+    .research-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+    .research-table th {
+      background: var(--bg-surface-elevated);
+      color: var(--text-secondary);
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .research-table td {
+      padding: 1.15rem 1.5rem;
+      border-bottom: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+      vertical-align: top;
+    }
+    .research-table tr:last-child td {
+      border-bottom: none;
+    }
+    .research-table tr:hover td {
+      background: rgba(125, 125, 125, 0.04);
+    }
+
+    /* Persona Grid */
+    .persona-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+    .persona-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .persona-top {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .persona-avatar-box {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-medium);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-brand-blue);
+      flex-shrink: 0;
+    }
+    .persona-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    .persona-demographic {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      font-family: var(--font-body);
+      font-weight: 500;
+    }
+    .persona-body-list {
+      list-style: none;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+    .persona-body-list strong {
+      color: var(--text-primary);
+    }
+
+    /* Solution Matrix */
+    .audit-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+    .audit-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.75rem;
+    }
+    .audit-tag {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      color: var(--color-blue-700);
+      margin-bottom: 0.5rem;
+      display: block;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand-badge-link" aria-label="Auto-City Research Home">
+        <img src="Graphic/auto-city-logo.svg" alt="Auto-City" class="brand-logo-img">
+        <span class="brand-subtag">RESEARCH DOSSIER</span>
+      </a>
+      <div class="nav-right-group">
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-item-link">Showcase</a></li>
+          <li><a href="research.html" class="nav-item-link active">Research & Data</a></li>
+          <li><a href="brand-guidelines.html" class="nav-item-link">Brand Guidelines</a></li>
+        </ul>
+        <button type="button" class="theme-toggle-btn" id="themeToggleBtn" aria-label="Switch between light and dark theme" title="Toggle theme">
+          <svg class="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <span class="theme-label-text">Theme</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Header -->
+  <header class="hero">
+    <div class="container hero-content">
+      <div style="margin-bottom: 1rem;">
+        <span class="status-tag status-tag-queue">
+          <span class="status-dot"></span>
+          Market Intelligence & Audit
+        </span>
+      </div>
+      <h1 class="hero-title">Online Research & Brand Insights</h1>
+      <p class="hero-desc">
+        Comprehensive repository tracking competitive intelligence, audience archetypes, architectural audits, and online findings.
+      </p>
+      <div class="hero-actions">
+        <a href="#benchmarks" class="btn btn-primary">Competitor Benchmarks</a>
+        <a href="#personas" class="btn btn-secondary">User Personas</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Research Content -->
+  <main class="section">
+    <div class="container">
+
+      <!-- 1. Strategic Objectives -->
+      <section style="margin-bottom: 4.5rem;">
+        <div class="section-head">
+          <h2 class="section-title">Strategic Engineering Goals</h2>
+          <p class="section-subtext">Core performance standards and architectural priorities guiding the front-end redesign.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem;">
+          <div class="card card-padded">
+            <div style="font-family: var(--font-display); font-size: 1.75rem; font-weight: 700; color: #60a5fa; margin-bottom: 0.25rem;">
+              Mobile First
+            </div>
+            <p style="font-size: 0.875rem; color: var(--text-secondary);">
+              Responsive layouts verified on standard mobile viewports (390px, 412px) before desktop enhancement.
+            </p>
+          </div>
+          <div class="card card-padded">
+            <div style="font-family: var(--font-display); font-size: 1.75rem; font-weight: 700; color: #34d399; margin-bottom: 0.25rem;">
+              Under 1.2s
+            </div>
+            <p style="font-size: 0.875rem; color: var(--text-secondary);">
+              Zero heavyweight runtime dependencies to keep core web vitals and interaction to next paint optimal.
+            </p>
+          </div>
+          <div class="card card-padded">
+            <div style="font-family: var(--font-display); font-size: 1.75rem; font-weight: 700; color: #fbbf24; margin-bottom: 0.25rem;">
+              WCAG AA
+            </div>
+            <p style="font-size: 0.875rem; color: var(--text-secondary);">
+              4.5 to 1 minimum contrast ratio across all text elements and accessible keyboard navigation states.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Competitor Benchmarking -->
+      <section id="benchmarks" style="margin-bottom: 4.5rem;">
+        <div class="section-head">
+          <h2 class="section-title">Competitor & Industry Benchmarks</h2>
+          <p class="section-subtext">Qualitative analysis comparing Auto-City to regional automotive hubs and lifestyle centers.</p>
+        </div>
+
+        <div class="table-container">
+          <table class="research-table">
+            <thead>
+              <tr>
+                <th>Property / Destination</th>
+                <th>Positioning Focus</th>
+                <th>Interface Strengths</th>
+                <th>Identified UX Friction</th>
+                <th>Actionable Opportunity</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Auto-City (Current Site)</strong></td>
+                <td>Automotive, dining, and open-air event grounds</td>
+                <td>Long-standing local brand recognition</td>
+                <td>Complex legacy navigation, low mobile responsiveness</td>
+                <td>Clean modern portal, fast tenant search, rich visuals</td>
+              </tr>
+              <tr>
+                <td><strong>Regional Dealership Cluster</strong></td>
+                <td>New vehicle sales and warranty servicing</td>
+                <td>Direct test-drive booking module</td>
+                <td>Overcrowded promotional banners and slow image loading</td>
+                <td>Curated showroom directory with high-contrast actions</td>
+              </tr>
+              <tr>
+                <td><strong>Mixed-Use Lifestyle Park</strong></td>
+                <td>Evening dining and weekend community carnivals</td>
+                <td>Vibrant event calendar and photography</td>
+                <td>Difficult tenant directory filtering and small body type</td>
+                <td>Instant category switching and accessible type hierarchy</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 3. Target Audience Personas -->
+      <section id="personas" style="margin-bottom: 4.5rem;">
+        <div class="section-head">
+          <h2 class="section-title">Target Audience Personas</h2>
+          <p class="section-subtext">Primary visitor archetypes shaping navigation structure and content priority.</p>
+        </div>
+
+        <div class="persona-grid">
+          
+          <!-- Persona 1 -->
+          <div class="persona-card">
+            <div class="persona-top">
+              <div class="persona-avatar-box">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 17h14M5 17a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2M5 17l-2 3h18l-2-3"/>
+                </svg>
+              </div>
+              <div>
+                <div class="persona-title">Automotive Buyer</div>
+                <div class="persona-demographic">Age 25 to 55 : Showroom Visitor</div>
+              </div>
+            </div>
+            <ul class="persona-body-list">
+              <li><strong>Intent:</strong> Browse brand dealerships, compare servicing hours, and locate service bays.</li>
+              <li><strong>Friction:</strong> Hidden showroom phone numbers and outdated operating hours.</li>
+              <li><strong>Design Response:</strong> Prominent contact cards, clear opening hours, and one-tap directions.</li>
+            </ul>
+          </div>
+
+          <!-- Persona 2 -->
+          <div class="persona-card">
+            <div class="persona-top">
+              <div class="persona-avatar-box">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8zM6 1v3M10 1v3M14 1v3"/>
+                </svg>
+              </div>
+              <div>
+                <div class="persona-title">Dining & Night Patron</div>
+                <div class="persona-demographic">Age 18 to 45 : Weekend Visitor</div>
+              </div>
+            </div>
+            <ul class="persona-body-list">
+              <li><strong>Intent:</strong> Discover cafes, family restaurants, late-night dining, and parking availability.</li>
+              <li><strong>Friction:</strong> Cluttered menus and difficulty locating venues within the complex.</li>
+              <li><strong>Design Response:</strong> Visual restaurant cards with category pills and parking wayfinding.</li>
+            </ul>
+          </div>
+
+          <!-- Persona 3 -->
+          <div class="persona-card">
+            <div class="persona-top">
+              <div class="persona-avatar-box">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                </svg>
+              </div>
+              <div>
+                <div class="persona-title">Commercial Event Planner</div>
+                <div class="persona-demographic">Age 30 to 60 : Business Organizer</div>
+              </div>
+            </div>
+            <ul class="persona-body-list">
+              <li><strong>Intent:</strong> Evaluate carnival grounds, event staging capacities, and leasing terms.</li>
+              <li><strong>Friction:</strong> Buried inquiry forms and lack of venue dimension specifications.</li>
+              <li><strong>Design Response:</strong> Dedicated commercial space overview with direct leasing inquiry triggers.</li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 4. Architecture Audit & Upgrade Matrix -->
+      <section style="margin-bottom: 4.5rem;">
+        <div class="section-head">
+          <h2 class="section-title">Site Architecture Upgrade Matrix</h2>
+          <p class="section-subtext">Translating identified friction points into engineered front-end solutions.</p>
+        </div>
+
+        <div class="audit-grid">
+          <div class="audit-card">
+            <span class="audit-tag">Navigation & Discovery</span>
+            <h3 style="font-family: var(--font-display); font-size: 1.15rem; color: var(--text-primary); margin-bottom: 0.5rem;">
+              Single-Line Header & Quick Search
+            </h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;">
+              Replace multi-row navigation with a concise 72px sticky header, category dropdowns, and instant directory filtering.
+            </p>
+          </div>
+
+          <div class="audit-card">
+            <span class="audit-tag">Visual Identity</span>
+            <h3 style="font-family: var(--font-display); font-size: 1.15rem; color: var(--text-primary); margin-bottom: 0.5rem;">
+              Obsidian & Slate Dual System
+            </h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;">
+              Adopt high-contrast obsidian slate surfaces with cobalt and signal amber accents, projecting an engineered automotive aesthetic in both light and dark environments.
+            </p>
+          </div>
+
+          <div class="audit-card">
+            <span class="audit-tag">Viewport Reliability</span>
+            <h3 style="font-family: var(--font-display); font-size: 1.15rem; color: var(--text-primary); margin-bottom: 0.5rem;">
+              Fluid Dynamic Viewport Sizing
+            </h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;">
+              Utilize min-height 100dvh and CSS grid arrangements to eliminate mobile address-bar jumpiness and layout shifts.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Live Online Research Log -->
+      <section>
+        <div class="section-head">
+          <h2 class="section-title">Online Search Findings Log</h2>
+          <p class="section-subtext">Continuous record of web searches, competitor updates, and verified citations.</p>
+        </div>
+
+        <div class="table-container">
+          <table class="research-table">
+            <thead>
+              <tr>
+                <th>Timestamp</th>
+                <th>Query / Focus</th>
+                <th>Key Findings & Citations</th>
+                <th>Pipeline Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>2026-09-08</code></td>
+                <td>Habitline Framer Benchmark & Hero Video</td>
+                <td>Benchmarked Habitline Framer (<a href="https://habitline-wbs.framer.website/" target="_blank" style="color: var(--color-blue-600);">habitline-wbs.framer.website</a>). Deployed 3-island floating pill navigation (Brand, Destination Menu, Live Status + Action CTA) and cinematic 720p theme park drone footage background with audio/video micro-controls.</td>
+                <td><span class="status-tag status-tag-active"><span class="status-dot"></span> Completed</span></td>
+              </tr>
+              <tr>
+                <td><code>2026-09-08</code></td>
+                <td>Editorial Statement & Inline Capsule Pills</td>
+                <td>Extracted and reverse-engineered Habitline's editorial headline with inline rounded capsule pills (cycling avatar portrait pill + 3D sun/cloud weather capsule). Implemented fluid clamp typography, zero monospace rule, interactive photo crossfading, and copy preset switcher.</td>
+                <td><span class="status-tag status-tag-active"><span class="status-dot"></span> Completed</span></td>
+              </tr>
+              <tr>
+                <td><code>2026-09-08</code></td>
+                <td>Light / Dark Theme Support</td>
+                <td>Implemented persistent theme engine with header toggle, system auto-sensing, and dual Obsidian Dark / Slate Light design tokens.</td>
+                <td><span class="status-tag status-tag-active"><span class="status-dot"></span> Completed</span></td>
+              </tr>
+              <tr>
+                <td><code>2026-09-08</code></td>
+                <td>Lucide Icons Library & Custom Skill</td>
+                <td>Installed <strong>lucide</strong> via npm with vendored UMD package in <code>js/lucide.min.js</code>. Established standardized stroke-width (1.85), responsive sizing tokens (.icon-xs to .icon-xl), auto-initialization engine, and custom skill in <code>.agents/skills/lucide-icons</code>.</td>
+                <td><span class="status-tag status-tag-active"><span class="status-dot"></span> Completed</span></td>
+              </tr>
+              <tr>
+                <td><code>2026-09-09</code></td>
+                <td>Activities Parallax Section (dsgninterior.se Reference)</td>
+                <td>Researched and integrated 5 key Auto-City activities: <strong>Alpaca &amp; Friends Mini Zoo</strong> (60+ exotic species), <strong>Penang River Cruise on Sungai Juru</strong> (15km cruise from River Park Jetty with 'Sky Mirror' reflection), <strong>Illuminated Fun Fair</strong> (grand Ferris wheel, drift karts, evening street eats), <strong>River Park Mangrove Sanctuary</strong> (elevated timber eco-boardwalk), and <strong>Auto-City Pickleball Courts</strong> (modern tournament-grade courts). Built dual-plane opposing parallax slider engine with vertical pagination following <code>dsgninterior.se</code>.</td>
+                <td><span class="status-tag status-tag-active"><span class="status-dot"></span> Completed</span></td>
+              </tr>
+              <tr>
+                <td><code>2026-09-09</code></td>
+                <td>More Things To Do (Temlis Acelia Benchmark)</td>
+                <td>Researched and verified 4 core Auto-City offerings: <strong>Nadi Glamping Suites</strong> (Riverpark luxury eco-cabins &amp; safari tents along Sungai Juru with King Koil mattresses &amp; campfire), <strong>Lavenda Fun Park</strong> (Penang's 1st non-powered amusement park with 20+ kinetic attractions, rainbow hill slide, pastel climbing towers), <strong>Event Space &amp; Team Building</strong> (10,000 sq.ft Concept Hall, Sky TV stage for 800 pax, Wild Kart off-road karts &amp; RaceRoom simulators), and <strong>Hubbiz Commercial Office Space</strong> (flexible turnkey serviced suites, boardroom rentals &amp; co-working at Auto-City). Built light-mode tabbed services with signature curtain-reveal image transitions.</td>
+                <td><span class="status-tag status-tag-active"><span class="status-dot"></span> Completed</span></td>
+              </tr>
+              <tr>
+                <td><code>2026-09-09</code></td>
+                <td>Orchid Security Footer Benchmark (Authentic Brand Badges)</td>
+                <td>Benchmarked Orchid Security (<a href="https://www.orchid.security/" target="_blank" style="color: var(--color-blue-600);">orchid.security</a>) enclosed island footer in light mode. Sourced 6 authentic brand marks directly from Wikipedia/Wikimedia Commons and official government/agency websites (zero generated artifice): <strong>Tourism Malaysia</strong> (<em>Malaysia Truly Asia</em>, Wikimedia Commons), <strong>Penang State Government</strong> (<em>Coat of Arms of Penang</em>, Wikimedia Commons), <strong>Penang Global Tourism</strong> (official portal <code>mypenang.gov.my</code>), <strong>Tripadvisor</strong> (Wikimedia Commons), <strong>Halal Malaysia</strong> (official certification mark, <code>halal.gov.my</code>), and <strong>Majlis Bandaraya Seberang Perai</strong> (MBSP, Wikimedia Commons). Formatted with zero box containers and zero hover shifts on clean surface.</td>
+                <td><span class="status-tag status-tag-active"><span class="status-dot"></span> Completed</span></td>
+              </tr>
+              <tr>
+                <td><code>Pending</code></td>
+                <td>Auto-City Brand URL & Roster</td>
+                <td>Awaiting specific tenant list and official brand links from user to populate live directory data.</td>
+                <td><span class="status-tag status-tag-queue"><span class="status-dot"></span> Queued</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>Auto-City Research & Market Dossier : Updated dynamically throughout the revamp process.</p>
+    </div>
+  </footer>
+
+  <script src="js/lucide.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

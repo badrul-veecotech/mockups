@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+  <defs>
+    <!-- Metallic rim gradient -->
+    <linearGradient id="rimGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#374151" />
+      <stop offset="50%" stop-color="#1F2937" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+
+    <!-- Center spoke brushed aluminum gradient -->
+    <linearGradient id="spokeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#94A3B8" />
+      <stop offset="50%" stop-color="#64748B" />
+      <stop offset="100%" stop-color="#475569" />
+    </linearGradient>
+
+    <!-- Center horn boss metallic shine -->
+    <radialGradient id="centerHub" cx="40%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#4B5563" />
+      <stop offset="70%" stop-color="#1E293B" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </radialGradient>
+
+    <!-- Shadow for depth -->
+    <filter id="wheelShadow" x="0" y="2" width="48" height="48" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#000000" flood-opacity="0.35" />
+    </filter>
+  </defs>
+
+  <g filter="url(#wheelShadow)">
+    <!-- Outer Steering Wheel Rim (Thick, ergonomic sports grip) -->
+    <circle cx="24" cy="23" r="19" stroke="url(#rimGrad)" stroke-width="5.5" fill="none" />
+    
+    <!-- Outer Rim Inner Trim / Highlight -->
+    <circle cx="24" cy="23" r="16.2" stroke="rgba(255, 255, 255, 0.15)" stroke-width="0.8" fill="none" />
+    <circle cx="24" cy="23" r="21.5" stroke="rgba(255, 255, 255, 0.08)" stroke-width="0.6" fill="none" />
+
+    <!-- 12 O'Clock Racing Center Marker Stripe (Auto-City Racing Red) -->
+    <path d="M22.2 4.1 C22.8 4.0 23.4 4.0 24 4.0 C24.6 4.0 25.2 4.0 25.8 4.1 L25.5 8.8 C25.0 8.7 24.5 8.7 24 8.7 C23.5 8.7 23.0 8.7 22.5 8.8 Z" fill="#E10021" />
+
+    <!-- Left Spoke (9 o'clock) -->
+    <path d="M7.8 21.8 L18.5 21.8 C18.5 21.8 19 23.5 19 24.5 L7.8 24.8 Z" fill="url(#spokeGrad)" />
+    <!-- Left Spoke Accent Cutout Slot -->
+    <rect x="10.5" y="22.8" width="5" height="1.2" rx="0.6" fill="#0F172A" opacity="0.6" />
+
+    <!-- Right Spoke (3 o'clock) -->
+    <path d="M40.2 21.8 L29.5 21.8 C29.5 21.8 29 23.5 29 24.5 L40.2 24.8 Z" fill="url(#spokeGrad)" />
+    <!-- Right Spoke Accent Cutout Slot -->
+    <rect x="32.5" y="22.8" width="5" height="1.2" rx="0.6" fill="#0F172A" opacity="0.6" />
+
+    <!-- Bottom Spoke (6 o'clock) -->
+    <path d="M22.2 28.5 L25.8 28.5 L25.2 39.5 C24.8 39.6 24.4 39.6 24 39.6 C23.6 39.6 23.2 39.6 22.8 39.5 Z" fill="url(#spokeGrad)" />
+    <!-- Bottom Spoke Accent Cutout Slot -->
+    <rect x="23.4" y="31" width="1.2" height="5" rx="0.6" fill="#0F172A" opacity="0.6" />
+
+    <!-- Center Horn Boss (Hub) -->
+    <circle cx="24" cy="23" r="6.8" fill="url(#centerHub)" stroke="#64748B" stroke-width="1.2" />
+    <circle cx="24" cy="23" r="4.8" fill="#1E293B" stroke="rgba(255, 255, 255, 0.2)" stroke-width="0.8" />
+    
+    <!-- Auto-City Emblem in Center (Red & Gold dynamic spark / crest) -->
+    <circle cx="24" cy="23" r="2.2" fill="#E10021" />
+    <circle cx="23.2" cy="22.2" r="0.8" fill="#FFFFFF" opacity="0.75" />
+  </g>
+</svg>

@@ -1,0 +1,83 @@
+[
+  {
+    "id": "reel-1-food-court",
+    "title": "Kim Garden Food Court",
+    "tag": "FOOD & DRINK",
+    "views": "1.3K",
+    "image": "../assets/images/reels/reel-1-food-court.jpg",
+    "video": "../assets/videos/reels/reel-1-food-court.mp4",
+    "ig_url": "https://www.instagram.com/autocity_penang/"
+  },
+  {
+    "id": "reel-2-comedy-drama",
+    "title": "Madam Karen VS Timmy The Thief",
+    "tag": "ENTERTAINMENT",
+    "views": "7.5K",
+    "image": "../assets/images/reels/reel-2-comedy-drama.jpg",
+    "video": "../assets/videos/reels/reel-2-comedy-drama.mp4",
+    "ig_url": "https://www.instagram.com/autocity_penang/"
+  },
+  {
+    "id": "reel-3-moon-fest",
+    "title": "Moon Fest by Hunza \u4e2d\u79cb\u56ed\u6e38\u4f1a",
+    "tag": "NIGHT FESTIVAL",
+    "views": "24.1K",
+    "image": "../assets/images/reels/reel-3-moon-fest.jpg",
+    "video": "../assets/videos/reels/reel-3-moon-fest.mp4",
+    "ig_url": "https://www.instagram.com/autocity_penang/"
+  },
+  {
+    "id": "reel-4-colour-hunting",
+    "title": "Colour Hunting Lifestyle OOTD",
+    "tag": "VIBES & OOTD",
+    "views": "1.3K",
+    "image": "../assets/images/reels/reel-4-colour-hunting.jpg",
+    "video": "../assets/videos/reels/reel-4-colour-hunting.mp4",
+    "ig_url": "https://www.instagram.com/autocity_penang/"
+  },
+  {
+    "id": "reel-5-merdeka-celebration",
+    "title": "Selamat Hari Merdeka Celebration",
+    "tag": "CELEBRATIONS",
+    "views": "2.1K",
+    "image": "../assets/images/reels/reel-5-merdeka-celebration.jpg",
+    "video": "../assets/videos/reels/reel-5-merdeka-celebration.mp4",
+    "ig_url": "https://www.instagram.com/autocity_penang/"
+  },
+  {
+    "id": "reel-6-mala-hotpot",
+    "title": "\u849c\u9999\u5ae9\u9e21\u7247\u9ebb\u8fa3\u70eb Mala Tang",
+    "tag": "CULINARY",
+    "views": "1.5K",
+    "image": "../assets/images/reels/reel-6-mala-hotpot.jpg",
+    "video": "../assets/videos/reels/reel-6-mala-hotpot.mp4",
+    "ig_url": "https://www.instagram.com/autocity_penang/"
+  },
+  {
+    "id": "reel-7-de-zhuang-hotpot",
+    "title": "De Zhuang Hotpot Feast \u706b\u9505\u5957\u9910",
+    "tag": "DINING HOTSPOT",
+    "views": "2.0K",
+    "image": "../assets/images/reels/reel-7-de-zhuang-hotpot.jpg",
+    "video": "../assets/videos/reels/reel-7-de-zhuang-hotpot.mp4",
+    "ig_url": "https://www.instagram.com/autocity_penang/"
+  },
+  {
+    "id": "reel-8-love-baba-nyonya",
+    "title": "Love Baba Nyonya Curry Stingray",
+    "tag": "NYONYA SPECIAL",
+    "views": "994",
+    "image": "../assets/images/reels/reel-8-love-baba-nyonya.jpg",
+    "video": "../assets/videos/reels/reel-8-love-baba-nyonya.mp4",
+    "ig_url": "https://www.instagram.com/autocity_penang/"
+  },
+  {
+    "id": "reel-9-bm-local-guide",
+    "title": "\u5927\u5c71\u811a Local \u5e26\u8def 30.7K \u7206\u6b3e\u7f8e\u98df",
+    "tag": "VIRAL FOOD GUIDE",
+    "views": "30.7K",
+    "image": "../assets/images/reels/reel-9-bm-local-guide.jpg",
+    "video": "../assets/videos/reels/reel-9-bm-local-guide.mp4",
+    "ig_url": "https://www.instagram.com/autocity_penang/"
+  }
+]

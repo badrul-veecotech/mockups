@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>More Things You Can Do at AutoCity : Tabbed Services Preview</title>
+  
+  <link rel="stylesheet" href="../css/brand-tokens.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/more-things-to-do.css">
+  <style>
+    body {
+      background: #f8fafc;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================================
+       More Things You Can Do at AutoCity
+       Design Reference: Temlis Acelia - Tabbed Services with Image Reveal
+       Mode: Light Mode
+       ======================================================================== -->
+  <section class="more-things-section" id="moreThingsToDo" aria-label="More things you can do at AutoCity">
+    <div class="more-things-container">
+      
+      <!-- Section Header -->
+      <header class="more-things-header">
+        <h2 class="more-things-title">Find your suite.<br>Family, friends, beyond.</h2>
+        <p class="more-things-subtitle">
+          From tranquil riverfront glamping retreats and dynamic non-powered family parks to premier convention venues and executive co-working suites—uncover the multifaceted destinations shaping Auto-City.
+        </p>
+      </header>
+
+      <!-- Two-Column Tabbed Services & Image Reveal Grid -->
+      <div class="more-things-grid">
+        
+        <!-- Left Column: Interactive Tab List -->
+        <div class="more-things-tabs" role="tablist" aria-label="AutoCity Featured Offerings">
+
+          <!-- 01. Nadi Glamping Suites -->
+          <article 
+            class="more-things-tab-item tab-nadi active" 
+            id="tab-nadi" 
+            role="tab" 
+            aria-selected="true" 
+            aria-controls="panel-nadi" 
+            tabindex="0">
+            <div class="more-things-tab-header">
+              <div class="more-things-tab-title-group">
+                <span class="more-things-tab-num">01</span>
+                <h3 class="more-things-tab-title">Nadi Glamping Suites</h3>
+              </div>
+              <div class="more-things-tab-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </div>
+            </div>
+
+            <div class="more-things-tab-body">
+              <div class="more-things-tab-inner">
+                <!-- Mobile Inline Image Preview -->
+                <div class="more-things-mobile-img">
+                  <img src="../assets/images/more-things-to-do/nadi-glamping-suites.jpg" alt="Nadi Glamping Suites at Auto-City Riverpark" loading="lazy">
+                </div>
+
+                <p class="more-things-tab-desc">
+                  Penang's premier riverfront eco-glamping sanctuary nestled within Auto-City Riverpark. Unwind in air-conditioned timber cabins or romantic safari tents equipped with luxury King Koil beds, private en-suites, and starlit evening campfires along the tranquil riverbank.
+                </p>
+                <a href="#nadi-booking" class="more-things-action-btn">
+                  <span>Explore Glamping Suites</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 02. Lavenda Fun Park -->
+          <article 
+            class="more-things-tab-item tab-lavenda" 
+            id="tab-lavenda" 
+            role="tab" 
+            aria-selected="false" 
+            aria-controls="panel-lavenda" 
+            tabindex="-1">
+            <div class="more-things-tab-header">
+              <div class="more-things-tab-title-group">
+                <span class="more-things-tab-num">02</span>
+                <h3 class="more-things-tab-title">Lavenda Fun Park</h3>
+              </div>
+              <div class="more-things-tab-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </div>
+            </div>
+
+            <div class="more-things-tab-body">
+              <div class="more-things-tab-inner">
+                <!-- Mobile Inline Image Preview -->
+                <div class="more-things-mobile-img">
+                  <img src="../assets/images/more-things-to-do/lavenda-fun-park.jpg" alt="Lavenda Fun Park at Auto-City Phase 2" loading="lazy">
+                </div>
+
+                <p class="more-things-tab-desc">
+                  Penang's first non-powered outdoor adventure park spanning expansive green landscapes at Auto-City Phase 2. Experience zero-electricity kinetic thrills with massive multi-lane rainbow hill slides, sculptural lavender climbing towers, sky rope bridges, and joyful active family play.
+                </p>
+                <a href="#lavenda-park" class="more-things-action-btn">
+                  <span>Discover Lavenda Park</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 03. Event space rental and team building -->
+          <article 
+            class="more-things-tab-item tab-events" 
+            id="tab-events" 
+            role="tab" 
+            aria-selected="false" 
+            aria-controls="panel-events" 
+            tabindex="-1">
+            <div class="more-things-tab-header">
+              <div class="more-things-tab-title-group">
+                <span class="more-things-tab-num">03</span>
+                <h3 class="more-things-tab-title">Event space rental &amp; team building</h3>
+              </div>
+              <div class="more-things-tab-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </div>
+            </div>
+
+            <div class="more-things-tab-body">
+              <div class="more-things-tab-inner">
+                <!-- Mobile Inline Image Preview -->
+                <div class="more-things-mobile-img">
+                  <img src="../assets/images/more-things-to-do/event-space-team-building.jpg" alt="Event space rental and team building at Auto-City" loading="lazy">
+                </div>
+
+                <p class="more-things-tab-desc">
+                  Over 10,000 sq. ft. of versatile multi-purpose indoor and semi-outdoor event halls (Concept Hall &amp; Sky TV Stage) accommodating up to 800 guests. Complete your corporate retreat with adrenaline-fueled group bonding, from Wild Kart off-road racing to RaceRoom simulators and tournament pickleball.
+                </p>
+                <a href="#event-inquiry" class="more-things-action-btn">
+                  <span>Inquire Event Venues</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 04. Hubbiz - Commercial Office Space -->
+          <article 
+            class="more-things-tab-item tab-hubbiz" 
+            id="tab-hubbiz" 
+            role="tab" 
+            aria-selected="false" 
+            aria-controls="panel-hubbiz" 
+            tabindex="-1">
+            <div class="more-things-tab-header">
+              <div class="more-things-tab-title-group">
+                <span class="more-things-tab-num">04</span>
+                <h3 class="more-things-tab-title">Hubbiz - Commercial Office Space</h3>
+              </div>
+              <div class="more-things-tab-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </div>
+            </div>
+
+            <div class="more-things-tab-body">
+              <div class="more-things-tab-inner">
+                <!-- Mobile Inline Image Preview -->
+                <div class="more-things-mobile-img">
+                  <img src="../assets/images/more-things-to-do/hubbiz-commercial-office.jpg" alt="Hubbiz Commercial Office Space at Auto-City" loading="lazy">
+                </div>
+
+                <p class="more-things-tab-desc">
+                  Contemporary turnkey commercial office suites, collaborative co-working lounges, and high-tech corporate meeting boardrooms at Auto-City. Features 24/7 direct secured access, high-speed fiber connectivity, flexible month-to-month contracts, and ample free parking right in the city's commercial core.
+                </p>
+                <a href="#hubbiz-suites" class="more-things-action-btn">
+                  <span>Explore Hubbiz Suites</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Right Column: Large Stage Viewport with Signature Curtain Reveal -->
+        <div class="more-things-stage-wrap" aria-hidden="true">
+          <div class="more-things-stage">
+
+            <!-- Panel 1: Nadi Glamping Suites -->
+            <div class="more-things-panel active curtain-reveal" id="panel-nadi">
+              <img src="../assets/images/more-things-to-do/nadi-glamping-suites.jpg" alt="Nadi Glamping Suites" class="more-things-panel-img">
+            </div>
+
+            <!-- Panel 2: Lavenda Fun Park -->
+            <div class="more-things-panel" id="panel-lavenda">
+              <img src="../assets/images/more-things-to-do/lavenda-fun-park.jpg" alt="Lavenda Fun Park" class="more-things-panel-img">
+            </div>
+
+            <!-- Panel 3: Event space rental & team building -->
+            <div class="more-things-panel" id="panel-events">
+              <img src="../assets/images/more-things-to-do/event-space-team-building.jpg" alt="Event space rental and team building" class="more-things-panel-img">
+            </div>
+
+            <!-- Panel 4: Hubbiz - Commercial Office Space -->
+            <div class="more-things-panel" id="panel-hubbiz">
+              <img src="../assets/images/more-things-to-do/hubbiz-commercial-office.jpg" alt="Hubbiz Commercial Office Space" class="more-things-panel-img">
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Interactive Logic -->
+  <script src="../js/more-things-to-do.js"></script>
+</body>
+</html>

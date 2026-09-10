@@ -1,0 +1,568 @@
+/* ==========================================================================
+   Join in the fun : Instagram Social Media Reels Section
+   Dark background showcase featuring vertical 9:16 video cards
+   Updated: Refined smaller cards, increased spacing, clean minimal card UI
+   ========================================================================== */
+
+.reels-social-section {
+  background-color: #07090e;
+  color: #ffffff;
+  padding: 7.5rem 0 8.5rem;
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+  font-family: var(--font-body, 'Switzer', sans-serif);
+  /* Mouse pressure variables: shift gradient gently with 20% pressure */
+  --mouse-shift-x: 0px;
+  --mouse-shift-y: 0px;
+  --mouse-spot-x: 50%;
+  --mouse-spot-y: 50%;
+}
+
+/* --------------------------------------------------------------------------
+   Ambient Red Looping Background (Dim, Slow-Moving, Red Gradient Only)
+   -------------------------------------------------------------------------- */
+.reels-ambient-glow {
+  position: absolute;
+  inset: -20%;
+  width: 140%;
+  height: 140%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+  /* 20% pressure shift directly tied to cursor position with smooth physics */
+  transform: translate3d(var(--mouse-shift-x, 0px), var(--mouse-shift-y, 0px), 0);
+  will-change: transform;
+}
+
+/* Ambient Red Floating Orbs (Dim, luxury automotive crimson only) */
+.reels-glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  -webkit-filter: blur(90px);
+  opacity: 0.85;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* Primary looping red gradient orb */
+.reels-orb-1 {
+  width: 820px;
+  height: 540px;
+  top: 20%;
+  left: 25%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(225, 0, 33, 0.20) 0%,
+    rgba(180, 0, 26, 0.12) 38%,
+    rgba(120, 0, 18, 0.04) 65%,
+    transparent 78%
+  );
+  animation: floatRedOrb1 24s infinite ease-in-out;
+}
+
+/* Secondary looping red gradient orb */
+.reels-orb-2 {
+  width: 700px;
+  height: 490px;
+  top: 45%;
+  right: 20%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(225, 0, 33, 0.16) 0%,
+    rgba(160, 0, 24, 0.08) 42%,
+    rgba(100, 0, 14, 0.02) 68%,
+    transparent 76%
+  );
+  animation: floatRedOrb2 28s infinite ease-in-out alternate;
+}
+
+/* Interactive red spotlight affected directly by mouse position with 20% pressure */
+.reels-mouse-spotlight {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle 580px at var(--mouse-spot-x, 50%) var(--mouse-spot-y, 50%),
+    rgba(225, 0, 33, 0.14) 0%,
+    rgba(180, 0, 26, 0.06) 40%,
+    rgba(120, 0, 18, 0.02) 60%,
+    transparent 72%
+  );
+  opacity: 0.85;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+/* Slow, organic looping ambient motion */
+@keyframes floatRedOrb1 {
+  0% {
+    transform: translate(0px, 0px) scale(1) rotate(0deg);
+  }
+  30% {
+    transform: translate(70px, -45px) scale(1.07) rotate(12deg);
+  }
+  60% {
+    transform: translate(-50px, 40px) scale(0.95) rotate(-8deg);
+  }
+  85% {
+    transform: translate(35px, 25px) scale(1.04) rotate(6deg);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1) rotate(0deg);
+  }
+}
+
+@keyframes floatRedOrb2 {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  40% {
+    transform: translate(-65px, -35px) scale(1.08);
+  }
+  75% {
+    transform: translate(45px, 50px) scale(0.94);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+/* Grid Pattern Overlay Layer (Illuminated from behind by the red gradient) */
+.reels-grid-pattern {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 64px 64px, 64px 64px;
+}
+
+.reels-social-section .reels-container {
+  max-width: 1520px;
+  margin: 0 auto;
+  padding: 0 3rem;
+  position: relative;
+  z-index: 3;
+}
+
+/* Header Area (Word casing with natural breathing room) */
+.reels-header {
+  text-align: center;
+  margin-bottom: 3.75rem;
+  position: relative;
+  z-index: 3;
+}
+
+.reels-eyebrow {
+  display: none !important;
+}
+
+.reels-title {
+  font-family: var(--font-display, 'Creato Display', sans-serif);
+  font-size: clamp(2.5rem, 5.2vw, 4.25rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-transform: none; /* Word casing / Title case */
+  color: #ffffff;
+  margin: 0 0 1.25rem;
+  line-height: 1.12;
+}
+
+.reels-subtitle {
+  font-size: clamp(0.95rem, 1.25vw, 1.15rem);
+  color: #94a3b8;
+  font-weight: 400;
+  max-width: 620px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.reels-subtitle strong {
+  color: #f8fafc;
+  font-weight: 600;
+}
+
+/* Carousel Wrapper & Controls */
+.reels-carousel-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.reels-track-container {
+  width: 100%;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 1rem 0.5rem 1.75rem;
+  cursor: grab;
+  user-select: none;
+}
+
+.reels-track-container::-webkit-scrollbar {
+  display: none;
+}
+
+.reels-track-container:active {
+  cursor: grabbing;
+}
+
+/* Track with increased spacing */
+.reels-track {
+  display: flex;
+  gap: 2.25rem; /* Generous airy spacing between cards */
+  width: max-content;
+}
+
+/* Individual Reel Card: Smaller 9:16 proportions */
+.reel-card {
+  position: relative;
+  width: 235px;
+  height: 418px; /* Precise 9:16 Aspect Ratio */
+  border-radius: 18px;
+  overflow: hidden;
+  background: #0f131c;
+  box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.reel-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.85), 0 0 20px rgba(225, 0, 33, 0.2);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+/* Video & Fallback Poster Image (Zero pulsing animation) */
+.reel-media-wrap {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.reel-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.reel-poster {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.reel-card.video-error .reel-poster {
+  opacity: 1;
+}
+
+/* Overlays & Vignette */
+.reel-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.25) 0%,
+    rgba(0, 0, 0, 0) 35%,
+    rgba(0, 0, 0, 0.2) 65%,
+    rgba(0, 0, 0, 0.92) 100%
+  );
+  pointer-events: none;
+  transition: background 0.3s ease;
+}
+
+.reel-card:hover .reel-overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0) 30%,
+    rgba(0, 0, 0, 0.25) 60%,
+    rgba(0, 0, 0, 0.95) 100%
+  );
+}
+
+/* Top badges and corner social icons removed */
+.reel-top-pill,
+.reel-ig-badge {
+  display: none !important;
+}
+
+/* Center Frosted Glass Play Indicator (Clean, no pulsing) */
+.reel-play-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  z-index: 3;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+  transition: background 0.25s ease, border-color 0.25s ease;
+  pointer-events: none;
+}
+
+.reel-play-indicator svg {
+  width: 17px;
+  height: 17px;
+  fill: currentColor;
+  margin-left: 2px;
+}
+
+.reel-card:hover .reel-play-indicator {
+  background: rgba(255, 255, 255, 0.32);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Bottom Card Drawer / Content */
+.reel-content-drawer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.1rem 1rem;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.reel-caption-title {
+  font-size: 0.925rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.25;
+  margin: 0;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.reel-caption-desc {
+  font-size: 0.775rem;
+  color: #cbd5e1;
+  line-height: 1.35;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  opacity: 0.85;
+}
+
+.reel-meta-row {
+  display: flex;
+  align-items: center;
+  margin-top: 0.35rem;
+  padding-top: 0.35rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.reel-views-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.725rem;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.reel-views-count svg {
+  width: 13px;
+  height: 13px;
+  stroke: currentColor;
+}
+
+/* Watch button removed */
+.reel-cta-link {
+  display: none !important;
+}
+
+/* Floating Prev / Next Navigation Buttons */
+.reels-nav-btn {
+  position: absolute;
+  top: 55%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(18, 22, 32, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.reels-nav-btn.prev {
+  left: -20px;
+}
+
+.reels-nav-btn.next {
+  right: -20px;
+}
+
+.reels-nav-btn:hover:not(:disabled) {
+  background: #e10021;
+  border-color: #e10021;
+  color: #ffffff;
+  transform: translateY(-50%) scale(1.08);
+  box-shadow: 0 10px 28px rgba(225, 0, 33, 0.45);
+}
+
+.reels-nav-btn:active:not(:disabled) {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.reels-nav-btn:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.reels-nav-btn svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Follow CTA Button at Bottom */
+.reels-footer-action {
+  text-align: center;
+  margin-top: 3.75rem;
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.reels-follow-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: linear-gradient(135deg, #e10021 0%, #b8001a 100%);
+  color: #ffffff;
+  padding: 0.75rem 1.65rem;
+  border-radius: 9999px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 24px -4px rgba(225, 0, 33, 0.55);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reels-follow-btn:hover {
+  background: linear-gradient(135deg, #ff1a3d 0%, #e10021 100%);
+  box-shadow: 0 12px 28px -4px rgba(225, 0, 33, 0.75), 0 0 20px rgba(225, 0, 33, 0.35);
+  transform: translateY(-2px);
+  color: #ffffff;
+}
+
+.reels-follow-btn svg {
+  width: 17px;
+  height: 17px;
+  fill: currentColor;
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .reels-social-section {
+    padding: 4.5rem 0 5.5rem;
+  }
+  
+  .reels-nav-btn.prev {
+    left: 0;
+  }
+  
+  .reels-nav-btn.next {
+    right: 0;
+  }
+  
+  .reel-card {
+    width: 215px;
+    height: 382px;
+  }
+  
+  .reels-track {
+    gap: 1.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .reels-social-section .reels-container {
+    padding: 0 1.25rem;
+  }
+  
+  .reels-header {
+    margin-bottom: 2.25rem;
+  }
+  
+  .reels-nav-btn {
+    display: none !important;
+  }
+  
+  .reels-track-container {
+    padding: 0.75rem 0 1.5rem;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+  }
+  
+  .reels-track {
+    gap: 1.25rem;
+    padding: 0 0.5rem;
+  }
+  
+  .reel-card {
+    width: 195px;
+    height: 346px;
+    border-radius: 16px;
+    scroll-snap-align: center;
+  }
+  
+  .reel-content-drawer {
+    padding: 0.85rem 0.75rem;
+  }
+  
+  .reel-caption-title {
+    font-size: 0.85rem;
+  }
+  
+  .reel-caption-desc {
+    font-size: 0.72rem;
+  }
+}

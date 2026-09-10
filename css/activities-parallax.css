@@ -1,0 +1,243 @@
+/* ==========================================================================
+   Auto-City : Activities Parallax Section (dsgninterior.se Translation)
+   Exact Swiper Vertical Parallax Physics with Clean Editorial Layout
+   ========================================================================== */
+
+/* 1. Viewport Container & Scroll Track (500vh Full Page Scroll Journey) */
+.activities-parallax-section {
+  position: relative;
+  width: 100%;
+  height: 500vh; /* 100vh per slide: complete 5-stage sequential journey */
+  background-color: #060b14;
+  color: #ffffff;
+  z-index: 10;
+  user-select: none;
+}
+
+/* 2. Pinned Viewport Stage */
+.activities-parallax-section .activities-sticky-viewport {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.activities-parallax-section .swiper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.activities-parallax-section .swiper-wrapper {
+  flex-direction: column;
+}
+
+/* 2. Individual Slide Canvas */
+.activities-parallax-section .banner.swiper-slide {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  background: #060b14;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* 3. Background Media with Swiper Parallax */
+.activities-parallax-section .work-banner {
+  position: absolute;
+  inset: -15% 0;
+  width: 100%;
+  height: 130%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.activities-parallax-section .work-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  filter: brightness(0.96) contrast(1.02);
+}
+
+/* Light & Airy Editorial Scrim Overlay */
+.activities-parallax-section .work-banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(6, 11, 20, 0.28) 0%,
+    rgba(6, 11, 20, 0.04) 30%,
+    rgba(6, 11, 20, 0.12) 60%,
+    rgba(6, 11, 20, 0.58) 100%
+  );
+  pointer-events: none;
+}
+
+/* 4. Default Header Centered Title in Sentence Case */
+.activities-parallax-section .banner-title,
+.activities-parallax-section .banner-title .split,
+.activities-parallax-section .banner-title * {
+  font-family: 'Creato Display', var(--font-display) !important;
+  font-weight: 500 !important;
+  text-shadow: none !important;
+  filter: none !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.activities-parallax-section .banner-title {
+  position: absolute;
+  inset: 0;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  display: grid;
+  place-content: center;
+  text-align: center;
+  color: #ffffff;
+  font-size: clamp(2.5rem, 5.5vw, 5rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-transform: none;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.activities-parallax-section .banner-title .split {
+  display: block;
+  margin: 0 auto;
+  max-width: 1100px;
+}
+
+/* 5. Clean Bottom Content Bar (Editorial Synopsis + CTA with In-Place Fade Transition) */
+.activities-parallax-section .banner-bottom-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 25;
+  display: grid;
+  grid-template-areas: "stack";
+  background: linear-gradient(0deg, rgba(6, 11, 20, 0.72) 0%, rgba(6, 11, 20, 0.22) 65%, transparent 100%);
+  pointer-events: none;
+}
+
+.activities-parallax-section .banner-bottom-item {
+  grid-area: stack;
+  padding: clamp(2rem, 4.5vh, 3.5rem) clamp(1.75rem, 5vw, 4.5rem);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s ease;
+  pointer-events: none;
+}
+
+.activities-parallax-section .banner-bottom-item.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.activities-parallax-section .banner-synopsis {
+  max-width: 580px;
+}
+
+.activities-parallax-section .banner-synopsis-category {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-body, 'Switzer', sans-serif);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #ffffff;
+  background-color: var(--color-accent-red, #e10021);
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  margin-bottom: 0.75rem;
+  box-shadow: 0 2px 10px rgba(225, 0, 33, 0.35);
+  line-height: 1.2;
+}
+
+.activities-parallax-section .banner-synopsis-text {
+  font-family: var(--font-body, 'Switzer', sans-serif);
+  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+}
+
+.activities-parallax-section .banner-cta-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.activities-parallax-section .banner-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-body, 'Switzer', sans-serif);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: var(--color-accent-red, #e10021);
+  padding: 0.9rem 1.85rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(225, 0, 33, 0.4);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.activities-parallax-section .banner-cta-btn:hover {
+  background: #c5001d;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 26px rgba(225, 0, 33, 0.6);
+}
+
+.activities-parallax-section .banner-cta-btn svg {
+  transition: transform 0.25s ease;
+}
+
+.activities-parallax-section .banner-cta-btn:hover svg {
+  transform: translateX(4px);
+}
+
+/* 6. Responsive Viewports */
+@media (max-width: 900px) {
+  .activities-parallax-section .banner-title {
+    font-size: clamp(2.25rem, 6.5vw, 3.75rem);
+  }
+  .activities-parallax-section .banner-bottom-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+    padding-bottom: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .activities-parallax-section .banner-title {
+    font-size: clamp(1.85rem, 7vw, 2.75rem);
+  }
+  .activities-parallax-section .banner-synopsis-text {
+    font-size: 0.9rem;
+    line-height: 1.45;
+  }
+  .activities-parallax-section .banner-cta-btn {
+    padding: 0.75rem 1.4rem;
+    font-size: 0.85rem;
+  }
+}

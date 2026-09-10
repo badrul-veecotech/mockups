@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auto-City : Front-End Revamp Showcase</title>
+  <script>
+    (function() {
+      const stored = localStorage.getItem('auto-city-theme');
+      const theme = stored || 'light';
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+  <!-- Single Source of Truth Brand Tokens & Typography (Switzer Display & Body - Zero Monospace) -->
+  <link rel="stylesheet" href="css/brand-tokens.css">
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    /* Section-Specific Additions */
+    .metric-chip {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: var(--shadow-card);
+    }
+    .metric-number {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: var(--font-weight-display, 700);
+      color: var(--text-primary);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .metric-caption {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+    .token-preview-strip {
+      display: flex;
+      gap: 0.45rem;
+      margin: 1.25rem 0;
+    }
+    .token-dot {
+      width: 26px;
+      height: 26px;
+      border-radius: 4px;
+      border: 1px solid var(--border-medium);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand-badge-link" aria-label="Auto-City Showcase Home">
+        <img src="Graphic/auto-city-logo.svg" alt="Auto-City" class="brand-logo-img">
+        <span class="brand-subtag">SHOWCASE</span>
+      </a>
+      <div class="nav-right-group">
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-item-link active">Showcase</a></li>
+          <li><a href="research.html" class="nav-item-link">Research & Data</a></li>
+          <li><a href="brand-guidelines.html" class="nav-item-link">Brand Guidelines</a></li>
+        </ul>
+        <button type="button" class="theme-toggle-btn" id="themeToggleBtn" aria-label="Switch between light and dark theme" title="Toggle theme">
+          <svg class="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <span class="theme-label-text">Theme</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="container hero-content">
+      <div style="margin-bottom: 1rem;">
+        <span class="status-tag status-tag-active">
+          <span class="status-dot"></span>
+          Front-End Revamp Workspace
+        </span>
+      </div>
+      <h1 class="hero-title">Auto-City Digital Showcase</h1>
+      <p class="hero-desc">
+        Central portal for reviewing revamped templates, living design system tokens, 70/20/10 visual balance, and market research findings.
+      </p>
+      <div class="hero-actions">
+        <a href="brand-guidelines.html" class="btn btn-primary">Explore Brand System</a>
+        <a href="research.html" class="btn btn-secondary">Review Research Data</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Showcase Hub -->
+  <main class="section">
+    <div class="container">
+      
+      <!-- Performance & Architecture Metrics Strip -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-bottom: 3.5rem;">
+        <div class="metric-chip">
+          <div class="metric-number" style="color: var(--color-accent-red);">70 / 20 / 10</div>
+          <div class="metric-caption">70% White base, 20% Cobalt Blue structure, and 10% Racing Red accent.</div>
+        </div>
+        <div class="metric-chip">
+          <div class="metric-number" style="color: var(--color-blue-600);">Creato Display</div>
+          <div class="metric-caption">Display titles in Creato Display (max 700 bold), body in Switzer.</div>
+        </div>
+        <div class="metric-chip">
+          <div class="metric-number">Vector Insignia</div>
+          <div class="metric-caption">Clean traced SVG logo in `#e10021`, pure white, and monochrome.</div>
+        </div>
+        <div class="metric-chip">
+          <div class="metric-number">Dual Theme</div>
+          <div class="metric-caption">Clean White foundation with high-contrast Obsidian dark mode.</div>
+        </div>
+      </div>
+
+      <!-- Core Living Documents Bento -->
+      <div class="section-head">
+        <h2 class="section-title">Core Design Documents</h2>
+        <p class="section-subtext">Living design tokens and online research intelligence driving page revamps.</p>
+      </div>
+
+      <div class="bento-grid" style="margin-bottom: 4rem;">
+        
+        <!-- Brand Guidelines Card (Span 8) -->
+        <article class="card bento-col-8 card-padded" style="justify-content: space-between;">
+          <div>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+              <span class="status-tag status-tag-active">
+                <span class="status-dot"></span> Official Brandkit
+              </span>
+              <span class="token-code">brand-guidelines.html</span>
+            </div>
+            <h3 style="font-family: var(--font-display); font-size: 1.4rem; color: var(--text-primary); margin-bottom: 0.5rem;">
+              Brand Guidelines & Tokens
+            </h3>
+            <p style="color: var(--text-secondary); font-size: 0.925rem; max-width: 55ch; margin-bottom: 1.25rem;">
+              70/20/10 ratio architecture, complete 11-step Cobalt Blue scale, #e10021 Red accent, traced vector logo, and UI components.
+            </p>
+            <div class="token-preview-strip">
+              <div class="token-dot" style="background: #ffffff;" title="White Base (70%)"></div>
+              <div class="token-dot" style="background: #1d4ed8;" title="Cobalt Blue (20%) #1d4ed8"></div>
+              <div class="token-dot" style="background: #0f2a5c;" title="Navy Cobalt #0f2a5c"></div>
+              <div class="token-dot" style="background: #e10021;" title="Racing Red Accent (10%)"></div>
+              <div class="token-dot" style="background: #090d16;" title="Obsidian Canvas #090d16"></div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 0.75rem; margin-top: 1.5rem;">
+            <a href="brand-guidelines.html" class="btn btn-primary btn-sm">Open Brandkit</a>
+            <button type="button" class="btn btn-secondary btn-sm" data-preview-url="brand-guidelines.html" data-title="Brand Guidelines Inspection">
+              Live Preview
+            </button>
+          </div>
+        </article>
+
+        <!-- Research & Intelligence Card (Span 4) -->
+        <article class="card bento-col-4 card-padded" style="justify-content: space-between; background: linear-gradient(145deg, var(--bg-surface) 0%, var(--bg-surface-elevated) 100%);">
+          <div>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+              <span class="status-tag status-tag-queue">
+                <span class="status-dot"></span> Intelligence
+              </span>
+              <span class="token-code">research.html</span>
+            </div>
+            <h3 style="font-family: var(--font-display); font-size: 1.4rem; color: var(--text-primary); margin-bottom: 0.5rem;">
+              Market Research
+            </h3>
+            <p style="color: var(--text-secondary); font-size: 0.925rem; margin-bottom: 1.25rem;">
+              Competitor benchmarking, audience archetypes, site architecture audits, and live online search records.
+            </p>
+          </div>
+          <div style="display: flex; gap: 0.75rem; margin-top: 1.5rem;">
+            <a href="research.html" class="btn btn-secondary btn-sm" style="width: 100%;">Inspect Dossier</a>
+            <button type="button" class="btn btn-secondary btn-sm" data-preview-url="research.html" data-title="Research Dossier Inspection">
+              Preview
+            </button>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Revamped Subpages Queue -->
+      <div class="section-head">
+        <h2 class="section-title">Revamped Page Pipeline</h2>
+        <p class="section-subtext">Templates to be implemented from visual references, wireframes, and live links.</p>
+      </div>
+
+      <div class="bento-grid">
+        
+        <!-- Homepage Card (Active Live Review) -->
+        <article class="card bento-col-4 card-padded" style="border: 1px solid var(--color-blue-400); box-shadow: var(--shadow-hover);">
+          <div style="margin-bottom: 1.5rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+              <span class="status-tag status-tag-active">
+                <span class="status-dot"></span> Live Review
+              </span>
+              <span class="token-code">pages/home.html</span>
+            </div>
+            <h3 style="font-family: var(--font-display); font-size: 1.25rem; color: var(--text-primary); margin-bottom: 0.35rem;">
+              Homepage, Hero & Level.ai Expanding Precincts
+            </h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">
+              Features 3-island inward-closing navigation, cinematic video hero, editorial quote statement, and the Level.ai signature expanding horizontal accordion gallery with interactive pill categories, smooth spring flex transitions, and high-impact photography.
+            </p>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <span style="font-size: 0.72rem; background: var(--color-blue-50); color: var(--color-blue-600); border: 1px solid var(--color-blue-200); padding: 0.2rem 0.55rem; border-radius: 9999px; font-weight: 600;">Level.ai Accordion</span>
+              <span style="font-size: 0.72rem; background: #e9ecef; color: #0f172a; padding: 0.2rem 0.55rem; border-radius: 9999px; font-weight: 600;">Pill Synchronizer</span>
+              <span style="font-size: 0.72rem; background: rgba(225, 0, 33, 0.08); color: var(--color-accent-red); border: 1px solid rgba(225, 0, 33, 0.25); padding: 0.2rem 0.55rem; border-radius: 9999px; font-weight: 600;">Flex Expanding</span>
+              <span style="font-size: 0.72rem; background: #ecfdf5; color: #059669; padding: 0.2rem 0.55rem; border-radius: 9999px; font-weight: 600;">Editorial Quotes</span>
+              <span style="font-size: 0.72rem; background: #fef3c7; color: #d97706; border: 1px solid #fde68a; padding: 0.2rem 0.55rem; border-radius: 9999px; font-weight: 600;">5-Video Rotator</span>
+            </div>
+          </div>
+          <div style="display: flex; gap: 0.75rem; margin-top: auto;">
+            <a href="pages/home.html" class="btn btn-primary btn-sm" style="flex: 1;">Open Page</a>
+            <button type="button" class="btn btn-secondary btn-sm" data-preview-url="pages/home.html" data-title="Homepage - Refined Hero with Celebration Video">
+              Live Preview
+            </button>
+          </div>
+        </article>
+
+        <!-- Activities Parallax Experience Card (Active Live Review) -->
+        <article class="card bento-col-4 card-padded" style="border: 1px solid var(--color-blue-400); box-shadow: var(--shadow-hover);">
+          <div style="margin-bottom: 1.5rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+              <span class="status-tag status-tag-active">
+                <span class="status-dot"></span> Live Review
+              </span>
+              <span class="token-code">dsgninterior.se Parallax</span>
+            </div>
+            <h3 style="font-family: var(--font-display); font-size: 1.25rem; color: var(--text-primary); margin-bottom: 0.35rem;">
+              Activities Parallax Experience
+            </h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">
+              Full-viewport dual-plane parallax slider positioned directly after the 4 Core Pillars. Highlights Mini Zoo (Alpaca &amp; Friends), Penang River Cruise, Illuminated Fun Fair, Mangrove Eco Boardwalk, and Pickleball Courts.
+            </p>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <span style="font-size: 0.72rem; background: var(--color-blue-50); color: var(--color-blue-600); border: 1px solid var(--color-blue-200); padding: 0.2rem 0.55rem; border-radius: 9999px; font-weight: 600;">Dual-Plane Parallax</span>
+              <span style="font-size: 0.72rem; background: #fef2f2; color: var(--color-accent-red); padding: 0.2rem 0.55rem; border-radius: 9999px; font-weight: 600;">5 Activities</span>
+              <span style="font-size: 0.72rem; background: #e0f2fe; color: #0283a7; padding: 0.2rem 0.55rem; border-radius: 9999px; font-weight: 600;">Vertical Pagination</span>
+              <span style="font-size: 0.72rem; background: #ecfdf5; color: #059669; padding: 0.2rem 0.55rem; border-radius: 9999px; font-weight: 600;">Wheel &amp; Swipe</span>
+            </div>
+          </div>
+          <div style="display: flex; gap: 0.75rem; margin-top: auto;">
+            <a href="pages/home.html#activitiesParallaxSection" class="btn btn-primary btn-sm" style="flex: 1;">View Section</a>
+            <button type="button" class="btn btn-secondary btn-sm" data-preview-url="pages/home.html#activitiesParallaxSection" data-title="Activities Parallax Experience (dsgninterior.se Architecture)">
+              Live Preview
+            </button>
+          </div>
+        </article>
+
+        <!-- Social Reels Showcase Card (Active Live Review) -->
+        <article class="card bento-col-4 card-padded" style="border: 1px solid var(--color-blue-400); box-shadow: var(--shadow-hover);">
+          <div style="margin-bottom: 1.5rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+              <span class="status-tag status-tag-active">
+                <span class="status-dot"></span> Live Review
+              </span>
+              <span class="token-code">#joinInTheFun</span>
+            </div>
+            <h3 style="font-family: var(--font-display); font-size: 1.25rem; color: var(--text-primary); margin-bottom: 0.35rem;">
+              Join In The Fun (Social Reels)
+            </h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">
+              Vertical 9:16 social reel showcase on dark blueprint canvas. Live thumbnails scraped from @autocity_penang with 4-second seamless looping video previews, floating category badges, and smooth carousel controls.
+            </p>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <span style="font-size: 0.72rem; background: #0f172a; color: #38bdf8; border: 1px solid #1e293b; padding: 0.2rem 0.55rem; border-radius: 9999px; font-weight: 600;">9:16 Vertical</span>
+              <span style="font-size: 0.72rem; background: #fef08a; color: #854d0e; padding: 0.2rem 0.55rem; border-radius: 9999px; font-weight: 600;">4s Video Loops</span>
+              <span style="font-size: 0.72rem; background: #e0f2fe; color: #0283a7; padding: 0.2rem 0.55rem; border-radius: 9999px; font-weight: 600;">Drag Carousel</span>
+              <span style="font-size: 0.72rem; background: rgba(225, 0, 33, 0.08); color: var(--color-accent-red); border: 1px solid rgba(225, 0, 33, 0.25); padding: 0.2rem 0.55rem; border-radius: 9999px; font-weight: 600;">Instagram Live</span>
+            </div>
+          </div>
+          <div style="display: flex; gap: 0.75rem; margin-top: auto;">
+            <a href="pages/home.html#joinInTheFun" class="btn btn-primary btn-sm" style="flex: 1;">View Section</a>
+            <button type="button" class="btn btn-secondary btn-sm" data-preview-url="pages/home.html#joinInTheFun" data-title="Join In The Fun (Instagram Reels Showcase)">
+              Live Preview
+            </button>
+          </div>
+        </article>
+
+        <!-- Directory Card -->
+        <article class="card bento-col-4 card-padded" style="border-style: dashed;">
+          <div style="margin-bottom: 1.5rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+              <span class="status-tag status-tag-draft">
+                <span class="status-dot"></span> Queued
+              </span>
+              <span class="token-code">pages/directory.html</span>
+            </div>
+            <h3 style="font-family: var(--font-display); font-size: 1.15rem; color: var(--text-primary); margin-bottom: 0.35rem;">
+              Tenant & Showroom Directory
+            </h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;">
+              Filterable dealership listings, dining options, operating hours, and location wayfinding.
+            </p>
+          </div>
+          <div style="font-size: 0.8rem; color: var(--text-dim); margin-top: auto;">
+            Awaiting taxonomy and tenant roster
+          </div>
+        </article>
+
+        <!-- Habitline Quote Section Component Card (Active Live Review) -->
+        <article class="card bento-col-4 card-padded" style="border: 1px solid var(--color-blue-400); box-shadow: var(--shadow-hover);">
+          <div style="margin-bottom: 1.5rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+              <span class="status-tag status-tag-active">
+                <span class="status-dot"></span> Live Review
+              </span>
+              <span class="token-code">components/quote-statement.html</span>
+            </div>
+            <h3 style="font-family: var(--font-display); font-size: 1.25rem; color: var(--text-primary); margin-bottom: 0.35rem;">
+              Editorial Quote & Capsule Pills
+            </h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">
+              Minimalist display statement positioned under the hero section with inline cycling moments portrait pill and 3D weather capsule tailored specifically for Auto-City.
+            </p>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <span style="font-size: 0.72rem; background: var(--color-blue-50); color: var(--color-blue-600); border: 1px solid var(--color-blue-200); padding: 0.2rem 0.55rem; border-radius: 9999px; font-weight: 600;">Under Hero</span>
+              <span style="font-size: 0.72rem; background: #e0f2fe; color: #0283a7; padding: 0.2rem 0.55rem; border-radius: 9999px; font-weight: 600;">3D Cloud/Sun</span>
+              <span style="font-size: 0.72rem; background: #f1f5f9; color: #475569; padding: 0.2rem 0.55rem; border-radius: 9999px; font-weight: 600;">Auto-Cycling Photos</span>
+              <span style="font-size: 0.72rem; background: #fef2f2; color: var(--color-accent-red); padding: 0.2rem 0.55rem; border-radius: 9999px; font-weight: 600;">AutoCity Theme</span>
+            </div>
+          </div>
+          <div style="display: flex; gap: 0.75rem; margin-top: auto;">
+            <a href="pages/home.html#quoteStatement" class="btn btn-primary btn-sm" style="flex: 1;">View on Home</a>
+            <button type="button" class="btn btn-secondary btn-sm" data-preview-url="components/quote-statement.html" data-title="Habitline Quote Section Component">
+              Live Preview
+            </button>
+          </div>
+        </article>
+
+        <!-- Upcoming Events Showcase Card (Active Live Review) -->
+        <article class="card bento-col-4 card-padded" style="border: 1px solid var(--color-blue-400); box-shadow: var(--shadow-hover);">
+          <div style="margin-bottom: 1.5rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+              <span class="status-tag status-tag-active">
+                <span class="status-dot"></span> Live Review
+              </span>
+              <span class="token-code">#events (FunFairBG)</span>
+            </div>
+            <h3 style="font-family: var(--font-display); font-size: 1.25rem; color: var(--text-primary); margin-bottom: 0.35rem;">
+              Upcoming Events (Creative Pinboard)
+            </h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">
+              Atmospheric dark-to-light theme transition with FunFairBG.png backdrop. Creative angled pinboard stack with pastel cards (#fff1d7, #c5d7ff, #ffe0f8, #d8f4e5), Emil Kowalski card-pick hover lift, and pure white header typography.
+            </p>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <span style="font-size: 0.72rem; background: #fff1d7; color: #92400e; border: 1px solid #fde68a; padding: 0.2rem 0.55rem; border-radius: 9999px; font-weight: 600;">Pastel Pinboard</span>
+              <span style="font-size: 0.72rem; background: #c5d7ff; color: #1e3a8a; padding: 0.2rem 0.55rem; border-radius: 9999px; font-weight: 600;">Angled Stack</span>
+              <span style="font-size: 0.72rem; background: #ffe0f8; color: #86198f; padding: 0.2rem 0.55rem; border-radius: 9999px; font-weight: 600;">Card-Pick Motion</span>
+              <span style="font-size: 0.72rem; background: #d8f4e5; color: #065f46; padding: 0.2rem 0.55rem; border-radius: 9999px; font-weight: 600;">FunFair Backdrop</span>
+            </div>
+          </div>
+          <div style="display: flex; gap: 0.75rem; margin-top: auto;">
+            <a href="pages/home.html#events" class="btn btn-primary btn-sm" style="flex: 1;">View Section</a>
+            <button type="button" class="btn btn-secondary btn-sm" data-preview-url="pages/home.html#events" data-title="Upcoming Events (Creative Pinboard Stack &amp; FunFair Backdrop)">
+              Preview
+            </button>
+          </div>
+        </article>
+
+        <!-- App Download CTA Card (Active Live Review) -->
+        <article class="card bento-col-4 card-padded" style="border: 1px solid var(--color-blue-400); box-shadow: var(--shadow-hover);">
+          <div style="margin-bottom: 1.5rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+              <span class="status-tag status-tag-active">
+                <span class="status-dot"></span> Live Review
+              </span>
+              <span class="token-code">components/app-download-cta.html</span>
+            </div>
+            <h3 style="font-family: var(--font-display); font-size: 1.25rem; color: var(--text-primary); margin-bottom: 0.35rem;">
+              App Download CTA (3D Phone Model &amp; Live UI)
+            </h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">
+              Full 3D hardware iPhone 16 Pro device model (titanium chassis, physical buttons, dynamic island) with a 100% live HTML/CSS Auto-City app UI rendered inside (weather pill, 4-bento actions, VIP pass, event card, glass tab dock). Features real-time mouse parallax 3D tilt and specular glass glare.
+            </p>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <span style="font-size: 0.72rem; background: #e0f2fe; color: #0284c7; padding: 0.2rem 0.55rem; border-radius: 9999px; font-weight: 600;">3D Phone Model</span>
+              <span style="font-size: 0.72rem; background: #ede9fe; color: #7c3aed; padding: 0.2rem 0.55rem; border-radius: 9999px; font-weight: 600;">Live HTML/CSS UI</span>
+              <span style="font-size: 0.72rem; background: var(--color-blue-50); color: var(--color-blue-600); border: 1px solid var(--color-blue-200); padding: 0.2rem 0.55rem; border-radius: 9999px; font-weight: 600;">Mouse Parallax</span>
+              <span style="font-size: 0.72rem; background: #fef3c7; color: #b45309; padding: 0.2rem 0.55rem; border-radius: 9999px; font-weight: 600;">Friendly Copy</span>
+            </div>
+          </div>
+          <div style="display: flex; gap: 0.75rem; margin-top: auto;">
+            <a href="pages/home.html#appDownload" class="btn btn-primary btn-sm" style="flex: 1;">View on Home</a>
+            <button type="button" class="btn btn-secondary btn-sm" data-preview-url="components/app-download-cta.html" data-title="App Download CTA (Habitline 3-Column Layout)">
+              Live Preview
+            </button>
+          </div>
+        </article>
+
+        <!-- More Things You Can Do at AutoCity Card (Active Live Review) -->
+        <article class="card bento-col-4 card-padded" style="border: 1px solid var(--color-blue-400); box-shadow: var(--shadow-hover);">
+          <div style="margin-bottom: 1.5rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+              <span class="status-tag status-tag-active">
+                <span class="status-dot"></span> Live Review
+              </span>
+              <span class="token-code">#moreThingsToDo (Acelia)</span>
+            </div>
+            <h3 style="font-family: var(--font-display); font-size: 1.25rem; color: var(--text-primary); margin-bottom: 0.35rem;">
+              Find your suite. Family, friends, beyond.
+            </h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">
+              Temlis Acelia tabbed services with signature curtain-reveal image transitions in light mode. Features Nadi Glamping Suites, Lavenda Fun Park, Event Space &amp; Team Building, and Hubbiz Commercial Office Space with bespoke branding and photography.
+            </p>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <span style="font-size: 0.72rem; background: var(--color-blue-50); color: var(--color-blue-600); border: 1px solid var(--color-blue-200); padding: 0.2rem 0.55rem; border-radius: 9999px; font-weight: 600;">Temlis Acelia</span>
+              <span style="font-size: 0.72rem; background: #fff1d7; color: #92400e; padding: 0.2rem 0.55rem; border-radius: 9999px; font-weight: 600;">Curtain Reveal</span>
+              <span style="font-size: 0.72rem; background: #ffe0f8; color: #86198f; padding: 0.2rem 0.55rem; border-radius: 9999px; font-weight: 600;">Light Mode</span>
+              <span style="font-size: 0.72rem; background: #ecfdf5; color: #059669; padding: 0.2rem 0.55rem; border-radius: 9999px; font-weight: 600;">4 Offerings</span>
+            </div>
+          </div>
+          <div style="display: flex; gap: 0.75rem; margin-top: auto;">
+            <a href="pages/home.html#moreThingsToDo" class="btn btn-primary btn-sm" style="flex: 1;">View on Home</a>
+            <button type="button" class="btn btn-secondary btn-sm" data-preview-url="components/more-things-to-do.html" data-title="Find your suite. Family, friends, beyond. (Temlis Acelia Light Mode)">
+              Live Preview
+            </button>
+          </div>
+        </article>
+
+        <!-- Enclosed Island Footer Card (Active Live Review) -->
+        <article class="card bento-col-4 card-padded" style="border: 1px solid var(--color-blue-400); box-shadow: var(--shadow-hover);">
+          <div style="margin-bottom: 1.5rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+              <span class="status-tag status-tag-active">
+                <span class="status-dot"></span> Live Review
+              </span>
+              <span class="token-code">#siteFooter (Orchid)</span>
+            </div>
+            <h3 style="font-family: var(--font-display); font-size: 1.25rem; color: var(--text-primary); margin-bottom: 0.35rem;">
+              Enclosed Island Footer
+            </h3>
+            <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">
+              Light-mode adaptation inspired by Orchid Security. Features a floating rounded island enclosure (32px radius), brand vector insignia with social row, structured destination navigation columns, authentic 3x2 accreditation badge grid (Tourism Malaysia, PGT, TripAdvisor, Eco Township, Safe City, Halal Hub), hairline divider, and legal links.
+            </p>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <span style="font-size: 0.72rem; background: var(--color-blue-50); color: var(--color-blue-600); border: 1px solid var(--color-blue-200); padding: 0.2rem 0.55rem; border-radius: 9999px; font-weight: 600;">Orchid Reference</span>
+              <span style="font-size: 0.72rem; background: #ecfdf5; color: #059669; padding: 0.2rem 0.55rem; border-radius: 9999px; font-weight: 600;">Light Mode</span>
+              <span style="font-size: 0.72rem; background: #fef3c7; color: #b45309; padding: 0.2rem 0.55rem; border-radius: 9999px; font-weight: 600;">3x2 Badges</span>
+              <span style="font-size: 0.72rem; background: #e0f2fe; color: #0284c7; padding: 0.2rem 0.55rem; border-radius: 9999px; font-weight: 600;">Island Enclosure</span>
+            </div>
+          </div>
+          <div style="display: flex; gap: 0.75rem; margin-top: auto;">
+            <a href="pages/home.html#siteFooter" class="btn btn-primary btn-sm" style="flex: 1;">View on Home</a>
+            <button type="button" class="btn btn-secondary btn-sm" data-preview-url="components/footer.html" data-title="Enclosed Island Footer (Orchid Security Light Mode)">
+              Live Preview
+            </button>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Live Inspection Modal -->
+  <div class="modal-backdrop" id="previewModal">
+    <div class="modal-window">
+      <div class="modal-toolbar">
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <h3 style="font-size: 0.95rem; font-family: var(--font-display); color: var(--text-primary);" id="modalTitle">Viewport Inspection</h3>
+          <div class="viewport-toggle-group">
+            <button type="button" class="viewport-btn active" data-width="100%">100% Desktop</button>
+            <button type="button" class="viewport-btn" data-width="1024px">1024px Laptop</button>
+            <button type="button" class="viewport-btn" data-width="768px">768px Tablet</button>
+            <button type="button" class="viewport-btn" data-width="390px">390px Mobile</button>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <a href="#" target="_blank" class="btn btn-secondary btn-sm" id="modalExternalLink">New Window ↗</a>
+          <button type="button" class="btn btn-secondary btn-sm" id="closeModalBtn">Close (Esc)</button>
+        </div>
+      </div>
+      <div class="modal-frame-stage">
+        <iframe src="about:blank" class="modal-frame" id="previewIframe"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>Auto-City Front-End Revamp Hub : Engineered for pixel-perfect design reviews.</p>
+    </div>
+  </footer>
+
+  <script src="js/lucide.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

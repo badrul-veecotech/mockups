@@ -1,0 +1,2389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auto-City App Download CTA Component</title>
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/typography.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/utilities.css">
+</head>
+<body style="margin:0; padding:0; background:#f8fafc; font-family:sans-serif;">
+
+  <!-- ============================================================
+       AUTO-CITY APP DOWNLOAD CTA — FRIENDLY 3D PARALLAX SHOWCASE
+       Layout: 3-Column — Left Friendly Copy / Center 3D Interactive Phone / Right QR Card
+       Aesthetic: Clean light sky, soft clouds, compact Apple-inspired UI, mouse parallax
+       ============================================================ -->
+  <section class="hl-app-section" id="appDownload">
+
+    <!-- Atmospheric light sky & cloud backdrop -->
+    <div class="hl-app-backdrop" aria-hidden="true">
+      <div class="hl-app-cloud-glow hl-app-cloud-glow--left"></div>
+      <div class="hl-app-cloud-glow hl-app-cloud-glow--right"></div>
+      <div class="hl-app-mist-floor"></div>
+
+      <!-- Constellation of 4 animated ambient sparkles (appear every 3s and disappear) -->
+      <div class="hl-app-sparkle hl-app-sparkle--1" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 0C12 6.627 17.373 12 24 12C17.373 12 12 17.373 12 24C12 17.373 6.627 12 0 12C6.627 12 12 6.627 12 0Z" fill="url(#hlSparkleGrad1)"/>
+          <circle cx="12" cy="12" r="3" fill="#ffffff"/>
+          <defs>
+            <linearGradient id="hlSparkleGrad1" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#f59e0b"/>
+              <stop offset="1" stop-color="#fbbf24"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+
+      <div class="hl-app-sparkle hl-app-sparkle--2" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 0C12 6.627 17.373 12 24 12C17.373 12 12 17.373 12 24C12 17.373 6.627 12 0 12C6.627 12 12 6.627 12 0Z" fill="url(#hlSparkleGrad2)"/>
+          <circle cx="12" cy="12" r="2.5" fill="#ffffff"/>
+          <defs>
+            <linearGradient id="hlSparkleGrad2" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#38bdf8"/>
+              <stop offset="1" stop-color="#818cf8"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+
+      <div class="hl-app-sparkle hl-app-sparkle--3" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 0C12 6.627 17.373 12 24 12C17.373 12 12 17.373 12 24C12 17.373 6.627 12 0 12C6.627 12 12 6.627 12 0Z" fill="url(#hlSparkleGrad3)"/>
+          <circle cx="12" cy="12" r="3" fill="#ffffff"/>
+          <defs>
+            <linearGradient id="hlSparkleGrad3" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#e10021"/>
+              <stop offset="1" stop-color="#fb7185"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+
+      <div class="hl-app-sparkle hl-app-sparkle--4" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 0C12 6.627 17.373 12 24 12C17.373 12 12 17.373 12 24C12 17.373 6.627 12 0 12C6.627 12 12 6.627 12 0Z" fill="url(#hlSparkleGrad4)"/>
+          <circle cx="12" cy="12" r="2.5" fill="#ffffff"/>
+          <defs>
+            <linearGradient id="hlSparkleGrad4" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#f59e0b"/>
+              <stop offset="1" stop-color="#ec4899"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+    </div>
+
+    <div class="hl-app-container">
+
+      <!-- ── COLUMN 1: Friendly Value Proposition & Download Action ── -->
+      <div class="hl-app-col hl-app-col--left">
+        <h2 class="hl-app-headline">
+          Everything fun at <span class="hl-brand-name">Auto-City</span>,<br>
+          just a tap away
+        </h2>
+
+        <p class="hl-app-subtext">
+          From weekend night markets and live music to river cruises and family dining—find what’s buzzing today, save your go-to spots, and enjoy special treats on us.
+        </p>
+
+        <!-- Download Buttons (Habitline Pill Style) -->
+        <div class="hl-app-buttons">
+          <a href="#" class="hl-app-btn hl-app-btn--apple" aria-label="Download for iPhone on the App Store">
+            <svg class="hl-app-btn-icon" viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true">
+              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11"/>
+            </svg>
+            <span>Download for iPhone</span>
+          </a>
+
+          <a href="#" class="hl-app-btn hl-app-btn--android" aria-label="Get it on Android via Google Play">
+            <svg class="hl-app-btn-icon" viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true">
+              <path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-1.0003s.4482-1.0003.9993-1.0003c.5516 0 .9997.4486.9997 1.0003s-.4481 1.0003-.9997 1.0003m-11.046 0c-.5511 0-.9993-.4486-.9993-1.0003s.4482-1.0003.9993-1.0003c.5516 0 .9997.4486.9997 1.0003s-.4481 1.0003-.9997 1.0003m11.4045-6.02l1.996-3.4572c.1556-.2693.0632-.6135-.2061-.7691-.2693-.1556-.6135-.0632-.7691.2061l-2.0226 3.5032c-1.4728-.6728-3.1408-1.0583-4.9451-1.0583-1.8043 0-3.4723.3855-4.9451 1.0583l-2.0226-3.5032c-.1556-.2693-.4998-.3617-.7691-.2061-.2693.1556-.3617.4998-.2061.7691l1.996 3.4572c-3.1788 1.7371-5.352 4.9696-5.6967 8.7845h22.6846c-.3447-3.8149-2.5179-7.0474-5.6967-8.7845"/>
+            </svg>
+            <span>Get it on Android</span>
+          </a>
+        </div>
+
+        <!-- Rating trust strip -->
+        <div class="hl-app-ratings">
+          <div class="hl-app-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <span class="hl-app-rating-text">4.9 &bull; Loved by 50,000+ happy visitors</span>
+        </div>
+      </div>
+
+      <!-- ── COLUMN 2: 3D Hardware Phone Model with Native Auto-City UI & Parallax ── -->
+      <div class="hl-app-col hl-app-col--center">
+        <div class="hl-phone-stage" id="phoneStage" aria-label="Interactive 3D model of Auto-City mobile app">
+          <div class="hl-phone-3d-wrap" id="phone3DWrap">
+            
+            <!-- Ground Contact Shadow that moves opposite to tilt -->
+            <div class="hl-phone-3d-shadow" id="phone3DShadow"></div>
+
+            <!-- 3D Hardware Phone Device Body -->
+            <div class="hl-phone-device" id="phoneDevice">
+              
+              <!-- Side Hardware Buttons -->
+              <div class="hl-hw-btn hl-hw-btn--silent"></div>
+              <div class="hl-hw-btn hl-hw-btn--vol-up"></div>
+              <div class="hl-hw-btn hl-hw-btn--vol-down"></div>
+              <div class="hl-hw-btn hl-hw-btn--power"></div>
+
+              <!-- Outer Titanium Chassis & Chamfer Edge -->
+              <div class="hl-phone-titanium-bezel">
+                
+                <!-- Inner Screen Frame -->
+                <div class="hl-phone-screen-frame">
+
+                  <!-- Dynamic Island at top -->
+                  <div class="hl-phone-dynamic-island">
+                    <span class="hl-di-lens"></span>
+                    <span class="hl-di-indicator"></span>
+                  </div>
+
+                  <!-- Dynamic Specular Glare Reflection -->
+                  <div class="hl-phone-glass-glare" id="phone3DGlare"></div>
+
+                  <!-- ── LIVE AUTO-CITY APP UI (100% PURE VECTOR / HTML / CSS) ── -->
+                  <div class="hl-app-ui">
+                    
+                    <!-- iOS Status Bar -->
+                    <div class="hl-ui-status-bar">
+                      <span class="hl-ui-time">9:41</span>
+                      <div class="hl-ui-status-icons">
+                        <svg class="hl-ui-icon-cellular" viewBox="0 0 17 12" fill="currentColor"><rect x="1" y="8" width="2.5" height="4" rx="0.5"/><rect x="5" y="6" width="2.5" height="6" rx="0.5"/><rect x="9" y="3.5" width="2.5" height="8.5" rx="0.5"/><rect x="13" y="1" width="2.5" height="11" rx="0.5"/></svg>
+                        <svg class="hl-ui-icon-wifi" viewBox="0 0 16 12" fill="currentColor"><path d="M8 9.5a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm-3.5-2.5a5 5 0 017 0l1.2-1.2a6.7 6.7 0 00-9.4 0l1.2 1.2zm-2.4-2.4a8.4 8.4 0 0111.8 0l1.2-1.2a10.1 10.1 0 00-14.2 0l1.2 1.2z"/></svg>
+                        <div class="hl-ui-battery">
+                          <div class="hl-ui-battery-level"></div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- App Header -->
+                    <div class="hl-ui-header">
+                      <div class="hl-ui-user-info">
+                        <div class="hl-ui-greeting-row">
+                          <span class="hl-ui-greeting">Hey Alex,</span>
+                          <span class="hl-ui-wave">👋</span>
+                        </div>
+                        <div class="hl-ui-location">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="hl-ui-loc-icon"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                          <span>Auto-City Penang</span>
+                        </div>
+                      </div>
+                      <div class="hl-ui-avatar">
+                        <img src="../assets/images/quote-avatar-1.jpg" alt="Alex Profile">
+                        <span class="hl-ui-avatar-badge"></span>
+                      </div>
+                    </div>
+
+                    <!-- Weather & Date Pill -->
+                    <div class="hl-ui-weather-pill">
+                      <div class="hl-ui-weather-left">
+                        <span class="hl-ui-weather-icon">⛅</span>
+                        <div class="hl-ui-weather-text">
+                          <div class="hl-ui-weather-temp">29&deg;C Partly Cloudy</div>
+                          <div class="hl-ui-weather-date">Tuesday, 26 Oct</div>
+                        </div>
+                      </div>
+                      <span class="hl-ui-weather-tag">Good Day</span>
+                    </div>
+
+                    <!-- 4-Grid Compact Apple Bento Actions -->
+                    <div class="hl-ui-bento-grid">
+                      <div class="hl-ui-bento-item hl-ui-bento--dining">
+                        <div class="hl-ui-bento-icon">🍴</div>
+                        <span class="hl-ui-bento-label">Dining</span>
+                      </div>
+                      <div class="hl-ui-bento-item hl-ui-bento--funfair">
+                        <div class="hl-ui-bento-icon">🎡</div>
+                        <span class="hl-ui-bento-label">Fun Fair</span>
+                      </div>
+                      <div class="hl-ui-bento-item hl-ui-bento--events">
+                        <div class="hl-ui-bento-icon">📅</div>
+                        <span class="hl-ui-bento-label">Events</span>
+                      </div>
+                      <div class="hl-ui-bento-item hl-ui-bento--perks">
+                        <div class="hl-ui-bento-icon">🎟️</div>
+                        <span class="hl-ui-bento-label">Perks</span>
+                      </div>
+                    </div>
+
+                    <!-- Apple Wallet Style "Auto-City VIP Pass" -->
+                    <div class="hl-ui-pass-card">
+                      <div class="hl-ui-pass-top">
+                        <div class="hl-ui-pass-brand">
+                          <span class="hl-ui-pass-logo">A</span>
+                          <div>
+                            <div class="hl-ui-pass-title">Auto-City VIP Pass</div>
+                            <div class="hl-ui-pass-num">AC-8892 &bull; Active</div>
+                          </div>
+                        </div>
+                        <span class="hl-ui-pass-tier">ELITE</span>
+                      </div>
+                      <div class="hl-ui-pass-bottom">
+                        <div class="hl-ui-pass-points-val">23,500 <span class="hl-ui-pts-label">pts</span></div>
+                        <div class="hl-ui-pass-barcode">
+                          <span>|||| ||| ||||| ||| |||| ||</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Happening Tonight Event Feature Card -->
+                    <div class="hl-ui-event-card">
+                      <img src="../assets/images/events/event-4-carnival-nights.jpg" alt="Night Carnival" class="hl-ui-event-bg">
+                      <div class="hl-ui-event-overlay"></div>
+                      <div class="hl-ui-event-content">
+                        <div class="hl-ui-event-pill">
+                          <span class="hl-ui-live-dot"></span>
+                          LIVE NOW
+                        </div>
+                        <div class="hl-ui-event-title">Night Carnival &amp; Food Fair</div>
+                        <div class="hl-ui-event-meta">6:00 PM &ndash; 12:00 AM &bull; Central Ave</div>
+                      </div>
+                    </div>
+
+                    <!-- Apple Frosted Glass Tab Dock -->
+                    <div class="hl-ui-dock">
+                      <div class="hl-ui-dock-item hl-ui-dock-item--active">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                        <span class="hl-ui-dock-dot"></span>
+                      </div>
+                      <div class="hl-ui-dock-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+                      </div>
+                      <div class="hl-ui-dock-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+                      </div>
+                      <div class="hl-ui-dock-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
+                      </div>
+                    </div>
+
+                    <!-- Home indicator bar -->
+                    <div class="hl-ui-home-bar"></div>
+
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+
+            <!-- 3D Floating Pill Badge Hovering in Z-Space -->
+            <div class="hl-phone-float-badge">
+              <span class="hl-float-dot"></span>
+              <span>Live at Auto-City &bull; 29&deg;C</span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- ── COLUMN 3: Scan QR Code ── -->
+      <div class="hl-app-col hl-app-col--right">
+        <h3 class="hl-qr-headline">
+          Take the fun with you
+        </h3>
+
+        <div class="hl-qr-card">
+          <div class="hl-qr-frame">
+            <svg class="hl-qr-svg" aria-label="Auto-City App QR Code" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" xmlns:xlink="http://www.w3.org/1999/xlink" style="max-width: 100%;height: auto;" width="999" height="999" viewBox="0 0 999 999">
+
+<rect width="999" height="999" fill="#ffffff" x="0" y="0"></rect>
+
+<g fill="#000000">
+
+<g transform="translate(270,54) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(297,54) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(324,54) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(378,54) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(540,54) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(621,54) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(675,54) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(702,54) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(270,81) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(297,81) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(324,81) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(351,81) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(378,81) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(432,81) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(459,81) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(567,81) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(621,81) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(648,81) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(702,81) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(270,108) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(297,108) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(324,108) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(351,108) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(405,108) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(459,108) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(594,108) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(621,108) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(675,108) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(702,108) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(432,135) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(486,135) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(567,135) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(594,135) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(648,135) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(675,135) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(351,162) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(432,162) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(540,162) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(702,162) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(270,189) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(297,189) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(378,189) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(432,189) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(459,189) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(486,189) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(513,189) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(540,189) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(594,189) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(621,189) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(648,189) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(270,216) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(324,216) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(378,216) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(432,216) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(486,216) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(540,216) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(594,216) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(648,216) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(702,216) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(270,243) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(297,243) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(324,243) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(351,243) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(378,243) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(486,243) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(513,243) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(567,243) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(594,243) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(621,243) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(648,243) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(702,243) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(108,270) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(135,270) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(162,270) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(216,270) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(270,270) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(351,270) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(378,270) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(459,270) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(486,270) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(540,270) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(594,270) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(702,270) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(729,270) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(756,270) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(783,270) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(864,270) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(891,270) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(918,270) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(54,297) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(108,297) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(189,297) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(324,297) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(378,297) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(405,297) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(459,297) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(486,297) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(513,297) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(675,297) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(729,297) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(756,297) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(891,297) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(918,297) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(216,324) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(243,324) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(378,324) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(405,324) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(432,324) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(459,324) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(513,324) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(648,324) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(729,324) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(756,324) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(783,324) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(837,324) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(864,324) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(891,324) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(54,351) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(162,351) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(189,351) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(243,351) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(351,351) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(432,351) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(513,351) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(540,351) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(567,351) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(675,351) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(756,351) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(837,351) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(864,351) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(891,351) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(918,351) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(54,378) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(135,378) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(162,378) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(216,378) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(297,378) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(351,378) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(378,378) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(432,378) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(459,378) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(486,378) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(567,378) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(594,378) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(621,378) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(648,378) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(675,378) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(729,378) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(783,378) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(837,378) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(891,378) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(54,405) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(135,405) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(162,405) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(324,405) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(351,405) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(405,405) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(432,405) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(675,405) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(756,405) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(810,405) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(918,405) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(162,432) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(216,432) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(243,432) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(297,432) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(324,432) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(351,432) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(459,432) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(567,432) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(594,432) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(648,432) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(729,432) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(756,432) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(783,432) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(810,432) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(837,432) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(864,432) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(891,432) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(54,459) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(81,459) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(108,459) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(135,459) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(162,459) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(189,459) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(243,459) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(324,459) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(351,459) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(459,459) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(486,459) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(567,459) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(594,459) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(621,459) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(648,459) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(756,459) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(810,459) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(864,459) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(81,486) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(108,486) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(216,486) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(243,486) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(270,486) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(297,486) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(351,486) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(432,486) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(459,486) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(513,486) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(567,486) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(729,486) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(783,486) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(810,486) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(891,486) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(918,486) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(54,513) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(81,513) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(135,513) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(243,513) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(351,513) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(378,513) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(513,513) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(567,513) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(594,513) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(675,513) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(702,513) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(756,513) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(783,513) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(891,513) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(918,513) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(108,540) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(162,540) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(189,540) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(216,540) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(243,540) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(270,540) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(297,540) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(324,540) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(405,540) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(567,540) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(594,540) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(648,540) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(864,540) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(891,540) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(81,567) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(108,567) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(162,567) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(243,567) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(324,567) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(351,567) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(378,567) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(405,567) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(540,567) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(621,567) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(648,567) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(675,567) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(702,567) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(729,567) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(783,567) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(810,567) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(837,567) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(864,567) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(891,567) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(162,594) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(216,594) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(270,594) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(297,594) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(351,594) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(405,594) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(486,594) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(567,594) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(648,594) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(702,594) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(783,594) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(810,594) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(837,594) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(891,594) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(918,594) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(54,621) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(81,621) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(108,621) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(135,621) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(162,621) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(243,621) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(270,621) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(324,621) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(405,621) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(459,621) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(513,621) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(540,621) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(594,621) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(729,621) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(783,621) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(837,621) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(864,621) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(918,621) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(54,648) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(108,648) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(216,648) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(297,648) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(405,648) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(432,648) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(540,648) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(567,648) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(648,648) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(675,648) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(702,648) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(810,648) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(837,648) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(891,648) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(54,675) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(108,675) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(135,675) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(324,675) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(351,675) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(459,675) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(513,675) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(540,675) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(567,675) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(594,675) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(621,675) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(675,675) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(837,675) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(864,675) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(891,675) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(918,675) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(54,702) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(135,702) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(216,702) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(243,702) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(351,702) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(378,702) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(432,702) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(459,702) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(513,702) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(594,702) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(648,702) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(675,702) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(702,702) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(729,702) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(756,702) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(783,702) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(810,702) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(837,702) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(270,729) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(432,729) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(486,729) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(567,729) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(594,729) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(621,729) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(702,729) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(810,729) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(837,729) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(864,729) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(891,729) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(918,729) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(324,756) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(378,756) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(432,756) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(459,756) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(513,756) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(540,756) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(594,756) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(621,756) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(675,756) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(702,756) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(756,756) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(810,756) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(864,756) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(891,756) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(378,783) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(459,783) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(486,783) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(513,783) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(540,783) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(621,783) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(648,783) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(675,783) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(702,783) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(810,783) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(837,783) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(864,783) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(891,783) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(918,783) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(270,810) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(324,810) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(351,810) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(378,810) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(405,810) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(432,810) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(459,810) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(486,810) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(621,810) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(702,810) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(729,810) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(756,810) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(783,810) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(810,810) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(837,810) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(891,810) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(918,810) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(270,837) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(297,837) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(351,837) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(405,837) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(432,837) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(459,837) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(486,837) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(540,837) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(567,837) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(594,837) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(648,837) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(675,837) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(729,837) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(810,837) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(837,837) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(891,837) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(270,864) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(297,864) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(324,864) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(378,864) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(486,864) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(594,864) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(702,864) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(729,864) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(756,864) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(837,864) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(324,891) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(351,891) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(405,891) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(432,891) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(540,891) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(567,891) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(594,891) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(621,891) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(648,891) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(675,891) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(783,891) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(864,891) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(297,918) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(324,918) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(378,918) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(405,918) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(432,918) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(459,918) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(540,918) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(648,918) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(675,918) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(702,918) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(729,918) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(864,918) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+<g transform="translate(891,918) scale(4.635)"><rect width="6" height="6"></rect></g>
+
+</g><g><g transform="translate(54,54)" fill="#000000"><g transform="scale(13.5)"><path d="M0,0v14h14V0H0z M12,12H2V2h10V12z"></path></g></g>
+
+<g transform="translate(756,54)" fill="#000000"><g transform="scale(13.5)"><path d="M0,0v14h14V0H0z M12,12H2V2h10V12z"></path></g></g>
+
+<g transform="translate(54,756)" fill="#000000"><g transform="scale(13.5)"><path d="M0,0v14h14V0H0z M12,12H2V2h10V12z"></path></g></g>
+
+<g transform="translate(108,108)" fill="#000000"><g transform="scale(13.5)"><rect width="6" height="6"></rect></g></g>
+
+<g transform="translate(810,108)" fill="#000000"><g transform="scale(13.5)"><rect width="6" height="6"></rect></g></g>
+
+<g transform="translate(108,810)" fill="#000000"><g transform="scale(13.5)"><rect width="6" height="6"></rect></g></g></g>
+
+</svg>
+          </div>
+
+          <div class="hl-qr-meta">
+            <span class="hl-qr-url">autocity.com.my/app</span>
+            <span class="hl-qr-pill">Free &bull; iOS &amp; Android</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── HABITLINE LIGHT MODE CTA STYLES ──────────────────────── -->
+  <style>
+  .hl-app-section {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 40%, #eef3f8 75%, #ffffff 100%);
+    padding: clamp(5rem, 8vw, 7.5rem) 0 clamp(4rem, 6vw, 6rem);
+    isolation: isolate;
+  }
+
+  /* Atmospheric clouds & sky backdrop */
+  .hl-app-backdrop {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .hl-app-cloud-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.65;
+  }
+
+  .hl-app-cloud-glow--left {
+    width: 650px;
+    height: 450px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0) 70%);
+    top: 5%;
+    left: -150px;
+  }
+
+  .hl-app-cloud-glow--right {
+    width: 700px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 70%);
+    top: 15%;
+    right: -180px;
+  }
+
+  .hl-app-mist-floor {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 140px;
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.6) 45%, transparent 100%);
+    z-index: 1;
+  }
+  /* ── AMBIENT SPARKLES (Appears every 3s & disappears) ── */
+  .hl-app-sparkle {
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0;
+    will-change: transform, opacity;
+    animation: hlSparkleTwinkle 3s cubic-bezier(0.23, 1, 0.32, 1) infinite;
+  }
+
+  .hl-app-sparkle svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .hl-app-sparkle--1 {
+    top: 14%;
+    left: 18%;
+    width: 26px;
+    height: 26px;
+    animation-delay: 0s;
+    filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.65));
+  }
+
+  .hl-app-sparkle--2 {
+    top: 22%;
+    right: 14%;
+    width: 22px;
+    height: 22px;
+    animation-delay: 0.25s;
+    filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.65));
+  }
+
+  .hl-app-sparkle--3 {
+    top: 66%;
+    right: 27%;
+    width: 24px;
+    height: 24px;
+    animation-delay: 0.15s;
+    filter: drop-shadow(0 0 10px rgba(225, 0, 33, 0.55));
+  }
+
+  .hl-app-sparkle--4 {
+    top: 74%;
+    left: 26%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 0.35s;
+    filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.6));
+  }
+
+  @keyframes hlSparkleTwinkle {
+    0% {
+      opacity: 0;
+      transform: scale(0.2) rotate(0deg);
+    }
+    20% {
+      opacity: 1;
+      transform: scale(1.15) rotate(45deg);
+    }
+    40% {
+      opacity: 0.9;
+      transform: scale(0.95) rotate(70deg);
+    }
+    55% {
+      opacity: 0;
+      transform: scale(0.2) rotate(90deg);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(0.2) rotate(90deg);
+    }
+  }
+
+
+  /* 3-Column Habitline Grid */
+  .hl-app-container {
+    position: relative;
+    z-index: 2;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 clamp(1.5rem, 4.5vw, 4rem);
+    display: grid;
+    grid-template-columns: 1.15fr auto 1fr;
+    align-items: center;
+    gap: clamp(2.5rem, 5vw, 6rem);
+  }
+
+  /* ── COLUMN 1: LEFT ── */
+  .hl-app-col--left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hl-brand-name {
+    white-space: nowrap !important;
+    display: inline-block;
+  }
+
+  .hl-app-headline {
+    font-family: var(--font-display, 'Creato Display', sans-serif) !important;
+    font-size: clamp(2.4rem, 4vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.14;
+    letter-spacing: -0.03em;
+    color: #0f172a;
+    margin: 0 0 1.35rem 0;
+  }
+
+  .hl-app-subtext {
+    font-family: var(--font-body, 'Switzer', sans-serif);
+    font-size: clamp(0.975rem, 1.2vw, 1.1rem);
+    font-weight: 400;
+    line-height: 1.7;
+    color: #475569;
+    max-width: 42ch;
+    margin: 0 0 2.25rem 0;
+  }
+
+  /* Buttons */
+  .hl-app-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    margin-bottom: 1.75rem;
+    width: 100%;
+    max-width: 290px;
+  }
+
+  .hl-app-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.95rem 1.75rem;
+    border-radius: 9999px;
+    font-family: var(--font-body, 'Switzer', sans-serif);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 220ms cubic-bezier(0.16, 1, 0.3, 1),
+                background 180ms ease,
+                border-color 180ms ease;
+    will-change: transform;
+  }
+
+  .hl-app-btn--apple {
+    background: #0f172a;
+    color: #ffffff;
+    box-shadow: 0 8px 24px -4px rgba(15, 23, 42, 0.28), 0 2px 6px rgba(15, 23, 42, 0.12);
+  }
+
+  .hl-app-btn--apple:hover {
+    background: var(--color-accent-red, #e10021);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px -4px rgba(225, 0, 33, 0.4), 0 4px 10px rgba(225, 0, 33, 0.2);
+    color: #ffffff;
+  }
+
+  .hl-app-btn--apple:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  .hl-app-btn--android {
+    background: #ffffff;
+    color: #0f172a;
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+  }
+
+  .hl-app-btn--android:hover {
+    background: #f8fafc;
+    border-color: rgba(15, 23, 42, 0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.09);
+  }
+
+  .hl-app-btn--android:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  .hl-app-btn-icon {
+    flex-shrink: 0;
+  }
+
+  .hl-app-ratings {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .hl-app-stars {
+    color: #f59e0b;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+  }
+
+  .hl-app-rating-text {
+    font-family: var(--font-body, 'Switzer', sans-serif);
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #64748b;
+  }
+
+  /* ── COLUMN 2: 3D PHONE WITH PARALLAX MOUSE EFFECT ── */
+  .hl-app-col--center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .hl-phone-stage {
+    perspective: 1200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    padding: 1.5rem 0;
+  }
+
+  .hl-phone-3d-wrap {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    width: clamp(280px, 21vw, 305px);
+    max-width: 100%;
+    will-change: transform;
+    cursor: grab;
+  }
+
+  /* ── 3D Phone Hardware Chassis — True Flagship Mobile Aspect Ratio (19.5 : 9) ── */
+  .hl-phone-device {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9 / 19.5;
+    transform-style: preserve-3d;
+    transform: translateZ(0);
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Physical Side Buttons */
+  .hl-hw-btn {
+    position: absolute;
+    background: #334155;
+    border-radius: 4px;
+    z-index: 0;
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.3), 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  .hl-hw-btn--silent {
+    left: -4px;
+    top: 90px;
+    width: 4px;
+    height: 24px;
+  }
+  .hl-hw-btn--vol-up {
+    left: -4px;
+    top: 130px;
+    width: 4px;
+    height: 48px;
+  }
+  .hl-hw-btn--vol-down {
+    left: -4px;
+    top: 190px;
+    width: 4px;
+    height: 48px;
+  }
+  .hl-hw-btn--power {
+    right: -4px;
+    top: 140px;
+    width: 4px;
+    height: 70px;
+  }
+
+  /* Outer Titanium Bezel */
+  .hl-phone-titanium-bezel {
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(145deg, #475569 0%, #1e293b 35%, #0f172a 70%, #334155 100%);
+    padding: 7px;
+    border-radius: 52px;
+    box-shadow:
+      0 0 0 1.5px rgba(255, 255, 255, 0.28),
+      0 0 0 3px rgba(15, 23, 42, 0.85),
+      0 25px 65px -10px rgba(15, 23, 42, 0.28),
+      0 50px 100px -20px rgba(15, 23, 42, 0.22);
+    transform-style: preserve-3d;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+  }
+
+  /* Inner Screen Frame */
+  .hl-phone-screen-frame {
+    position: relative;
+    background: #0a0e14;
+    padding: 2.5px;
+    border-radius: 45px;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+  }
+
+  /* Dynamic Island */
+  .hl-phone-dynamic-island {
+    position: absolute;
+    top: 11px;
+    left: 50%;
+    transform: translateX(-50%) translateZ(26px);
+    width: 92px;
+    height: 24px;
+    background: #000000;
+    border-radius: 9999px;
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 9px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    pointer-events: none;
+  }
+
+  .hl-di-lens {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #1e293b 0%, #050508 80%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .hl-di-indicator {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #e10021;
+    box-shadow: 0 0 6px rgba(225, 0, 33, 0.8);
+    animation: hlPulseDot 2s ease-in-out infinite;
+  }
+
+  /* Glass Glare Overlay */
+  .hl-phone-glass-glare {
+    position: absolute;
+    inset: 0;
+    border-radius: 43px;
+    background: radial-gradient(circle at var(--glare-x, 50%) var(--glare-y, 30%), rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0.08) 45%, transparent 70%);
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    opacity: 0.45;
+    z-index: 25;
+    transition: opacity 0.3s ease;
+    transform: translateZ(20px);
+  }
+
+  /* ── Auto-City Live App UI — Authentic Slender Mobile App Proportions ── */
+  .hl-app-ui {
+    background: #ffffff;
+    border-radius: 43px;
+    padding: 14px 15px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    flex: 1;
+    position: relative;
+    z-index: 10;
+    user-select: none;
+    transform: translateZ(6px);
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  /* Status Bar */
+  .hl-ui-status-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 6px 1px;
+    color: #0f172a;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+  }
+
+  .hl-ui-time {
+    letter-spacing: -0.02em;
+  }
+
+  .hl-ui-status-icons {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .hl-ui-icon-cellular,
+  .hl-ui-icon-wifi {
+    width: 13px;
+    height: 10px;
+  }
+
+  .hl-ui-battery {
+    width: 19px;
+    height: 10px;
+    border: 1.5px solid currentColor;
+    border-radius: 3px;
+    padding: 1px;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  .hl-ui-battery::after {
+    content: '';
+    position: absolute;
+    right: -3px;
+    top: 2px;
+    width: 1.5px;
+    height: 3.5px;
+    background: currentColor;
+    border-radius: 0 1px 1px 0;
+  }
+
+  .hl-ui-battery-level {
+    width: 75%;
+    height: 100%;
+    background: currentColor;
+    border-radius: 1px;
+  }
+
+  /* App Header */
+  .hl-ui-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2px;
+  }
+
+  .hl-ui-greeting-row {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .hl-ui-greeting {
+    font-family: var(--font-display, 'Creato Display', sans-serif);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #0f172a;
+    letter-spacing: -0.02em;
+  }
+
+  .hl-ui-wave {
+    font-size: 1.05rem;
+  }
+
+  .hl-ui-location {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    font-family: var(--font-body, 'Switzer', sans-serif);
+    font-size: 0.68rem;
+    font-weight: 500;
+    color: #64748b;
+    margin-top: 1px;
+  }
+
+  .hl-ui-loc-icon {
+    width: 11px;
+    height: 11px;
+    color: #e10021;
+    flex-shrink: 0;
+  }
+
+  .hl-ui-avatar {
+    position: relative;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    overflow: visible;
+  }
+
+  .hl-ui-avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1.5px solid #ffffff;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.12);
+  }
+
+  .hl-ui-avatar-badge {
+    position: absolute;
+    bottom: -1px;
+    right: -1px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #10b981;
+    border: 2px solid #ffffff;
+  }
+
+  /* Weather & Date Pill */
+  .hl-ui-weather-pill {
+    background: #f8fafc;
+    border: 1px solid rgba(226, 232, 240, 0.85);
+    border-radius: 16px;
+    padding: 7px 11px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .hl-ui-weather-left {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .hl-ui-weather-icon {
+    font-size: 1.15rem;
+    line-height: 1;
+  }
+
+  .hl-ui-weather-temp {
+    font-family: var(--font-body, 'Switzer', sans-serif);
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #0f172a;
+    line-height: 1.2;
+  }
+
+  .hl-ui-weather-date {
+    font-family: var(--font-body, 'Switzer', sans-serif);
+    font-size: 0.62rem;
+    font-weight: 400;
+    color: #64748b;
+  }
+
+  .hl-ui-weather-tag {
+    font-family: var(--font-body, 'Switzer', sans-serif);
+    font-size: 0.62rem;
+    font-weight: 600;
+    color: #1d4ed8;
+    background: #eff6ff;
+    padding: 2px 6px;
+    border-radius: 9999px;
+  }
+
+  /* 4-Grid Compact Apple Bento Actions */
+  .hl-ui-bento-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 7px;
+  }
+
+  .hl-ui-bento-item {
+    border-radius: 15px;
+    padding: 8px 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    cursor: pointer;
+    transition: transform 0.18s ease;
+  }
+
+  .hl-ui-bento-item:hover {
+    transform: translateY(-2px);
+  }
+
+  .hl-ui-bento--dining  { background: #fff7ed; border: 1px solid rgba(251, 146, 60, 0.18); }
+  .hl-ui-bento--funfair { background: #fef2f2; border: 1px solid rgba(239, 68, 68, 0.18); }
+  .hl-ui-bento--events  { background: #eff6ff; border: 1px solid rgba(59, 130, 246, 0.18); }
+  .hl-ui-bento--perks   { background: #f0fdf4; border: 1px solid rgba(34, 197, 94, 0.18); }
+
+  .hl-ui-bento-icon {
+    font-size: 1.1rem;
+    line-height: 1;
+  }
+
+  .hl-ui-bento-label {
+    font-family: var(--font-body, 'Switzer', sans-serif);
+    font-size: 0.63rem;
+    font-weight: 600;
+    color: #1e293b;
+  }
+
+  /* Apple Wallet Style "Auto-City VIP Pass" */
+  .hl-ui-pass-card {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 65%, #293548 100%);
+    border-radius: 16px;
+    padding: 11px 13px;
+    color: #ffffff;
+    box-shadow: 0 10px 22px -4px rgba(15, 23, 42, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    transform: translateZ(10px);
+    transition: transform 0.25s ease;
+  }
+
+  .hl-ui-pass-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+  }
+
+  .hl-ui-pass-brand {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .hl-ui-pass-logo {
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    background: #e10021;
+    color: #ffffff;
+    font-family: var(--font-display, 'Creato Display', sans-serif);
+    font-weight: 800;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(225, 0, 33, 0.4);
+  }
+
+  .hl-ui-pass-title {
+    font-family: var(--font-display, 'Creato Display', sans-serif);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  .hl-ui-pass-num {
+    font-family: var(--font-body, 'Switzer', sans-serif);
+    font-size: 0.6rem;
+    color: #94a3b8;
+  }
+
+  .hl-ui-pass-tier {
+    font-family: var(--font-body, 'Switzer', sans-serif);
+    font-size: 0.55rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #fcd34d;
+    background: rgba(252, 211, 77, 0.15);
+    border: 1px solid rgba(252, 211, 77, 0.35);
+    padding: 2px 5px;
+    border-radius: 9999px;
+  }
+
+  .hl-ui-pass-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .hl-ui-pass-points-val {
+    font-family: var(--font-display, 'Creato Display', sans-serif);
+    font-size: 1.1rem;
+    font-weight: 800;
+    line-height: 1;
+    color: #ffffff;
+  }
+
+  .hl-ui-pts-label {
+    font-size: 0.62rem;
+    font-weight: 500;
+    color: #94a3b8;
+  }
+
+  .hl-ui-pass-barcode {
+    font-family: monospace;
+    font-size: 0.58rem;
+    color: rgba(255, 255, 255, 0.45);
+    letter-spacing: -0.05em;
+  }
+
+  /* Happening Tonight Feature Event Card */
+  .hl-ui-event-card {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    height: 92px;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+  }
+
+  .hl-ui-event-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hl-ui-event-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.75) 100%);
+  }
+
+  .hl-ui-event-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 9px 11px;
+    color: #ffffff;
+  }
+
+  .hl-ui-event-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(225, 0, 33, 0.85);
+    color: #ffffff;
+    font-family: var(--font-body, 'Switzer', sans-serif);
+    font-size: 0.52rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 2px 5px;
+    border-radius: 9999px;
+    margin-bottom: 2px;
+  }
+
+  .hl-ui-live-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #ffffff;
+    animation: hlPulseDot 1.5s ease-in-out infinite;
+  }
+
+  .hl-ui-event-title {
+    font-family: var(--font-display, 'Creato Display', sans-serif);
+    font-size: 0.78rem;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .hl-ui-event-meta {
+    font-family: var(--font-body, 'Switzer', sans-serif);
+    font-size: 0.58rem;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  /* Apple Frosted Glass Tab Dock */
+  .hl-ui-dock {
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    border-radius: 22px;
+    padding: 5px 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+  }
+
+  .hl-ui-dock-item {
+    position: relative;
+    width: 30px;
+    height: 26px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #94a3b8;
+    cursor: pointer;
+  }
+
+  .hl-ui-dock-item svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .hl-ui-dock-item--active {
+    color: #0f172a;
+  }
+
+  .hl-ui-dock-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #e10021;
+    margin-top: 1px;
+  }
+
+  /* Home Indicator */
+  .hl-ui-home-bar {
+    width: 36%;
+    height: 3px;
+    background: #0f172a;
+    border-radius: 9999px;
+    margin: 2px auto 0;
+    opacity: 0.6;
+  }
+
+  /* 3D Floating Pill Badge Hovering in Z-Space */
+  .hl-phone-float-badge {
+    position: absolute;
+    top: 18%;
+    right: -18px;
+    transform: translateZ(46px);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    padding: 0.45rem 0.95rem;
+    border-radius: 9999px;
+    font-family: var(--font-body, 'Switzer', sans-serif);
+    font-size: 0.76rem;
+    font-weight: 600;
+    color: #0f172a;
+    box-shadow: 0 12px 28px -4px rgba(15, 23, 42, 0.12), 0 2px 6px rgba(15, 23, 42, 0.04);
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  .hl-float-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.25);
+    animation: hlPulseDot 2s ease-in-out infinite;
+  }
+
+  @keyframes hlPulseDot {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(0.8); opacity: 0.6; }
+  }
+
+  /* 3D Contact Shadow underneath */
+  .hl-phone-3d-shadow {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    width: 72%;
+    height: 28px;
+    transform: translateX(-50%) translateZ(-35px);
+    background: radial-gradient(ellipse at center, rgba(15, 23, 42, 0.22) 0%, rgba(15, 23, 42, 0.06) 50%, transparent 75%);
+    filter: blur(14px);
+    border-radius: 50%;
+    pointer-events: none;
+    will-change: transform;
+  }
+
+  /* ── COLUMN 3: RIGHT QR CARD — Spaced Away to the Right ── */
+  .hl-app-col--right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-self: end;
+    padding-left: clamp(1.5rem, 4vw, 4rem);
+  }
+
+  .hl-qr-headline {
+    font-family: var(--font-display, 'Creato Display', sans-serif) !important;
+    font-size: clamp(1.4rem, 2vw, 1.85rem);
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.025em;
+    color: #0f172a;
+    margin: 0 0 1.5rem 0;
+  }
+
+  .hl-qr-card {
+    background: #ffffff;
+    border-radius: 28px;
+    padding: clamp(1.25rem, 2vw, 1.75rem);
+    box-shadow: 0 24px 50px -10px rgba(15, 23, 42, 0.08), 0 2px 8px rgba(15, 23, 42, 0.03);
+    border: 1px solid rgba(226, 232, 240, 0.85);
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.1rem;
+    transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .hl-qr-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 32px 64px -10px rgba(15, 23, 42, 0.14), 0 4px 12px rgba(15, 23, 42, 0.04);
+  }
+
+  .hl-qr-frame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .hl-qr-svg {
+    width: clamp(160px, 13.5vw, 195px);
+    height: auto;
+    aspect-ratio: 1 / 1;
+    display: block;
+    border-radius: 12px;
+  }
+
+  .hl-qr-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .hl-qr-url {
+    font-family: var(--font-body, 'Switzer', sans-serif);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #1d4ed8;
+    letter-spacing: 0.01em;
+  }
+
+  .hl-qr-pill {
+    font-family: var(--font-body, 'Switzer', sans-serif);
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: #64748b;
+  }
+
+  /* ── RESPONSIVE ADAPTATIONS ── */
+  @media (max-width: 1080px) {
+    .hl-app-container {
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+        "left right"
+        "center center";
+      gap: 3.5rem 2rem;
+    }
+    .hl-app-col--left   { grid-area: left; }
+    .hl-app-col--right  { 
+      grid-area: right; 
+      justify-self: end;
+      align-items: flex-start;
+      padding-left: 0;
+    }
+    .hl-app-col--center { 
+      grid-area: center; 
+      margin-top: 1rem; 
+    }
+    .hl-phone-3d-wrap   { 
+      width: 295px; 
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hl-app-section {
+      padding: 4.5rem 0 3.5rem;
+    }
+    .hl-app-container {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "left"
+        "center"
+        "right";
+      gap: 2.75rem;
+      text-align: center;
+    }
+    .hl-app-col--left   { align-items: center; }
+    .hl-app-col--right  { 
+      align-items: center; 
+      justify-self: center;
+      padding-left: 0;
+    }
+    .hl-app-buttons     { align-items: center; }
+    .hl-app-btn         { width: 100%; justify-content: center; }
+    .hl-app-subtext     { max-width: 100%; }
+    .hl-phone-3d-wrap   { width: clamp(260px, 78vw, 295px); }
+    .hl-phone-float-badge { right: -6px; }
+    .hl-app-sparkle--1 { top: 8%; left: 8%; width: 22px; height: 22px; }
+    .hl-app-sparkle--2 { top: 12%; right: 8%; width: 20px; height: 20px; }
+    .hl-app-sparkle--3 { top: 58%; right: 10%; width: 22px; height: 22px; }
+    .hl-app-sparkle--4 { top: 92%; left: 12%; width: 18px; height: 18px; }
+  }
+
+  /* ── ENTRANCE TRANSITION ── */
+  @media (prefers-reduced-motion: reduce) {
+    .hl-app-sparkle {
+      animation: none !important;
+      opacity: 0 !important;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hl-app-col {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .hl-app-col--left   { transition-delay: 0.05s; }
+    .hl-app-col--center { transition-delay: 0.15s; }
+    .hl-app-col--right  { transition-delay: 0.25s; }
+
+    .hl-app-section.is-visible .hl-app-col {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  </style>
+
+  <!-- CTA Section Entrance Observer & 3D Mouse Parallax Script -->
+  <script>
+  (function () {
+    var s = document.getElementById('appDownload');
+    if (!s) return;
+
+    // Entrance observer
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      io.observe(s);
+    } else {
+      s.classList.add('is-visible');
+    }
+
+    // 3D Parallax Mouse Physics
+    var card = document.getElementById('phone3DWrap');
+    var glare = document.getElementById('phone3DGlare');
+    var shadow = document.getElementById('phone3DShadow');
+    if (!card) return;
+
+    var mouseX = 0;
+    var mouseY = 0;
+    var currentRotX = 0;
+    var currentRotY = 0;
+    var currentTransX = 0;
+    var currentTransY = 0;
+    var isHovered = false;
+
+    s.addEventListener('mousemove', function (e) {
+      var rect = s.getBoundingClientRect();
+      var x = e.clientX - rect.left;
+      var y = e.clientY - rect.top;
+      // Normalized between -1 and 1
+      mouseX = ((x / rect.width) - 0.5) * 2;
+      mouseY = ((y / rect.height) - 0.5) * 2;
+      isHovered = true;
+
+      if (glare) {
+        var gx = ((mouseX + 1) / 2) * 100;
+        var gy = ((mouseY + 1) / 2) * 100;
+        glare.style.setProperty('--glare-x', gx + '%');
+        glare.style.setProperty('--glare-y', gy + '%');
+        glare.style.opacity = '0.65';
+      }
+    });
+
+    s.addEventListener('mouseleave', function () {
+      isHovered = false;
+      mouseX = 0;
+      mouseY = 0;
+      if (glare) {
+        glare.style.opacity = '0.45';
+      }
+    });
+
+    function updateParallax() {
+      // Tilt angles: -14deg on X, 16deg on Y
+      var targetRotX = isHovered ? -mouseY * 13 : Math.sin(Date.now() * 0.0016) * 3;
+      var targetRotY = isHovered ? mouseX * 15 : Math.cos(Date.now() * 0.0016) * 3.5;
+      var targetTransX = isHovered ? mouseX * 10 : 0;
+      var targetTransY = isHovered ? mouseY * 8 : Math.sin(Date.now() * 0.002) * -7;
+
+      // Damped smooth lerp
+      currentRotX += (targetRotX - currentRotX) * 0.08;
+      currentRotY += (targetRotY - currentRotY) * 0.08;
+      currentTransX += (targetTransX - currentTransX) * 0.08;
+      currentTransY += (targetTransY - currentTransY) * 0.08;
+
+      card.style.transform = 'translate3d(' + currentTransX.toFixed(2) + 'px, ' + currentTransY.toFixed(2) + 'px, 0px) rotateX(' + currentRotX.toFixed(2) + 'deg) rotateY(' + currentRotY.toFixed(2) + 'deg)';
+
+      if (shadow) {
+        var sX = -currentRotY * 1.6;
+        var sY = currentRotX * 0.8;
+        shadow.style.transform = 'translateX(calc(-50% + ' + sX.toFixed(1) + 'px)) translateY(' + sY.toFixed(1) + 'px) translateZ(-35px)';
+      }
+
+      requestAnimationFrame(updateParallax);
+    }
+
+    requestAnimationFrame(updateParallax);
+  })();
+  </script>
+
+</body>
+</html>

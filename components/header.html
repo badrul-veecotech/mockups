@@ -1,0 +1,87 @@
+<!-- ========================================================================
+     Auto-City : 3-Island Floating Navigation (Habitline Framer Reference)
+     Reduced 12px/8px Modern Radii · Dynamic Inward-Closing Scroll Effect
+     ======================================================================== -->
+<header class="island-header-wrapper" id="islandHeader">
+  <div class="island-header-inner">
+    
+    <!-- Island 1: Left Brand Pill (Compact Logo, Zero Subtags) -->
+    <div class="island-col island-col-left">
+      <a href="home.html" class="island-pill island-brand-pill" aria-label="Auto-City Home">
+        <img src="../Graphic/auto-city-logo.svg" alt="Auto-City" class="island-brand-logo">
+      </a>
+    </div>
+
+    <!-- Island 2: Center Navigation Menu Pill (Strict Single Line Row) -->
+    <div class="island-col island-col-center">
+      <nav class="island-pill island-nav-pill" aria-label="Primary Navigation">
+        <ul class="island-nav-list">
+          <li class="island-nav-item"><a href="#attractions" class="island-nav-link active">Attractions</a></li>
+          <li class="island-nav-item"><a href="#dining" class="island-nav-link">Dining & Retail</a></li>
+          <li class="island-nav-item"><a href="#automotive" class="island-nav-link">Automotive</a></li>
+          <li class="island-nav-item"><a href="#events" class="island-nav-link">What's On</a></li>
+          <li class="island-nav-item"><a href="#moreThingsToDo" class="island-nav-link">More To Do</a></li>
+          <li class="island-nav-item"><a href="#guide" class="island-nav-link">Visitor Guide</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Island 3: Right Action Pill (Squircle Map Icon + Primary CTA) -->
+    <div class="island-col island-col-right">
+      <div class="island-pill island-action-pill">
+        <a href="#guide" class="island-squircle-btn" title="Explore District Map" aria-label="District Map">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
+            <line x1="8" y1="2" x2="8" y2="18"></line>
+            <line x1="16" y1="6" x2="16" y2="22"></line>
+          </svg>
+        </a>
+        <a href="#tickets" class="island-cta-btn">
+          <span>Plan Your Visit</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+        <!-- Mobile/Tablet Toggle Button (40px Squircle) -->
+        <button type="button" class="island-mobile-toggle-btn" id="islandMobileToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+<!-- Mobile/Tablet Backdrop Overlay (Habitline framer-d6ma15 blur effect) -->
+<div class="island-dropdown-overlay" id="islandMobileOverlay" aria-hidden="true"></div>
+
+<!-- Mobile/Tablet Dropdown Menu Card (Habitline Animated Dropdown) -->
+<div class="island-dropdown-card" id="islandMobileCard" aria-hidden="true">
+  <a href="#attractions" class="island-dropdown-link active">
+    <span>Attractions & Rides</span>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+  </a>
+  <a href="#dining" class="island-dropdown-link">
+    <span>Dining & Retail</span>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+  </a>
+  <a href="#automotive" class="island-dropdown-link">
+    <span>Automotive Hub</span>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+  </a>
+  <a href="#events" class="island-dropdown-link">
+    <span>What's On & Carnivals</span>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+  </a>
+  <a href="#guide" class="island-dropdown-link">
+    <span>Visitor Guide & Parking</span>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+  </a>
+  <div style="padding-top: 8px; border-top: 1px solid #f2f2f2; margin-top: 4px; display: flex; flex-direction: column; gap: 6px;">
+    <a href="#tickets" class="island-cta-btn" style="width: 100%; justify-content: center; height: 44px;">
+      <span>Plan Your Visit</span>
+    </a>
+  </div>
+</div>

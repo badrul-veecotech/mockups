@@ -1,0 +1,101 @@
+[
+  {
+    "id": "reel-1-food-court",
+    "col": 0,
+    "row": 0,
+    "title": "Kim Garden Food Court",
+    "subtitle": "Apple Delicious Station & local hawker specialties",
+    "tag": "STREET BITES",
+    "tag_color": "#bef264",
+    "views": "1.3K views",
+    "ig_url": "https://www.instagram.com/autocity_penang/"
+  },
+  {
+    "id": "reel-2-comedy-drama",
+    "col": 1,
+    "row": 0,
+    "title": "Madam Karen VS Timmy The Thief",
+    "subtitle": "Viral comedy sketch filmed at Auto-City",
+    "tag": "ENTERTAINMENT",
+    "tag_color": "#facc15",
+    "views": "7.5K views",
+    "ig_url": "https://www.instagram.com/autocity_penang/"
+  },
+  {
+    "id": "reel-3-moon-fest",
+    "col": 2,
+    "row": 0,
+    "title": "Moon Fest By Hunza \u4e2d\u79cb\u56ed\u6e38\u4f1a",
+    "subtitle": "Lantern festival & dazzling night parade",
+    "tag": "NIGHT FESTIVAL",
+    "tag_color": "#38bdf8",
+    "views": "24.1K views",
+    "ig_url": "https://www.instagram.com/autocity_penang/"
+  },
+  {
+    "id": "reel-4-colour-hunting",
+    "col": 3,
+    "row": 0,
+    "title": "Colour Hunting Auto-City",
+    "subtitle": "Ecotourism lifestyle spots & photo walks",
+    "tag": "VIBES & OOTD",
+    "tag_color": "#a78bfa",
+    "views": "1.3K views",
+    "ig_url": "https://www.instagram.com/autocity_penang/"
+  },
+  {
+    "id": "reel-5-merdeka-celebration",
+    "col": 0,
+    "row": 1,
+    "title": "Selamat Hari Merdeka Celebration",
+    "subtitle": "Patriotic celebrations and fireworks night",
+    "tag": "CARNIVAL",
+    "tag_color": "#fb7185",
+    "views": "2.2K views",
+    "ig_url": "https://www.instagram.com/autocity_penang/"
+  },
+  {
+    "id": "reel-6-mala-hotpot",
+    "col": 1,
+    "row": 1,
+    "title": "\u849c\u9999\u5ae9\u9e21\u7247\u9ebb\u8fa3\u70eb Mala Tang",
+    "subtitle": "Authentic Sichuan spicy hotpot delicacy",
+    "tag": "CULINARY",
+    "tag_color": "#f97316",
+    "views": "1.5K views",
+    "ig_url": "https://www.instagram.com/autocity_penang/"
+  },
+  {
+    "id": "reel-7-de-zhuang-hotpot",
+    "col": 2,
+    "row": 1,
+    "title": "De Zhuang Hotpot Feast \u706b\u9505\u5957\u9910",
+    "subtitle": "Premium bubbling broth & banquet dining",
+    "tag": "DINING HOTSPOT",
+    "tag_color": "#e10021",
+    "views": "2.0K views",
+    "ig_url": "https://www.instagram.com/autocity_penang/"
+  },
+  {
+    "id": "reel-8-love-baba-nyonya",
+    "col": 3,
+    "row": 1,
+    "title": "Love Baba Nyonya Curry Stingray",
+    "subtitle": "Heritage Peranakan culinary specialties",
+    "tag": "PENANG FLAVORS",
+    "tag_color": "#34d399",
+    "views": "1.0K views",
+    "ig_url": "https://www.instagram.com/autocity_penang/"
+  },
+  {
+    "id": "reel-9-bm-local-guide",
+    "col": 3,
+    "row": 2,
+    "title": "\u5927\u5c71\u811a Local \u5e26\u8def \u7206\u6b3e\u7f8e\u98df",
+    "subtitle": "Bukit Mertajam food guide visiting 3 hotspots",
+    "tag": "VIRAL GUIDE",
+    "tag_color": "#fbbf24",
+    "views": "30.7K views",
+    "ig_url": "https://www.instagram.com/autocity_penang/"
+  }
+]
